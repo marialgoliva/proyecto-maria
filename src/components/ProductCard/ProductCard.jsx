@@ -1,6 +1,6 @@
 import "./ProductCard.css";
 
-const ProductCard = (product) => {
+function ProductCard(product) {
   const {imagen, descripcion, nombre, precio } = product;
 
   return (

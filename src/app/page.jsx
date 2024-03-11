@@ -1,4 +1,4 @@
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import axios from "axios";
 import "./global.css";
 
