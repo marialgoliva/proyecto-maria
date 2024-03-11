@@ -1,17 +1,17 @@
+import "./ProductCard.css";
 
+const ProductCard = (product) => {
+  const {imagen, descripcion, nombre, precio } = product;
 
-export function ProductCard({ product }) {
   return (
-    <div className="card">
-      <h5 className="nombre">
-        {product.nombre}
-      </h5>
-      <p className="descripcion">
-        {product.descripcion}
-      </p>
-      <p className="precio">
-        {product.precio} €
-      </p>
-    </div>
+    <a className="product-card" href="/">
+      <img className="product-card__image" src={imagen}/>
+      <p className="product-card__brand">{nombre}</p>
+      <p className="product-card__description">{descripcion}</p>
+      <p className="product-card__price">{precio} €</p>
+      
+    </a>
   );
-}
+};
+
+export default ProductCard;

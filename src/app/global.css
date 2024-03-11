@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: asap;
+    margin: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 50%;
+}

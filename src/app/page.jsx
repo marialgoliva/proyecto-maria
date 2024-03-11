@@ -1,5 +1,6 @@
-import { ProductCard } from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import axios from "axios";
+import "./global.css";
 
 
 
@@ -16,7 +17,7 @@ async function ProductsPage() {
   return (
     <>
       {products.map((product) => (
-        <ProductCard key={product.idProducto} product={product} />
+        <ProductCard key={product.idProducto} nombre={product.nombre} descripcion={product.descripcion} precio={product.precio} imagen="https://picsum.photos/200" />
         
       ))}
     </>
