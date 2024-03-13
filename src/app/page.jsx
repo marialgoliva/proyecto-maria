@@ -17,7 +17,7 @@ async function ProductsPage() {
   return (
     <>
       {products.map((product) => (
-        <ProductCard key={product.idProducto} nombre={product.nombre} descripcion={product.descripcion} precio={product.precio} imagen="https://picsum.photos/200" />
+        <ProductCard key={product.idProducto} nombre={product.nombre} descripcion={product.descripcion} precio={product.precio} imagen={require("@/../public/logo_reducido.svg")} />
         
       ))}
     </>
