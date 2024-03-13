@@ -1,6 +1,6 @@
 import ProductCard from "@/components/ProductCard/ProductCard";
 import axios from "axios";
-import "./global.css";
+import "@/styles/global.css";
 
 
 
