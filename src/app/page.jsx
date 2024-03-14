@@ -1,14 +1,11 @@
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/productcard/ProductCard";
 import axios from "axios";
 import "@/styles/global.css";
-
-
 
 async function loadProduct() {
   const { data } = await axios.get(process.env.REQUEST_URL);
   return data;
 }
-
 async function ProductsPage() {
   const products = await loadProduct();
 
@@ -16,10 +13,13 @@ async function ProductsPage() {
 
   return (
     <>
+    <div className="flex row">
       {products.map((product) => (
-        <ProductCard key={product.idProducto} nombre={product.nombre} descripcion={product.descripcion} precio={product.precio} imagen={require("@/../public/logo_reducido.svg")} />
-        
-      ))}
+          <ProductCard key={product.idProducto} nombre={product.nombre} descripcion={product.descripcion} precio={product.precio} imagen={require("@/../public/imagendeprueba.jpeg")} />
+          
+        ))}
+    </div>
+      
     </>
   );
 }

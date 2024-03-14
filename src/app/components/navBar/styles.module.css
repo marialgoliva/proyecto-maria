@@ -1,0 +1,38 @@
+.navHeader{
+    margin-bottom: 8;
+    border-bottom: 1px solid lightgray;
+
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 4px 4px;
+}
+
+.linkNav{
+    text-decoration: none;
+    color: #272727;
+}
+
+.navTitle{
+    font-size: 4xl;
+}
+.nav {
+    text-decoration: none;
+    gap: 10px;
+    display: flex;
+}
+
+@media (min-width: 992px) {
+    .nav {
+      display: flex;
+    }
+  }
+@media (min-width: 1536px) {
+    .nav {
+      margin-left: 4rem;
+    }
+}

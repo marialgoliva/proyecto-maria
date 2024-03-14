@@ -8,11 +8,8 @@
     --secondary: #9c6843;
     --terciary: #ae4c4c;
 }
+.productContainer {
+    display: flex;
+    justify-content: column;
+}
 
-/* body {
-    font-family: asap;
-    margin: 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 50%;
-} */

@@ -1,4 +1,4 @@
-.product-card {
+.productCard {
     text-decoration: none;
     position: relative;
     display: flex;
@@ -14,30 +14,29 @@
     color: black;
   }
   
-  .product-card__image {
-    max-width: 100%;
-    height: auto;
+  .image {
+    height: 100%;
   }
   
-  .product-card__description,
-  .product-card__price,
-  .product-card__brand {
+  .description,
+  .price,
+  .title {
     margin: 0.2rem 0;
     font-size: 1rem;
   }
   
-  .product-card__brand {
+  .title {
     padding: 5px;
     font-weight: bold;
     text-transform: uppercase;
   }
   
-  .product-card__description {
+  .description {
     font-weight: normal;
     width: 70%;
   }
   
-  .product-card__price {
+  .price {
     font-weight: bold;
   }
   

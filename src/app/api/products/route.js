@@ -20,16 +20,17 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    const { name, description, price } = await request.json();
-    console.log(name, description, price);
-
+    const { categoria, nombre, descripcion, color, precio  } = await request.json();
     const result = await conn.query("INSERT INTO PRODUCTO SET ?", {
-      name,
-      description,
-      price,
+      categoria,
+      nombre,
+      descripcion,
+      color,
+      precio,
     });
+    console.log(result);
 
-    return NextResponse.json({ name, description, price, id: result.insertId });
+    return NextResponse.json({ idProducto: result.insertId, categoria, nombre, descripcion, color, precio });
   } catch (error) {
     return NextResponse.json(
       { message: error.message },

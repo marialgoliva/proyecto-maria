@@ -23,7 +23,7 @@ CREATE TABLE CLIENTE (
     );
 
 CREATE TABLE PEDIDO (
-	idPedido VARCHAR(10) PRIMARY KEY,
+	idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idCliente CHAR(9),
     fechaPedido DATE,
     fechaEntrega DATE,
@@ -35,17 +35,17 @@ CREATE TABLE PEDIDO (
 );
 
 CREATE TABLE CATEGORIA (
-	idCategoria VARCHAR(10) PRIMARY KEY,
-    idCategoriaPadre VARCHAR(10),
+	idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+    idCategoriaPadre INT,
     nombre VARCHAR(50),
     descripcion TEXT,
     FOREIGN KEY (idCategoriaPadre) REFERENCES Categoria(idCategoria)
 );
 
 CREATE TABLE PRODUCTO(
-	idProducto VARCHAR(10) PRIMARY KEY,
+	idProducto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
-    categoria VARCHAR(50),
+    categoria INT,
     descripcion TEXT,
     color VARCHAR(25),
     precio DOUBLE,
@@ -54,8 +54,8 @@ CREATE TABLE PRODUCTO(
 );
 
 CREATE TABLE PEDIDO_PRODUCTO(
-    idPedido VARCHAR(10),
-    idProducto VARCHAR(10),
+    idPedido INT,
+    idProducto INT,
     precioUnitario DOUBLE,
     cantidad INTEGER,
     PRIMARY KEY (idPedido,idProducto),
@@ -64,9 +64,9 @@ CREATE TABLE PEDIDO_PRODUCTO(
 );
 
 CREATE TABLE COMENTARIO (
-  	idComentario VARCHAR(10) PRIMARY KEY,
+  	idComentario  INT AUTO_INCREMENT PRIMARY KEY,
     idCliente CHAR(9),
-    idProducto VARCHAR(10),
+    idProducto INT,
     puntuacion INTEGER,
     texto TEXT,
     FOREIGN KEY (idCliente) REFERENCES Cliente(dni),
@@ -74,7 +74,7 @@ CREATE TABLE COMENTARIO (
 );
 
 CREATE TABLE TALLA (
-  	idProducto VARCHAR(10),
+  	idProducto INT,
     talla VARCHAR(25),
     stock INTEGER,
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)

@@ -1,0 +1,14 @@
+.formContainer{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+.form{
+    border: 2px dashed #dddcdc;
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    width: 30%;
+}
+
+
