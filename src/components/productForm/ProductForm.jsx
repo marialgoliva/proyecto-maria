@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function ProductForm() {
   
@@ -14,6 +15,7 @@ function ProductForm() {
   });  
   
   const form = useRef(null);
+  const router = useRouter();
 
   const handleChange = (e) => {
     setProduct({
@@ -33,8 +35,8 @@ function ProductForm() {
           categoria: "",
           color: "",
           precio: ""
-
         });
+        router.push('/admin/products')
         
         
         
