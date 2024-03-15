@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "../components/navBar/Navbar";
 
 export const metadata = {
   title: 'Mi tienda online',

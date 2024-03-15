@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import '../../../styles/global.css'
+import '@/styles/global.css'
 import { usePathname } from 'next/navigation';
 import styles from '../Navbar/styles.module.css'
 

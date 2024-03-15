@@ -1,0 +1,23 @@
+.formContainer{
+    margin: 20px;
+    display: flex;
+    
+    
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #dddcdc;
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    width: 50%
+}
+
+.button {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
