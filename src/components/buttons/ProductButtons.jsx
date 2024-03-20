@@ -1,5 +1,6 @@
+"use client"
 import axios from "axios";
-function Buttons({ idProducto }) {
+function ProductButtons({ idProducto }) {
   return (
     <div className="d-flex flex-column justify-content-center gap-2">
       <button
@@ -29,4 +30,4 @@ function Buttons({ idProducto }) {
   );
 }
 
-export default Buttons;
+export default ProductButtons;

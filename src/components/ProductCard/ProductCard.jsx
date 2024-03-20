@@ -1,10 +1,10 @@
-"use client"
-import Buttons from "../buttons/Buttons";
+
+import ProductButtons from "../buttons/ProductButtons";
+import ProductsButtons from "../buttons/ProductButtons";
 import styles from "./styles.module.css";
 
 
 function ProductCard ({product, editable}) {
-  console.log(product)
   const {descripcion, nombre, precio, categoria, color, idProducto } = product;
   
 
@@ -22,7 +22,7 @@ function ProductCard ({product, editable}) {
         <p className="categoria">Categoria: {categoria}</p>
         <p className="color">Color: {color}</p>
         {console.log(idProducto)}
-        <Buttons idProducto={idProducto}/>
+        <ProductButtons idProducto={idProducto}/>
       </div>
       
       )}

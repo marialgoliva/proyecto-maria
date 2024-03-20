@@ -1,6 +1,6 @@
-
+"use client"
 import Link from "next/link";
-import { FaEye } from "react-icons/fa";
+
 import ButtonsIcons from "./ButtonsIcons";
 
 function ProductRow({ product }) {
@@ -14,8 +14,8 @@ function ProductRow({ product }) {
       <td>{imagen}</td>
       <td>{
         <>
-          <Link href={`products/${idProducto}`}><FaEye /></Link>
-          <ButtonsIcons idProducto={32}/>
+          {/* <Link href={`products/${idProducto}`}></Link> */}
+          <ButtonsIcons idProducto={idProducto}/>
         </>
         
         }</td>
