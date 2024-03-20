@@ -1,8 +1,8 @@
 "use client"
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 function ProductForm() {
   
@@ -16,6 +16,7 @@ function ProductForm() {
   
   const form = useRef(null);
   const router = useRouter();
+  const params = useParams();
 
   const handleChange = (e) => {
     setProduct({
@@ -24,22 +25,39 @@ function ProductForm() {
     })
   };
 
-  
-  const handleSubmit = async (e) => {
-        e.preventDefault();
-        const res = await axios.post('/api/products', product);
-        console.log(res);
-        setProduct({
-          nombre: "",
-          descripcion: "",
-          categoria: "",
-          color: "",
-          precio: ""
-        });
-        router.push('/admin/products')
-        
-        
-        
+  useEffect(() =>{
+    if (params.id) {
+      
+      axios.get('/api/products/' + params.id)
+      .then(res=>{
+        setProduct(res.data)
+      })
+
+    }
+  },[])
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!params.id){
+      await axios.post('/api/products', product);
+      setProduct({
+        nombre: "",
+        descripcion: "",
+        categoria: "",
+        color: "",
+        precio: ""
+      });
+    } else {
+      console.log(params.id);
+      await axios.put(`/api/products/${params.id}` , product);
+    }
+    
+    
+    router.push('/admin/products');
+    router.refresh();
+
+
+
   }
     
   return (

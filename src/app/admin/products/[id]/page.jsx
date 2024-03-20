@@ -1,4 +1,5 @@
 
+
 import ProductCard from "@/components/productcard/ProductCard";
 import axios from "axios";
 
@@ -14,7 +15,8 @@ async function ProductPage({params}) {
     console.log(product)
     return (
     <div>
-      <ProductCard product={product} editable={true}/>
+      <ProductCard product={product} editable/>
+      
     </div>
   )
 }

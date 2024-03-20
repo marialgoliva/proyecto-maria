@@ -1,7 +1,6 @@
 import axios from "axios";
 import "@/styles/global.css";
 import ProductList from "@/components/productList/ProductList";
-import { useEffect } from "react";
 
 
 async function loadProduct() {
