@@ -24,9 +24,9 @@ function ProductCard ({product, editable}) {
       <div className="border-top border-secondary pt-3 w-100">
         <p className="categoria">Categoria: {categoria}</p>
         <p className="color">Color: {color}</p>
-        <EditButton idProducto={idProducto}/>
-        <DeleteButton idProducto={idProducto}/>
-        <Link className="text-reset" href={'../'}><FaClipboardList /></Link>
+          <EditButton idProducto={idProducto}/>
+          <DeleteButton idProducto={idProducto}/>
+        <Link className="text-reset m-2" href={'../'}><FaClipboardList /></Link>
       </div>
       
       )}

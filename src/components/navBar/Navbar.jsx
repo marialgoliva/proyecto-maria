@@ -18,7 +18,7 @@ export default function Navbar() {
     <header className={styles.navHeader}>
       <div className={styles.navContainer}>
         <Link href="/" className={styles.linkNav}  >
-          <h1 className={styles.navTitle}> NavBar - Tienda Online</h1>
+          <h1 className={styles.navTitle}> Moon Design - Tienda Online</h1>
         </Link>
 
         <nav className={styles.nav}>

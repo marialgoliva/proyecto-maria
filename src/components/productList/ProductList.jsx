@@ -22,7 +22,7 @@ function ProductList({ products }) {
 
   return (
     <div className={styles.tableContainer}>
-      <Table striped bordered hover>
+      <Table striped hover className="w-75">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -36,12 +36,12 @@ function ProductList({ products }) {
         <tbody>
           {products.map((product) => (
             // <ProductRow key={product.idProducto} product={product} />
-              <tr key={product.idProducto}>
+              <tr key={product.idProducto} className="col">
                 <td>{product.nombre}</td>
-                <td>{product.descripcion}</td>
-                <td>{product.color}</td>
+                <td className="w-50">{product.descripcion}</td>
+                <td >{product.color}</td>
                 <td>{product.precio}</td>
-                <td>{product.imagen}</td>
+                <td>{product.idProducto}</td>
                 <td>{
                   
                   <>

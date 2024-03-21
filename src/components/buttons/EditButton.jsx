@@ -6,7 +6,7 @@ export default function EditButton({ idProducto }) {
   const router = useRouter();
   
   const handleEditClick = () => {
-      router.push('/admin/products/');
+      router.push('/admin/products/edit/'+idProducto);
     };
     
   return (

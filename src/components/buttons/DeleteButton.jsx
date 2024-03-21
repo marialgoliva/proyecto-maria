@@ -16,7 +16,7 @@ export default function DeleteButton({ idProducto }) {
       const res = await axios.delete("/api/products/" + idProducto);
 
       if (res.status==204) {
-        router.push('/admin/products/?refresh=true');
+        router.refresh();
       }
       
     }
