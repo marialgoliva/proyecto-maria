@@ -24,6 +24,8 @@ function ListaPedidos({ pedidos }) {
     }
   };
 
+  
+
   return (
     <div className={styles.tableContainer}>
       <Table striped hover className="w-75">
@@ -40,18 +42,19 @@ function ListaPedidos({ pedidos }) {
         </thead>
         <tbody>
           {pedidos.map((pedido) => (
-              <tr key={pedido.idPedido} className="col">
+            
+            <tr key={pedido.idPedido} className="col">
                 <td>{pedido.idPedido}</td>
                 <td>{pedido.cliente}</td>
-                <td >{dayjs(pedido.fechaPedido).locale('es').format('DD/MMMM/YYYY h:mm A')}</td>
-                <td>{dayjs(pedido.fechaEntrega).locale('es').format('DD/MMMM/YYYY h:mm A')}</td>
+                <td >{dayjs(pedido.fechaPedido).locale('es').format('DD/MM/YYYY')}</td>
+                <td>{dayjs(pedido.fechaEntrega).locale('es').format('DD/MM/YYYY')}</td>
                 <td>{pedido.estado}</td>
                 <td>{pedido.tipoPago}</td>
                 <td>{pedido.importeTotal}</td>
                 <td>{
                   
                   <>
-                  <EditButton type='pedido' idPedido={pedido.idPedido}/>
+                  <EditButton type='pedidos' id={pedido.idPedido}/>
                   <ViewButton idPedido={pedido.idPedido}/>
                   </>
                   

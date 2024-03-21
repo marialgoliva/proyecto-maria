@@ -13,6 +13,7 @@ function NavbarAdmin() {
           <Nav className="me-auto">
             <Nav.Link href='/admin/products'>Productos</Nav.Link>
             <Nav.Link href='/admin/new'>Nuevo producto</Nav.Link>
+            <Nav.Link href='/admin/pedidos'>Pedidos</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

@@ -45,7 +45,7 @@ function ProductList({ products }) {
                 <td>{
                   
                   <>
-                  <EditButton idProducto={product.idProducto}/>
+                  <EditButton type='productos' id={product.idProducto}/>
                   <DeleteButton idProducto={product.idProducto}/>
                   <ViewButton idProducto={product.idProducto}/>
                   </>
