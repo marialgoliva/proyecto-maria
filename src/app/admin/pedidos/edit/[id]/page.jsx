@@ -1,4 +1,4 @@
-import FormPedido from "@/components/productForm/FormPedido";
+import FormPedido from "@/components/form/FormPedido";
 
 
 function NewPage() {

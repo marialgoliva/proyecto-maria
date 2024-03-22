@@ -45,7 +45,7 @@ function ListaPedidos({ pedidos }) {
             
             <tr key={pedido.idPedido} className="col">
                 <td>{pedido.idPedido}</td>
-                <td>{pedido.cliente}</td>
+                <td>{pedido.idCliente}</td>
                 <td >{dayjs(pedido.fechaPedido).locale('es').format('DD/MM/YYYY')}</td>
                 <td>{dayjs(pedido.fechaEntrega).locale('es').format('DD/MM/YYYY')}</td>
                 <td>{pedido.estado}</td>
@@ -55,7 +55,7 @@ function ListaPedidos({ pedidos }) {
                   
                   <>
                   <EditButton type='pedidos' id={pedido.idPedido}/>
-                  <ViewButton idPedido={pedido.idPedido}/>
+                  <ViewButton type='pedidos' id={pedido.idPedido}/>
                   </>
                   
                   }</td>

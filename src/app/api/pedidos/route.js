@@ -17,6 +17,7 @@ export async function GET() {
   }
 }
 
+
 export async function POST(request) {
   try {
     const { idCliente, fechaPedido, fechaEntrega, estado, tipoPago, importeTotal  } = await request.json();

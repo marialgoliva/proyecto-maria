@@ -1,7 +1,6 @@
 import axios from "axios";
 import "@/styles/global.css";
-import ProductList from "@/components/productList/ProductList";
-import ListaPedidos from "@/components/productList/ListaPedidos";
+import ListaPedidos from "@/components/lists/ListaPedidos";
 
 async function cargarPedidos() {
   const { data } = await axios.get(process.env.REQUEST_URL_PEDIDOS);
