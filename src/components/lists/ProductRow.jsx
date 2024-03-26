@@ -18,7 +18,7 @@
 //         <>
 //         <DeleteButton idProducto={idProducto}/>
 //         </>
-        
+
 //         }</td>
 //     </tr>
 //   );

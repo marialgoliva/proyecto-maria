@@ -16,7 +16,7 @@ export async function GET(request, { params }) {
         },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -26,7 +26,7 @@ export async function GET(request, { params }) {
       {
         message: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -44,7 +44,7 @@ export async function DELETE(request, { params }) {
         },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -56,36 +56,39 @@ export async function DELETE(request, { params }) {
       {
         message: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PUT(request, { params }) {
-    try {
-        const data = await request.json();
-        const result = await conn.query('UPDATE PEDIDO SET ? WHERE idPedido = ?', [
-            data,
-            params.id,
-        ]);
+  try {
+    const data = await request.json();
+    const result = await conn.query("UPDATE PEDIDO SET ? WHERE idPedido = ?", [
+      data,
+      params.id,
+    ]);
 
-        if (result.affectedRows === 0){
-            return NextResponse.json(
-                {
-                message: 'Producto no encontrado',
-                },
-                { status: 404 }
-            );
-        }
-        const updatedProduct = await conn.query("SELECT * FROM PEDIDO WHERE idPedido=?",[params.id]);
-        
-        return NextResponse.json(updatedProduct[0]);
-    } catch (error) {
-        return NextResponse.json(
-          {
-            message: error.message,
-          },
-          { status: 500 }
-        );
-      }
+    if (result.affectedRows === 0) {
+      return NextResponse.json(
+        {
+          message: "Producto no encontrado",
+        },
+        { status: 404 },
+      );
+    }
+    const updatedProduct = await conn.query(
+      "SELECT * FROM PEDIDO WHERE idPedido=?",
+      [params.id],
+    );
+
+    return NextResponse.json(updatedProduct[0]);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: error.message,
+      },
+      { status: 500 },
+    );
+  }
 }

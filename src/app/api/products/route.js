@@ -1,8 +1,5 @@
-
 import { conn } from "../../../../database/mysql";
 import { NextResponse } from "next/server";
-
-
 
 export async function GET() {
   try {
@@ -13,14 +10,15 @@ export async function GET() {
       { message: error.message },
       {
         status: 500,
-      }
+      },
     );
   }
 }
 
 export async function POST(request) {
   try {
-    const { categoria, nombre, descripcion, color, precio  } = await request.json();
+    const { categoria, nombre, descripcion, color, precio } =
+      await request.json();
     const result = await conn.query("INSERT INTO PRODUCTO SET ?", {
       categoria,
       nombre,
@@ -30,13 +28,20 @@ export async function POST(request) {
     });
     console.log(result);
 
-    return NextResponse.json({ idProducto: result.insertId, categoria, nombre, descripcion, color, precio });
+    return NextResponse.json({
+      idProducto: result.insertId,
+      categoria,
+      nombre,
+      descripcion,
+      color,
+      precio,
+    });
   } catch (error) {
     return NextResponse.json(
       { message: error.message },
       {
         status: 500,
-      }
+      },
     );
   }
 }

@@ -5,9 +5,10 @@ import { conn } from "../../../../../database/mysql";
 
 export async function GET(request, { params }) {
   try {
-    const result = await conn.query("SELECT * FROM PRODUCTO WHERE idProducto = ?", [
-      params.id,
-    ]);
+    const result = await conn.query(
+      "SELECT * FROM PRODUCTO WHERE idProducto = ?",
+      [params.id],
+    );
 
     if (result.length === 0) {
       return NextResponse.json(
@@ -16,7 +17,7 @@ export async function GET(request, { params }) {
         },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -26,16 +27,17 @@ export async function GET(request, { params }) {
       {
         message: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function DELETE(request, { params }) {
   try {
-    const result = await conn.query("DELETE FROM PRODUCTO WHERE idProducto = ?", [
-      params.id,
-    ]);
+    const result = await conn.query(
+      "DELETE FROM PRODUCTO WHERE idProducto = ?",
+      [params.id],
+    );
 
     if (result.affectedRows === 0) {
       return NextResponse.json(
@@ -44,7 +46,7 @@ export async function DELETE(request, { params }) {
         },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -56,36 +58,39 @@ export async function DELETE(request, { params }) {
       {
         message: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PUT(request, { params }) {
-    try {
-        const data = await request.json();
-        const result = await conn.query('UPDATE PRODUCTO SET ? WHERE idProducto = ?', [
-            data,
-            params.id,
-        ]);
+  try {
+    const data = await request.json();
+    const result = await conn.query(
+      "UPDATE PRODUCTO SET ? WHERE idProducto = ?",
+      [data, params.id],
+    );
 
-        if (result.affectedRows === 0){
-            return NextResponse.json(
-                {
-                message: 'Producto no encontrado',
-                },
-                { status: 404 }
-            );
-        }
-        const updatedProduct = await conn.query("SELECT * FROM PRODUCTO WHERE idProducto=?",[params.id]);
-        
-        return NextResponse.json(updatedProduct[0]);
-    } catch (error) {
-        return NextResponse.json(
-          {
-            message: error.message,
-          },
-          { status: 500 }
-        );
-      }
+    if (result.affectedRows === 0) {
+      return NextResponse.json(
+        {
+          message: "Producto no encontrado",
+        },
+        { status: 404 },
+      );
+    }
+    const updatedProduct = await conn.query(
+      "SELECT * FROM PRODUCTO WHERE idProducto=?",
+      [params.id],
+    );
+
+    return NextResponse.json(updatedProduct[0]);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: error.message,
+      },
+      { status: 500 },
+    );
+  }
 }

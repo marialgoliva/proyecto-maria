@@ -3,8 +3,8 @@ import ProductForm from "@/components/form/ProductForm";
 function NewPage() {
   return (
     <>
-        <ProductForm/>
-    </>        
+      <ProductForm />
+    </>
   );
 }
 

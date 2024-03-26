@@ -1,24 +1,24 @@
-"use client"
+"use client";
 import styles from "./styles.module.css";
 import Table from "react-bootstrap/Table";
 import DeleteButton from "../buttons/DeleteButton";
 import ViewButton from "../buttons/ViewButton";
 import EditButton from "../buttons/EditButton";
-import { useState } from 'react';
 
 function ProductList({ products }) {
+  // const [productList, setProductList] = useState(products);
 
-  const [productList, setProductList] = useState(products);
-
-  const handleDeleteProduct = async (productId) => {
-    try {
-      await axios.delete(`/api/products/${productId}`);
-      const updatedProductList = productList.filter(product => product.idProducto !== productId);
-      setProductList(updatedProductList);
-    } catch (error) {
-      console.error('Error al eliminar el producto:', error);
-    }
-  };
+  // const handleDeleteProduct = async (productId) => {
+  //   try {
+  //     await axios.delete(`/api/products/${productId}`);
+  //     const updatedProductList = productList.filter(
+  //       (product) => product.idProducto !== productId,
+  //     );
+  //     setProductList(updatedProductList);
+  //   } catch (error) {
+  //     console.error("Error al eliminar el producto:", error);
+  //   }
+  // };
 
   return (
     <div className={styles.tableContainer}>
@@ -36,22 +36,22 @@ function ProductList({ products }) {
         <tbody>
           {products.map((product) => (
             // <ProductRow key={product.idProducto} product={product} />
-              <tr key={product.idProducto} className="col">
-                <td>{product.nombre}</td>
-                <td className="w-50">{product.descripcion}</td>
-                <td >{product.color}</td>
-                <td>{product.precio}</td>
-                <td>{product.idProducto}</td>
-                <td>{
-                  
+            <tr key={product.idProducto} className="col">
+              <td>{product.nombre}</td>
+              <td className="w-50">{product.descripcion}</td>
+              <td>{product.color}</td>
+              <td>{product.precio}</td>
+              <td>{product.idProducto}</td>
+              <td>
+                {
                   <>
-                  <EditButton type='productos' id={product.idProducto}/>
-                  <DeleteButton idProducto={product.idProducto}/>
-                  <ViewButton type='productos' id={product.idProducto}/>
+                    <EditButton type="productos" id={product.idProducto} />
+                    <DeleteButton idProducto={product.idProducto} />
+                    <ViewButton type="productos" id={product.idProducto} />
                   </>
-                  
-                  }</td>
-              </tr>
+                }
+              </td>
+            </tr>
           ))}
         </tbody>
       </Table>

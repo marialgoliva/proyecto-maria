@@ -1,11 +1,12 @@
 import { conn } from "../../../../../database/mysql";
 import { NextResponse } from "next/server";
 
-
-
-export async function GET (request, { params }) {
+export async function GET(request, { params }) {
   try {
-    const results = await conn.query("SELECT idProducto FROM PEDIDO_PRODUCTO WHERE idPedido =?",[params.id]);
+    const results = await conn.query(
+      "SELECT idProducto FROM PEDIDO_PRODUCTO WHERE idPedido =?",
+      [params.id],
+    );
     if (results.length === 0) {
       return NextResponse.json(
         {
@@ -13,7 +14,7 @@ export async function GET (request, { params }) {
         },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -23,7 +24,7 @@ export async function GET (request, { params }) {
       {
         message: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

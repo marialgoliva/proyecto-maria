@@ -14,13 +14,11 @@ async function ProductsPage() {
 
   return (
     <>
-    <div className="flex row">
-      {products.map((product) => (
+      <div className="flex row">
+        {products.map((product) => (
           <ProductCard key={product.idProducto} product={product} />
-          
         ))}
-    </div>
-      
+      </div>
     </>
   );
 }

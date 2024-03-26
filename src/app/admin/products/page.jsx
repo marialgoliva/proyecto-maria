@@ -7,12 +7,11 @@ async function loadProduct() {
   return data;
 }
 async function ProductsPage() {
-  
   const products = await loadProduct();
   if (products.length === 0) return <h1>No Products</h1>;
 
   return (
-    <div> 
+    <div>
       <ProductList products={products} />
     </div>
   );
