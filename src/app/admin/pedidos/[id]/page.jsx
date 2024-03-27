@@ -21,27 +21,27 @@ async function getNombre(id) {
 
 // async function loadProduct(productId) {
 //   const { data } = await axios.get(
-//     `http://localhost:3000/api/products/${productId}`,
+//     `http://localhost:3000/api/products/`,
 //   );
 //   return data;
-// }
+// // }
 
-async function obtenerProductosDelPedido(idPedido) {
-  const respuesta = await fetch(
-    `http://localhost:3000/api/producto-pedido/${idPedido}/productos`,
-  );
-  if (!respuesta.ok) {
-    throw new Error("Problema al obtener los productos del pedido");
-  }
-  const productos = await respuesta.json();
-  return productos;
-}
+// async function obtenerProductosDelPedido(id) {
+//   const respuesta = await fetch(
+//     `http://localhost:3000/api/producto-pedido/${id}`,
+//   );
+//   if (!respuesta.ok) {
+//     throw new Error("Problema al obtener los productos del pedido");
+//   }
+//   const productos = await respuesta.json();
+//   return productos;
+// }
 
 async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
   const { nombre, apellidos } = await getNombre(pedido.idCliente);
-  const productos = obtenerProductosDelPedido(params.id);
-  console.log(productos);
+  // const productos = obtenerProductosDelPedido(params.id);
+  // console.log(productos);
 
   return (
     <div className="d-flex flex-column m-4">

@@ -26,7 +26,6 @@ function FormPedido() {
       ...pedido,
       [e.target.name]: e.target.value,
     });
-    console.log(pedido);
   };
 
   useEffect(() => {

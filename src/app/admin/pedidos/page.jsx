@@ -4,7 +4,6 @@ import ListaPedidos from "@/components/lists/ListaPedidos";
 
 async function cargarPedidos() {
   const { data } = await axios.get(process.env.REQUEST_URL_PEDIDOS);
-  console.log(data);
   return data;
 }
 async function PaginaPedidos() {

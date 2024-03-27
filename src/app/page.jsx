@@ -4,7 +4,6 @@ import "@/styles/global.css";
 
 async function loadProduct() {
   const { data } = await axios.get(process.env.REQUEST_URL);
-  console.log(data);
   return data;
 }
 async function ProductsPage() {

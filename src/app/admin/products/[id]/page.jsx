@@ -10,7 +10,6 @@ export async function loadProduct(productId) {
 
 async function ProductPage({ params }) {
   const product = await loadProduct(params.id);
-  console.log(product);
   return (
     <div className="d-flex justify-content-center">
       <ProductCard product={product} editable />

@@ -33,7 +33,6 @@ export async function POST(request) {
       tipoPago,
       importeTotal,
     });
-    console.log(result);
 
     return NextResponse.json({
       idPedido: result.insertId,

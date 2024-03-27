@@ -26,7 +26,6 @@ export async function POST(request) {
       color,
       precio,
     });
-    console.log(result);
 
     return NextResponse.json({
       idProducto: result.insertId,
