@@ -9,9 +9,9 @@ function ProductCard({ product, editable }) {
 
   return (
     <div className={styles.productCard}>
-      {/* <div className={styles.image}>
-        <Image src={imagen} width={200} height={'auto'} alt="Imagen del producto" />
-      </div> */}
+      <div className={styles.image}>
+        <img src={product.imagen} alt="Imagen" className="w-50" />
+      </div>
       <p className="title">{nombre}</p>
       <p className="description">{descripcion}</p>
       <p className="price">{precio} €</p>

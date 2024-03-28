@@ -5,6 +5,8 @@ import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import { FaClipboardList } from "react-icons/fa";
+import Link from "next/link";
 
 function FormPedido() {
   const [pedido, setPedido] = useState({
@@ -72,10 +74,12 @@ function FormPedido() {
   return (
     <div className={styles.formContainer}>
       <form className={styles.form} onSubmit={handleSubmit} ref={form}>
-        <header className="mb-4">
+        <header className="mb-4 d-flex flex-row justify-content-between w-100">
           <h1>Editar Pedido</h1>
+          <Link className="text-reset m-2" href={"../"}>
+            <FaClipboardList size={30} />
+          </Link>
         </header>
-
         <label>
           <h3>Id pedido:</h3>
         </label>
@@ -170,7 +174,7 @@ function FormPedido() {
         />
         <div className={styles.button}>
           <button type="submit" className="btn btn-dark">
-            {params.id ? "Actualizar producto" : "Crear producto"}
+            Actualizar pedido
           </button>
         </div>
       </form>

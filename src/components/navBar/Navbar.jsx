@@ -9,6 +9,7 @@ const links = [
   { name: "Bolsas", href: "/bolsas" },
   { name: "Gorros", href: "/gorros" },
   { name: "Prendas", href: "/prendas" },
+  { name: "Registrarse", href: "/auth/register"},
 ];
 
 export default function Navbar() {

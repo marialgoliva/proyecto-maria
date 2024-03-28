@@ -1,12 +1,5 @@
 import ProductCard from "@/components/productcard/ProductCard";
-import axios from "axios";
-
-export async function loadProduct(productId) {
-  const { data } = await axios.get(
-    `http://localhost:3000/api/products/${productId}`,
-  );
-  return data;
-}
+import loadProduct from "@/libs/loadProduct";
 
 async function ProductPage({ params }) {
   const product = await loadProduct(params.id);

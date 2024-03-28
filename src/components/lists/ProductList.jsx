@@ -41,7 +41,15 @@ function ProductList({ products }) {
               <td className="w-50">{product.descripcion}</td>
               <td>{product.color}</td>
               <td>{product.precio}</td>
-              <td>{product.idProducto}</td>
+              <td>
+                {product.imagen && (
+                  <img
+                    src={product.imagen}
+                    alt="Imagen del producto"
+                    className="w-50"
+                  />
+                )}
+              </td>
               <td>
                 {
                   <>

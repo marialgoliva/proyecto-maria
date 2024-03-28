@@ -1,6 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import ContenidoPedido from "@/components/productcard/ContenidoPedido";
 
 async function cargarPedido(id) {
   const { data } = await axios.get(`http://localhost:3000/api/pedidos/${id}`);
@@ -12,36 +13,17 @@ async function getNombre(id) {
   return data;
 }
 
-// async function getProductos(id) {
-//   const { data } = await axios.get(
-//     `http://localhost:3000/api/producto-pedido/${id}`,
-//   );
-//   return data;
-// }
-
-// async function loadProduct(productId) {
-//   const { data } = await axios.get(
-//     `http://localhost:3000/api/products/`,
-//   );
-//   return data;
-// // }
-
-// async function obtenerProductosDelPedido(id) {
-//   const respuesta = await fetch(
-//     `http://localhost:3000/api/producto-pedido/${id}`,
-//   );
-//   if (!respuesta.ok) {
-//     throw new Error("Problema al obtener los productos del pedido");
-//   }
-//   const productos = await respuesta.json();
-//   return productos;
-// }
+async function getProductos(id) {
+  const { data } = await axios.get(
+    `http://localhost:3000/api/producto-pedido/${id}`,
+  );
+  return data;
+}
 
 async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
   const { nombre, apellidos } = await getNombre(pedido.idCliente);
-  // const productos = obtenerProductosDelPedido(params.id);
-  // console.log(productos);
+  const arrayProductos = await getProductos(params.id);
 
   return (
     <div className="d-flex flex-column m-4">
@@ -50,21 +32,25 @@ async function PaginaPedido({ params }) {
         <li className="list-group-item">
           Cliente: {pedido.idCliente} - {nombre} {apellidos}
         </li>
-        <li className="list-group-item">Estado: {pedido.estado}</li>
-        <li className="list-group-item">
+        <li className="list-group-item py-3">Estado: {pedido.estado}</li>
+        <li className="list-group-item py-3">
           Fecha de creación:{" "}
           {dayjs(pedido.fechaPedido).locale("es").format("DD/MM/YYYY")}
         </li>
-        <li className="list-group-item">
+        <li className="list-group-item py-3">
           <strong>
             Fecha de entrega:{" "}
             {dayjs(pedido.fechaEntrega).locale("es").format("DD/MM/YYYY")}
           </strong>
         </li>
-        <li className="list-group-item">
+        <li className="list-group-item py-3">
           Importe total: {pedido.importeTotal} €
         </li>
-        <li className="list-group-item">Tipo pago: {pedido.tipoPago}</li>
+        <li className="list-group-item py-3">Tipo pago: {pedido.tipoPago}</li>
+        <li className="list-group-item py-3">
+          <h5>Productos incluidos:</h5>
+          <ContenidoPedido idsProductos={arrayProductos} />
+        </li>
       </ul>
     </div>
   );

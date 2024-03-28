@@ -3,7 +3,8 @@ import { useRef, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
-import Image from 'next/image'
+import Image from "next/image";
+import Spinner from "react-bootstrap/Spinner";
 
 function ProductForm() {
   const [product, setProduct] = useState({
@@ -12,12 +13,15 @@ function ProductForm() {
     categoria: "",
     color: "",
     precio: "",
+    imagen: "",
   });
 
   const [image, setImage] = useState(null);
   const form = useRef(null);
   const router = useRouter();
   const params = useParams();
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setProduct({
@@ -36,26 +40,32 @@ function ProductForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!params.id) {
-      // const formData = new FormData();
-      // formData.append("nombre", product.nombre);
-      // formData.append("descripcion", product.descripcion);
-      // formData.append("categoria", product.categoria);
-      // formData.append("color", product.color);
-      // formData.append("precio", product.precio);
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("nombre", product.nombre);
+    formData.append("descripcion", product.descripcion);
+    formData.append("categoria", product.categoria);
+    formData.append("color", product.color);
+    formData.append("precio", product.precio);
 
-      await axios.post("/api/products", product);
-      setProduct({
-        nombre: "",
-        descripcion: "",
-        categoria: "",
-        color: "",
-        precio: "",
-      });
-    } else {
-      await axios.put(`/api/products/${params.id}`, product);
+    if (image) {
+      formData.append("imagen", image);
     }
 
+    if (!params.id) {
+      await axios.post("/api/products", formData, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      });
+    } else {
+      await axios.put(`/api/products/${params.id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    }
+    setLoading(false);
     router.push("/admin/products");
     router.refresh();
   }
@@ -66,6 +76,11 @@ function ProductForm() {
         <header>
           <h1>Añadir un producto</h1>
         </header>
+        {loading && (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        )}
         <input
           className={"row my-3 col-10 p-2 rounded"}
           type="text"
@@ -136,6 +151,11 @@ function ProductForm() {
             height={0}
             style={{ width: "100%", height: "auto" }}
           />
+        </div>
+      )}
+      {product.imagen && !image && (
+        <div className="w-25 h-25 m-4 align-self-center">
+          <img src={product.imagen} alt="Imagen del producto" />
         </div>
       )}
     </div>

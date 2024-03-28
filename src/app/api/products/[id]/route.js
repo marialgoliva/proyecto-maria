@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { conn } from "../../../../../database/mysql";
-// import cloudinary from "@/libs/cloudinary";
-// import { processImage } from "@/libs/processImage";
+import cloudinary from "@/libs/cloudinary";
+import { processImage } from "@/libs/processImage";
+import { unlink } from "fs/promises";
 
 export async function GET(request, { params }) {
   try {
@@ -65,10 +66,28 @@ export async function DELETE(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
-    const data = await request.json();
+    const data = await request.formData();
+    const image = data.get("imagen");
+    const updatedData = {
+      nombre: data.get("nombre"),
+      descripcion: data.get("descripcion"),
+      categoria: data.get("categoria"),
+      color: data.get("color"),
+      precio: data.get("precio"),
+    };
+
+    if (image) {
+      const imagePath = await processImage(image);
+      const res = await cloudinary.uploader.upload(imagePath);
+      updatedData.imagen = res.secure_url;
+
+      if (res) {
+        await unlink(imagePath);
+      }
+    }
     const result = await conn.query(
       "UPDATE PRODUCTO SET ? WHERE idProducto = ?",
-      [data, params.id],
+      [updatedData, params.id],
     );
 
     if (result.affectedRows === 0) {
