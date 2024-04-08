@@ -14,7 +14,6 @@ function LoginPage() {
 
   const onSubmit = handleSubmit(async (data) => {
 
-    console.log(data);
     const res = await signIn('credentials', {
       email: data.email,
       password: data.password,
@@ -25,7 +24,8 @@ function LoginPage() {
       setErrorMessage(res.error);
     } else {
       setLoading(true);
-      router.push('/admin');
+      router.push('/admin/products');
+      router.refresh();
     }
 
 
@@ -59,6 +59,7 @@ function LoginPage() {
           })}
           placeholder="user@email.com"
           onChange={onChange}
+          value='moondesign@gmail.com'
           
         />
         {errors.email && (
@@ -75,6 +76,7 @@ function LoginPage() {
           })}
           placeholder="******"
           onChange={onChange}
+          value='123456'
         />
         {errors.password && (
             <span className="text-bg-danger px-1">

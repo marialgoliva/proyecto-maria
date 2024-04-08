@@ -132,7 +132,6 @@ function ProductForm() {
             className="appearance-none border border-black rounded w-full py-3 px-3"
             onChange={(e) => {
               setImage(e.target.files[0]);
-              console.log(e.target.files[0]);
             }}
           />
         </div>

@@ -9,8 +9,12 @@ const links = [
   { name: "Bolsas", href: "/bolsas" },
   { name: "Gorros", href: "/gorros" },
   { name: "Prendas", href: "/prendas" },
-  { name: "Registrarse", href: "/auth/register"},
+  
 ];
+const linksSub = [
+  { name: "Registrarse", href: "/auth/register"},
+  { name: "Iniciar sesión", href: "/auth/login"},
+]
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -21,21 +25,44 @@ export default function Navbar() {
           <h1 className={styles.navTitle}> Moon Design - Tienda Online</h1>
         </Link>
 
-        <nav className={styles.nav}>
-          {links.map((link, id) => (
-            <div key={id}>
-              {pathname == link.href ? (
-                <Link className={styles.linkNav} href={link.href}>
-                  {link.name}
-                </Link>
-              ) : (
-                <Link href={link.href} className={styles.linkNav}>
-                  {link.name}
-                </Link>
-              )}
-            </div>
-          ))}
+        <nav className="d-flex flex-column align-items-center gap-2">
+          
+          <div className="d-flex flex-row gap-3">
+            {linksSub.map((link, id) => (
+              <div key={id} className="border rounded px-2 py-1">
+                {pathname == link.href ? (
+                  <Link className={styles.linkNav} href={link.href}>
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link href={link.href} className={styles.linkNav}>
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="d-flex flex-row gap-4">
+            {links.map((link, id) => (
+              <div key={id}>
+                {pathname == link.href ? (
+                  <Link className={styles.linkNav} href={link.href}>
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link href={link.href} className={styles.linkNav}>
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          
+
         </nav>
+        
       </div>
     </header>
   );

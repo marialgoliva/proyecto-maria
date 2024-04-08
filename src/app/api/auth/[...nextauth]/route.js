@@ -1,10 +1,16 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { conn } from "../../../../../database/mysql";
-import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
-const authOptions ={
+async function getUserRole(email){
+    const result = await conn.query("SELECT rol FROM usuario WHERE email=?",[email]);
+    // console.log(result);
+    return result.length>0 ? result[0].rol : null;
+}
+
+
+export const authOptions ={
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -12,35 +18,50 @@ const authOptions ={
                 email: {label: "Email", type: "text", placeholder: "usuario@email"},
                 password: {label: "Password", type: "password"},
             },
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 
-                console.log(credentials.email)
                 const result = await conn.query(
                     "SELECT * FROM USUARIO WHERE email =?",
                     [credentials.email],
                 );
-               
+                
                 if (result.length !== 0){
                     
                     const user = result[0];
                     const matchPassword = await bcrypt.compare(credentials.password, user.password);
                     
                     if (!matchPassword) { throw new Error('Contraseña incorrecta.'); }
-
+                    
                     return {
-                        id: result.dni,
-                        name: result.nombre,
-                        email: result.email
+                        id: result[0].dni,
+                        name: result[0].nombre,
+                        email: result[0].email,
+                        role: result[0].rol
                     }
                 } else {
                     throw new Error('No se reconoce ese email.');
                 }
-                
-                
-                
+            },
+            callbacks: {
+                async jwt(token, user) { 
+                    console.log("JWT callback", { user, token });
+                    if (user) {
+                        token.role = await getUserRole(user.email);
+                    }
+                    return token;
+                },
+                async session(session, token, user){
+                    console.log("Session callback", { session, token });
+                    session.user.role = token.role;
+                    return session;
+                },
+
             },  
         }),
-    ]
+    ],
+    pages: {
+        signIn: "/auth/login",
+    }
 }
 
 const handler = NextAuth(authOptions);
