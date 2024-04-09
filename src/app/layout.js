@@ -1,3 +1,4 @@
+
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import Navbar from "../components/navbar/Navbar";
 import { getServerSession } from 'next-auth/next'
@@ -10,8 +11,7 @@ export const metadata = {
 };
 
 
-const session = await getServerSession(authOptions);
-console.log(session.user)
+// const session = await getServerSession(authOptions);
  
 
 export default async function Root({ children }) {
@@ -21,8 +21,8 @@ export default async function Root({ children }) {
       <body>
         <Navbar />
         
-        { session?.user && (<NavbarAdmin /> ) }
-        { session?.user && (<p className="m-2"> Has iniciado sesión como {session.user.email}</p>) }
+        {/* { session?.user && (<NavbarAdmin /> ) }
+        { session?.user && (<p className="m-2"> Has iniciado sesión como {session.user.email}</p>) } */}
         <Providers>{children}</Providers>
       </body>
     </html>
