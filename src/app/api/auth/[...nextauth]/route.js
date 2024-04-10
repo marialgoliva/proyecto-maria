@@ -46,22 +46,22 @@ export const authOptions = {
           throw new Error("No se reconoce ese email.");
         }
       },
-      callbacks: {
-        async jwt(token, user) {
-          console.log("JWT callback", { user, token });
-          if (user) {
-            token.role = await getUserRole(user.email);
-          }
-          return token;
-        },
-        async session(session, token) {
-          console.log("Session callback", { session, token });
-          session.user.role = token.role;
-          return session;
-        },
-      },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      console.log("JWT callback", { user, token });
+      if (user) {
+        token.role = await getUserRole(user.email);
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      console.log("Session callback", { session, token });
+      session.user.role = token.role;
+      return session;
+    },
+  },
   pages: {
     signIn: "/auth/login",
   },

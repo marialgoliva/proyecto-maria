@@ -18,7 +18,7 @@ export default async function Root({ children }) {
       <body>
         <Navbar />
 
-        {session?.user && <NavbarAdmin />}
+        {session?.user.role === "admin" && <NavbarAdmin />}
         {session?.user && (
           <p className="m-2"> Has iniciado sesión como {session.user.email}</p>
         )}
