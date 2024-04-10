@@ -1,7 +1,7 @@
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import Navbar from "../components/navbar/Navbar";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions, req, res } from "./api/auth/[...nextauth]/route";
 import Providers from "./Providers";
 
 export const metadata = {
@@ -9,8 +9,12 @@ export const metadata = {
   description: "Descubre productos hechos a mano para el día a día",
 };
 
-const session = await getServerSession(authOptions);
-console.log(session);
+const getSession = async () => {
+  const session = await getServerSession({ req, res, authOptions });
+  return session;
+};
+
+const session = getSession();
 
 export default async function Root({ children }) {
   return (
@@ -18,7 +22,7 @@ export default async function Root({ children }) {
       <body>
         <Navbar />
 
-        {session?.user.role === "admin" && <NavbarAdmin />}
+        {session?.user?.role === "admin" && <NavbarAdmin />}
         {session?.user && (
           <p className="m-2"> Has iniciado sesión como {session.user.email}</p>
         )}
