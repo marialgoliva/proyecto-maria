@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Spinner from "react-bootstrap/Spinner";

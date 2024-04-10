@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const session = await getServerSession(authOptions);
-console.log(session.user);
+console.log(session);
 
 export default async function Root({ children }) {
   return (
