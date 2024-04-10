@@ -9,12 +9,11 @@ const links = [
   { name: "Bolsas", href: "/bolsas" },
   { name: "Gorros", href: "/gorros" },
   { name: "Prendas", href: "/prendas" },
-  
 ];
 const linksSub = [
-  { name: "Registrarse", href: "/auth/register"},
-  { name: "Iniciar sesión", href: "/auth/login"},
-]
+  { name: "Registrarse", href: "/auth/register" },
+  { name: "Iniciar sesión", href: "/auth/login" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -26,7 +25,6 @@ export default function Navbar() {
         </Link>
 
         <nav className="d-flex flex-column align-items-center gap-2">
-          
           <div className="d-flex flex-row gap-3">
             {linksSub.map((link, id) => (
               <div key={id} className="border rounded px-2 py-1">
@@ -58,11 +56,7 @@ export default function Navbar() {
               </div>
             ))}
           </div>
-          
-          
-
         </nav>
-        
       </div>
     </header>
   );

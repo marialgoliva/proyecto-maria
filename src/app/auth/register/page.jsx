@@ -36,23 +36,25 @@ function RegisterPage() {
     } catch (e) {
       setErrorMessage(e.response.data.message);
     }
-
   });
 
   const onClick = () => {
-    router.push("/auth/login"); 
+    router.push("/auth/login");
     setSuccess(false);
-  }
+  };
   return (
     <div className="d-flex justify-content-center w-100">
       {success ? (
         <div className="m-4 d-flex flex-column gap-2">
           <h2>Usuario registrado con éxito</h2>
-          <button onClick={onClick} className="btn border border-dark text-bg-light py-2 px-3 rounded" >Iniciar sesión</button>
-          
+          <button
+            onClick={onClick}
+            className="btn border border-dark text-bg-light py-2 px-3 rounded"
+          >
+            Iniciar sesión
+          </button>
         </div>
       ) : (
-        
         <form onSubmit={onSubmit} className="d-flex flex-column w-50 m-2 gap-2">
           <h2>Registrar un usuario</h2>
           {errorMessage && (
