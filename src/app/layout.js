@@ -1,7 +1,7 @@
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import Navbar from "../components/navbar/Navbar";
 import { getServerSession } from "next-auth/next";
-import { authOptions, req, res } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 import Providers from "./Providers";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const getSession = async () => {
-  const session = await getServerSession({ req, res, authOptions });
+  const session = await getServerSession({ authOptions });
   return session;
 };
 
