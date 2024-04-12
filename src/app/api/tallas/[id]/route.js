@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   try {
     const result = await conn.query(
-      "SELECT talla FROM talla WHERE idProducto =?",
+      "SELECT talla FROM stock WHERE idProducto =?",
       [params.id],
     );
     if (result.length === 0) {

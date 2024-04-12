@@ -1,17 +1,17 @@
-USE PROYECTO_MARIA;
+USE PROYECTO_TEST;
 -- Insertamos en la tabla usuarios datos del administrador
 
-INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '123admin', 'admin');
+INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
 
 -- Insertamos otros datos de usuario
 
 INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) 
 VALUES 
-('12345678A', 'Juan', 'Pérez García', 'juan.perez@email.com', 'juanperez', 'contra123','user'),
-('23456789B', 'María', 'Rodríguez López', 'maria.rodriguez@email.com', 'mariarod', 'clave456','user'),
-('34567890C', 'Carlos', 'Martínez Ruiz', 'carlos.martinez@email.com', 'carlosmr', 'secreto789','user'),
-('45678901D', 'Laura', 'González Sánchez', 'laura.gonzalez@email.com', 'laurags', '9876password','user'),
-('56789012E', 'Alejandro', 'Pérez Rodríguez', 'alejandro.perez@email.com', 'alejandrop', '1234pass','user');
+('12345678A', 'Juan', 'Pérez García', 'juan.perez@email.com', 'juanperez', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+('23456789B', 'María', 'Rodríguez López', 'maria.rodriguez@email.com', 'mariarod', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+('34567890C', 'Carlos', 'Martínez Ruiz', 'carlos.martinez@email.com', 'carlosmr', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+('45678901D', 'Laura', 'González Sánchez', 'laura.gonzalez@email.com', 'laurags', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+('56789012E', 'Alejandro', 'Pérez Rodríguez', 'alejandro.perez@email.com', 'alejandrop', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user');
 
 -- Insertamos datos en la tabla cliente
 
@@ -54,9 +54,17 @@ VALUES
     'Gorro de Punto',
     1,
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
-    'verde',
+    'camel',
     30,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630589/f1r9jvwn1kwcu2o2bvle.png'
+),
+(
+    'Gorro de Punto',
+    1,
+    'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
+    'crema',
+    30,
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630678/ohg6oxsw8jlm2dvz0pkk.png'
 ),
 (
     'Gorro de Punto',
@@ -64,15 +72,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'verde',
     30,
-    ''
-),
-(
-    'Gorro de Punto',
-    1,
-    'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
-    'verde',
-    30,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630182/idmjgbzeerqxrj3tmatf.png'
 ),
 (
     'Gorro bucket reversible',
@@ -80,7 +80,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'negro',
     35,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630246/pfbdysclokagzkyxhnxr.png'
 ),
 (
     'Gorro bucket reversible',
@@ -88,7 +88,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'negro',
     35,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
 ),
 (
     'Bolso de mano',
@@ -96,50 +96,49 @@ VALUES
     'El bolso de mano perfecto para acompañarte en tus aventuras diarias.',
     'negro',
     40,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630308/rkmndnmqflfudnjlwr8u.png'
 ),
 (
     'Mochila Saco',
     2,
     'Con amplio espacio de almacenamiento y durabilidad, esta mochila te permite llevar todo lo que necesitas mientras exploras el mundo.',
-    'gris',
+    'verde y mostaza',
     25,
-    ''
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
 );
 
 -- Insertamos las tallas y su stock correspondiente para cada producto
-INSERT INTO `TALLA` (`idProducto`,`talla`,`stock`) VALUES 
-(8,'S',3),
-(9,'S',2),
-(10,'S',5),
-(11,'S',4),
-(12,'S',2),
-(8,'M',6),
-(9,'M',10),
-(10,'M',8),
-(11,'M',6),
-(12,'M',5),
-(8,'L',3),
-(9,'L',2),
-(10,'L',1),
-(11,'L',3),
-(12,'L',5),
-(13,'',1),
-(14,'',3);
+INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES 
+(1,'S',3),
+(2,'S',2),
+(3,'S',5),
+(4,'S',4),
+(5,'S',2),
+(1,'M',6),
+(2,'M',10),
+(3,'M',8),
+(4,'M',6),
+(5,'M',5),
+(1,'L',3),
+(2,'L',2),
+(3,'L',1),
+(4,'L',3),
+(5,'L',5),
+(6,'null',1),
+(7,'null',3);
 
 -- Insertamos datos de ejemplo en la tabla Pedido-Producto, que relacionará los productos con sus correspondientes pedidos
 
 INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
-(1,13,40,1),
-(1,11,35,1),
-(1,12,35,1),
-(2,14,25,1),
-(2,8,30,1),
-(2,9,30,1),
-(3,9,30,3);
+(1,4,35,1),
+(1,5,35,1),
+(2,7,25,1),
+(2,1,30,1),
+(2,2,30,1),
+(3,2,30,3);
 
 -- Insertamos datos en la tabla comentario relacionada con la tabla producto
 
 INSERT INTO `COMENTARIO` (`idCliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
-('23456789B', 13,'5','¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
-('12345678A', 10, '5','Este gorro de punto es increíblemente cálido y cómodo. Me encanta su diseño clásico y la calidad del tejido. ¡Es perfecto para mantenerme abrigado durante los días fríos de invierno! Definitivamente recomendaría este gorro a cualquiera que busque estilo y funcionalidad.' );
+('23456789B', 4,'5','¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
+('12345678A', 3, '5','Este gorro de punto es increíblemente cálido y cómodo. Me encanta su diseño clásico y la calidad del tejido. ¡Es perfecto para mantenerme abrigado durante los días fríos de invierno! Definitivamente recomendaría este gorro a cualquiera que busque estilo y funcionalidad.' );

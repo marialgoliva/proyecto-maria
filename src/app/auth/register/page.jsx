@@ -146,7 +146,7 @@ function RegisterPage() {
             {...register("password", {
               required: {
                 value: true,
-                message: "Debe introducir una contreña.",
+                message: "Debe introducir una contraseña.",
               },
             })}
             placeholder="Contraseña"
