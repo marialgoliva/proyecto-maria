@@ -4,7 +4,6 @@ import InfoCard from "@/components/card/InfoCard";
 import loadProduct from "@/libs/loadProduct";
 import axios from "axios";
 
-const colors = ["Teja", "Crema", "Camel"];
 const BASE_API_URL = process.env.BASE_URL;
 
 async function ProductPage({ params }) {
@@ -21,7 +20,7 @@ async function ProductPage({ params }) {
         <div className="d-flex w-75 gap-2">
           <BackButton />
           <ImageCard product={product} />
-          <InfoCard product={product} colors={colors} tallas={tallas} />
+          <InfoCard product={product} tallas={tallas} />
         </div>
       </div>
     );

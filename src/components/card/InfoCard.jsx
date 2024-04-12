@@ -6,6 +6,7 @@ const handleClickTalla = (e) => {
 };
 
 function InfoCard({ product, tallas }) {
+  console.log(tallas);
   const { descripcion, nombre, precio, color } = product;
 
   return (
@@ -23,26 +24,29 @@ function InfoCard({ product, tallas }) {
         </div>
         <div className="d-flex row gap-3">
           <div className="d-flex justify-content-end gap-2">
-            {tallas.map((talla) => {
-              return (
-                <button
-                  key={talla}
-                  value={talla}
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  onClick={handleClickTalla}
-                >
-                  {talla}
-                </button>
-              );
-            })}
+            {tallas.length > 1 &&
+              tallas.map((talla) => {
+                return (
+                  <button
+                    key={talla}
+                    value={talla}
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    onClick={handleClickTalla}
+                  >
+                    {talla}
+                  </button>
+                );
+              })}
           </div>
-          <Link
-            href=""
-            className="text-decoration-none text-secondary text-end"
-          >
-            <p>¿Qué talla elijo?</p>
-          </Link>
+          {tallas.length > 1 && (
+            <Link
+              href=""
+              className="text-decoration-none text-secondary text-end"
+            >
+              <p>¿Qué talla elijo?</p>
+            </Link>
+          )}
         </div>
         <div className="d-flex row justify-content-end">
           {/* <select name="color" id="color" className="form-select form-select-lg mb-3 w-50">
