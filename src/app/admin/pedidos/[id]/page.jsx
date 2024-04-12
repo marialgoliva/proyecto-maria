@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
-import ContenidoPedido from "@/components/productcard/ContenidoPedido";
+import ContenidoPedido from "@/components/card/ContenidoPedido";
 
 async function cargarPedido(id) {
   const { data } = await axios.get(`http://localhost:3000/api/pedidos/${id}`);

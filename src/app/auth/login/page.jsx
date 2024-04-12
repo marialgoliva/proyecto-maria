@@ -28,7 +28,7 @@ function LoginPage() {
       setErrorMessage(res.error);
     } else {
       setLoading(true);
-      router.push("/admin/products");
+      router.push("/");
       router.refresh();
     }
   });
@@ -64,7 +64,6 @@ function LoginPage() {
           })}
           placeholder="user@email.com"
           onChange={onChange}
-          value="moondesign@gmail.com"
         />
         {errors.email && (
           <span className="text-bg-danger px-1">{errors.email.message}</span>
@@ -80,7 +79,6 @@ function LoginPage() {
           })}
           placeholder="******"
           onChange={onChange}
-          value="123456"
         />
         {errors.password && (
           <span className="text-bg-danger px-1">{errors.password.message}</span>

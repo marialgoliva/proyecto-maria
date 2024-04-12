@@ -160,7 +160,7 @@ function RegisterPage() {
 
           <label htmlFor="cPass">Confirma contraseña: </label>
           <input
-            type="cPass"
+            type="password"
             {...register("cPass", {
               required: {
                 value: true,

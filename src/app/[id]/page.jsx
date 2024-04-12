@@ -1,6 +1,6 @@
 import BackButton from "@/components/buttons/BackButton";
-import ImageCard from "@/components/productcard/ImageCard";
-import InfoCard from "@/components/productcard/InfoCard";
+import ImageCard from "@/components/card/ImageCard";
+import InfoCard from "@/components/card/InfoCard";
 import loadProduct from "@/libs/loadProduct";
 import axios from "axios";
 

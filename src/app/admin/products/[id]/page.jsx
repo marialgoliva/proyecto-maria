@@ -1,4 +1,4 @@
-import ProductCard from "@/components/productcard/ProductCard";
+import ProductCard from "@/components/card/ProductCard";
 import loadProduct from "@/libs/loadProduct";
 
 async function ProductPage({ params }) {

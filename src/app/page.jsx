@@ -1,4 +1,4 @@
-import ProductCard from "@/components/productcard/ProductCard";
+import ProductCard from "@/components/card/ProductCard";
 import axios from "axios";
 import "@/styles/global.css";
 import Link from "next/link";
@@ -16,8 +16,12 @@ async function ProductsPage() {
     <>
       <div className="flex row">
         {products.map((product) => (
-          <Link key={product.idProducto} href={`${product.idProducto}`} className="text-decoration-none col-3">
-            <ProductCard  product={product}/>
+          <Link
+            key={product.idProducto}
+            href={`${product.idProducto}`}
+            className="text-decoration-none col-3"
+          >
+            <ProductCard product={product} />
           </Link>
         ))}
       </div>
