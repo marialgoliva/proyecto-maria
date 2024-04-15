@@ -1,4 +1,4 @@
-USE PROYECTO_TEST;
+USE PROYECTO_MARIA;
 -- Insertamos en la tabla usuarios datos del administrador
 
 INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');

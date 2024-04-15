@@ -1,5 +1,5 @@
 /*Creamos la base de datos*/
-CREATE DATABASE IF NOT EXISTS PROYECTO_TEST;
+CREATE DATABASE IF NOT EXISTS PROYECTO_MARIA;
 
 /*Utilizar la base de datos*/
 USE PROYECTO_TEST;
