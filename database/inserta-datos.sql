@@ -1,6 +1,9 @@
 USE PROYECTO_MARIA;
 -- Insertamos en la tabla usuarios datos del administrador
 
+ALTER DATABASE PROYECTO_TEST CHARACTER SET utf8 COLLATE utf8_general_ci;
+-- Configuramos la codificación de caracteres para no tener problemas al insertar los datos
+
 INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
 
 -- Insertamos otros datos de usuario

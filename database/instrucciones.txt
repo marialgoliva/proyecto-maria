@@ -1,0 +1,20 @@
+Iniciar el cliente SQL especificando la codificación de carácteres.
+
+    mysql --default-character-set=utf8mb4 -u root -p
+
+Escribimos contraseña.
+
+Una vez conectados, ejecutamos el archivo para crear las base de datos y las tablas:
+
+    source ./database/crea_bd.sql
+
+Ejecutamos ahora el archivo para insertar datos.
+
+    source ./database/inserta-datos.sql
+
+Utiliza  "show tables;"  para ver las tablas creadas.
+"decribe nombre_tabla;"  para ver los campos de cada tabla.
+"select * from nombre_tabla;"  para ver los datos que contiene la tabla.
+Para eliminar la base de datos  "drop database nombre_basededatos;"
+Para cambiar de base de datos  "use Nombre_BD;"
+
