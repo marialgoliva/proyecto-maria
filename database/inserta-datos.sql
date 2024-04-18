@@ -112,23 +112,24 @@ VALUES
 
 -- Insertamos las tallas y su stock correspondiente para cada producto
 INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES 
-(1,'S',3),
-(2,'S',2),
-(3,'S',5),
-(4,'S',4),
-(5,'S',2),
-(1,'M',6),
-(2,'M',10),
-(3,'M',8),
-(4,'M',6),
-(5,'M',5),
-(1,'L',3),
-(2,'L',2),
-(3,'L',1),
-(4,'L',3),
-(5,'L',5),
-(6,'null',1),
-(7,'null',3);
+(8,'S',3),
+(8,'M',6),
+(8,'L',3),
+(9,'S',2),
+(9,'M',10),
+(9,'L',2),
+(10,'S',5),
+(10,'M',8),
+(10,'L',1),
+(11,'S',4),
+(11,'M',6),
+(11,'L',3),
+(12,'S',2),
+(12,'M',5),
+(12,'L',5),
+(13,'null',1),
+(14,'null',3);
+
 
 -- Insertamos datos de ejemplo en la tabla Pedido-Producto, que relacionará los productos con sus correspondientes pedidos
 
