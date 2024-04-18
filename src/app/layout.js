@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import { CartProvider } from "@/components/cart/CartContext";
 
 export const metadata = {
   title: "Mi tienda online",
@@ -15,14 +16,16 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {session?.user.role && (
-          <p className="text-end m-3">
-            Has iniciado sesion como {session.user.email}
-          </p>
-        )}
-        {session?.user.role == "admin" && <NavbarAdmin />}
-        <Providers>{children}</Providers>
+        <CartProvider>
+          <Navbar />
+          {session?.user.role && (
+            <p className="text-end m-3">
+              Has iniciado sesion como {session.user.email}
+            </p>
+          )}
+          {session?.user.role == "admin" && <NavbarAdmin />}
+          <Providers>{children}</Providers>
+        </CartProvider>
       </body>
     </html>
   );

@@ -1,24 +1,17 @@
 "use client";
-import ProductCard from "@/components/card/ProductCard";
-import "@/styles/global.css";
-// import Link from "next/link";
 import { useCart } from "@/components/cart/CartContext";
-import Spinner from "react-bootstrap/Spinner";
+import Cart from "@/components/cart/Cart";
+import React from "react";
 
-function HomePage() {
-  const { products, loading, addToCart } = useCart();
+function CartPage() {
+  const { cart } = useCart();
 
-  console.log(addToCart);
   return (
     <>
-      {loading && (
-        <Spinner animation="border" role="status" className="m-5">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      )}
+      <h1>Productos en tu carrito</h1>
       <div className="flex row">
-        {products ? (
-          products.map((product) => (
+        {cart ? (
+          cart.map((product) => (
             <div
               key={product.idProducto}
               className="text-decoration-none col-3"
@@ -30,7 +23,7 @@ function HomePage() {
             >
               
             </Link> */}
-              <ProductCard product={product} />
+              <Cart product={product} />
             </div>
           ))
         ) : (
@@ -41,4 +34,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default CartPage;
