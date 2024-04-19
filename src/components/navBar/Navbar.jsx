@@ -1,11 +1,11 @@
 import Link from "next/link";
 import "@/styles/global.css";
-// import { usePathname } from "next/navigation";
 import styles from "../Navbar/styles.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "../buttons/SignOutButton";
-import { MdShoppingCart } from "react-icons/md";
+
+import ButtonCart from "../cart/ButtonCart";
 
 const linksSub = [
   { name: "Registrarse", href: "/auth/register" },
@@ -15,7 +15,6 @@ const linksSub = [
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
 
-  // const pathname = usePathname();
   return (
     <header className={styles.navHeader}>
       <div className={styles.navContainer}>
@@ -40,11 +39,7 @@ export default async function Navbar() {
                 Contacto
               </Link>
             </div>
-            <div>
-              <Link href="/cart" className={styles.linkNav}>
-                <MdShoppingCart /> (0)
-              </Link>
-            </div>
+            <ButtonCart />
           </div>
           <div className="d-flex flex-row gap-2">
             {linksSub.map((link, id) => (

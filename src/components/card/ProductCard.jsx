@@ -10,6 +10,10 @@ import { useCart } from "../cart/CartContext";
 
 function ProductCard({ product, editable }) {
   const { addToCart } = useCart();
+  const handleAddToCart = () => {
+    console.log("Intentando añadir al carrito:", product.nombre);
+    addToCart(product);
+  };
 
   return (
     <div className={styles.productCard}>
@@ -22,7 +26,7 @@ function ProductCard({ product, editable }) {
       <div>
         <button
           className="border-0 bg-transparent fs-4"
-          onClick={() => addToCart(product)}
+          onClick={handleAddToCart}
         >
           <MdShoppingCart />
         </button>

@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { CartProvider } from "@/components/cart/CartContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Mi tienda online",
@@ -16,6 +17,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Toaster position="top right" toastOptions={{ duration: 3000 }} />
         <CartProvider>
           <Navbar />
           {session?.user.role && (

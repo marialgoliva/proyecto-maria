@@ -44,3 +44,7 @@
     font-weight: bold;
   }
   
+  .linkNav{
+    text-decoration: none;
+    color: #272727;
+}

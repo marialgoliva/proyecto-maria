@@ -1,10 +1,11 @@
 "use client";
 import { MdRemoveShoppingCart } from "react-icons/md";
-import Link from "next/link";
 import styles from "./styles.module.css";
-import { FaClipboardList } from "react-icons/fa";
+import { useCart } from "./CartContext";
 
 function Cart({ product }) {
+  const { removeFromCart } = useCart();
+
   return (
     <div className={styles.productCard}>
       <div className={styles.image}>
@@ -14,12 +15,16 @@ function Cart({ product }) {
       <p className="color">Color: {product.color}</p>
       <p className="price">{product.precio} €</p>
       <div>
-        <button className="border-0 bg-transparent fs-4">
+        <button
+          className="border-0 bg-transparent fs-4"
+          onClick={() => removeFromCart(product.idProducto)}
+        >
           <MdRemoveShoppingCart />
         </button>
-        <Link className="text-reset m-2" href={"../"}>
+        <p>{product.cantidad}</p>
+        {/* <Link className="text-reset m-2" href={"../"}>
           <FaClipboardList />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

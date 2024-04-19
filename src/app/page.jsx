@@ -6,9 +6,8 @@ import { useCart } from "@/components/cart/CartContext";
 import Spinner from "react-bootstrap/Spinner";
 
 function HomePage() {
-  const { products, loading, addToCart } = useCart();
+  const { products, loading } = useCart();
 
-  console.log(addToCart);
   return (
     <>
       {loading && (

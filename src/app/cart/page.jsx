@@ -5,24 +5,21 @@ import React from "react";
 
 function CartPage() {
   const { cart } = useCart();
-
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.precio * item.cantidad,
+    0,
+  );
   return (
     <>
       <h1>Productos en tu carrito</h1>
+      <h2>Total: {totalPrice}€</h2>
       <div className="flex row">
         {cart ? (
-          cart.map((product) => (
+          cart?.map((product) => (
             <div
               key={product.idProducto}
               className="text-decoration-none col-3"
             >
-              {/* <Link
-              key={product.idProducto}
-              href={`${product.idProducto}`}
-              className="text-decoration-none col-3"
-            >
-              
-            </Link> */}
               <Cart product={product} />
             </div>
           ))
