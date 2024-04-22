@@ -9,6 +9,7 @@ function CartPage() {
     (total, item) => total + item.precio * item.cantidad,
     0,
   );
+  console.log(cart);
   return (
     <>
       <h1>Productos en tu carrito</h1>

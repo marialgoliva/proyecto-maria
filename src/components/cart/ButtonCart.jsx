@@ -9,7 +9,7 @@ function ButtonCart() {
   return (
     <div>
       <Link href="/cart" className={styles.linkNav}>
-        <MdShoppingCart /> {productsInCart}
+        <MdShoppingCart /> ({productsInCart})
       </Link>
     </div>
   );
