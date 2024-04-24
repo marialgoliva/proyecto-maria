@@ -25,7 +25,7 @@ export default async function Navbar() {
         <nav className="d-flex column align-items-center gap-5">
           <div className="d-flex flex-row gap-3 fs-4">
             <div>
-              <Link href="/productos" className={styles.linkNav}>
+              <Link href="/" className={styles.linkNav}>
                 Productos
               </Link>
             </div>
@@ -44,15 +44,9 @@ export default async function Navbar() {
           <div className="d-flex flex-row gap-2">
             {linksSub.map((link, id) => (
               <div key={id} className="border rounded px-2 py-1 fs-5">
-                {/* {pathname == link.href ? ( */}
-                {/* <Link className={styles.linkNav} href={link.href}>
-                    {link.name}
-                  </Link> */}
-                {/* ) : ( */}
                 <Link href={link.href} className={styles.linkNav}>
                   {link.name}
                 </Link>
-                {/* )} */}
               </div>
             ))}
           </div>

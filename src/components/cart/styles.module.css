@@ -1,25 +1,29 @@
 
 
-.productCard {
-    text-decoration: none;
-    position: relative;
+.productCart {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    width: 20rem;
+    text-align: start;
+    width: 90%;
     background-color: #f7f9fa;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 2px 2px 5px 0px rgba(0, 64, 128, 0.1);
     margin: 10px;
+    padding: 0 10px;
     color: black;
-    padding: 2rem;
-    margin: 2rem;
+  }
+
+  .info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   
   .image {
-    height: 100%;
+    width: 20%;
   }
   
   .description,
@@ -35,14 +39,17 @@
     text-transform: uppercase;
   }
   
-  .description {
-    font-weight: normal;
-    width: 70%;
-  }
-  
   .price {
     font-weight: bold;
   }
+
+  .panel{
+    border: 1px solid #a2a2a2;
+    border-radius: 10px;
+    padding: 2px 2px 3px 2px;
+    
+  }
+  
   
   .linkNav{
     text-decoration: none;

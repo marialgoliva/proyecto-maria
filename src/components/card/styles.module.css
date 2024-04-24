@@ -44,6 +44,17 @@
     font-weight: bold;
   }
   
+  .button {
+    border: none;
+    background-color: transparent;
+  }
+  .shoppingcart{
+    font-size: x-large;
+  }
+
+  .shoppingcart:hover{
+    font-size: xx-large;
+  }
 
   
   

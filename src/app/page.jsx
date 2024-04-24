@@ -22,13 +22,6 @@ function HomePage() {
               key={product.idProducto}
               className="text-decoration-none col-3"
             >
-              {/* <Link
-              key={product.idProducto}
-              href={`${product.idProducto}`}
-              className="text-decoration-none col-3"
-            >
-              
-            </Link> */}
               <ProductCard product={product} />
             </div>
           ))
