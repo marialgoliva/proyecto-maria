@@ -1,7 +1,6 @@
 "use client";
 import { useCart } from "@/components/cart/CartContext";
 import ProductCart from "@/components/cart/ProductCart";
-import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +11,20 @@ function CartPage() {
     0,
   );
   const router = useRouter();
-  console.log(cart);
+
+  const handlePay = async (cart) => {
+    // console.log(cart);
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify(cart),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const session = await res.json();
+    console.log(session);
+    router.push(session.url);
+  };
   return (
     <div className="w-100 d-flex justify-content-center">
       <div className="w-75 d-flex row justify-content-center">
@@ -21,7 +33,7 @@ function CartPage() {
           <h5 className="me-5">Total: {totalPrice}€</h5>
         </div>
 
-        <div className="d-flex row">
+        <div className="d-flex row w-75">
           {cart ? (
             cart?.map((product) => (
               <div key={product.idProducto}>
@@ -35,7 +47,7 @@ function CartPage() {
         <button
           type="button"
           class="btn btn-light w-75 mt-3"
-          onClick={() => router.push("/confirmar")}
+          onClick={() => handlePay(cart)}
         >
           Confirmar compra
         </button>
