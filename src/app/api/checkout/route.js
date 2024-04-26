@@ -7,6 +7,7 @@ export async function POST(request) {
   const body = await request.json();
   console.log(body);
   const productos = [];
+  const payProducts = [];
   body.forEach((product) => {
     productos.push({
       price_data: {
@@ -23,10 +24,15 @@ export async function POST(request) {
       },
       quantity: product.cantidad,
     });
+    payProducts.push({
+      productId: product.idProducto,
+      cantidad: product.cantidad,
+    });
   });
   const session = await stripe.checkout.sessions.create({
     success_url: "http://localhost:3000/success",
     line_items: productos,
+    metadata: { pagados: JSON.stringify(payProducts) },
     mode: "payment",
   });
   console.log(session);

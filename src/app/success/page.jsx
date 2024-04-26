@@ -1,4 +1,9 @@
+"use client";
+import { useCart } from "@/components/cart/CartContext";
+
 function Success() {
+  const { cart } = useCart();
+  console.log(cart);
   return (
     <div className=" text-center m-5 py-10 h-100 d-flex row justify-content-center align-items-center">
       <span className="fs-1">🎉</span>
