@@ -30,6 +30,7 @@ function ListaPedidos({ pedidos }) {
           <tr>
             <th>Id</th>
             <th>Cliente</th>
+            <th>Email</th>
             <th>Fecha entrante</th>
             <th>Fecha entrega</th>
             <th>Estado actual</th>
@@ -42,6 +43,7 @@ function ListaPedidos({ pedidos }) {
             <tr key={pedido.idPedido} className="col">
               <td>{pedido.idPedido}</td>
               <td>{pedido.idCliente}</td>
+              <td>{pedido.email}</td>
               <td>
                 {dayjs(pedido.fechaPedido).locale("es").format("DD/MM/YYYY")}
               </td>

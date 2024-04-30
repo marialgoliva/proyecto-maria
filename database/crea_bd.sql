@@ -23,6 +23,25 @@ CREATE TABLE CLIENTE (
     FOREIGN KEY (dni) REFERENCES Usuario(dni)
     );
 
+CREATE TABLE CLIENTES (
+    email VARCHAR(100) PRIMARY KEY,
+    calle VARCHAR(100),
+    ciudad VARCHAR(50) NOT NULL,
+    cp CHAR(5) NOT NULL
+    );
+    
+CREATE TABLE PEDIDOS (
+	idPedido INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente VARCHAR(100) NOT NULL,
+    fechaPedido DATE NOT NULL,
+    fechaEntrega DATE,
+    estado VARCHAR(100),
+    tipoPago ENUM('efectivo','bizum','tarjeta'),
+    importeTotal DOUBLE NOT NULL,
+    FOREIGN KEY (idCliente) REFERENCES Clientes(email)
+    
+);
+
 CREATE TABLE PEDIDO (
 	idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idCliente CHAR(9) NOT NULL,

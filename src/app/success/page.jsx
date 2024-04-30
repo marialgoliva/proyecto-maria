@@ -1,8 +1,13 @@
 "use client";
 import { useCart } from "@/components/cart/CartContext";
+import { useEffect } from "react";
 
 function Success() {
-  const { cart } = useCart();
+  const { cart, deleteCart } = useCart();
+  useEffect(() => {
+    deleteCart();
+  }, []);
+
   console.log(cart);
   return (
     <div className=" text-center m-5 py-10 h-100 d-flex row justify-content-center align-items-center">

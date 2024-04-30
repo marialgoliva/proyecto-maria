@@ -101,6 +101,13 @@ export function CartProvider({ children }) {
     // const productsNumber = productsInCart;
     // setProductsInCart(productsNumber - 1); // si se elimina un producto con cantidad 2 solo se resta uno.
   };
+
+  const deleteCart = () => {
+    setCart([]); // Vaciamos el carrito
+    localStorage.removeItem("cart"); //Lo eliminamos del localStorage
+    setProductsInCart(0); // Reseteamos el contador de productos en el carrito
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -110,6 +117,7 @@ export function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         productsInCart,
+        deleteCart,
       }}
     >
       {children}
@@ -122,5 +130,3 @@ export function useCart() {
   const context = useContext(CartContext);
   return context;
 }
-
-//4. Integrar el cartprovider en el componente padre

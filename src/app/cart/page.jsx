@@ -13,7 +13,6 @@ function CartPage() {
   const router = useRouter();
 
   const handlePay = async (cart) => {
-    // console.log(cart);
     const res = await fetch("/api/checkout", {
       method: "POST",
       body: JSON.stringify(cart),

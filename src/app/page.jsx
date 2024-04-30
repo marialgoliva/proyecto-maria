@@ -1,7 +1,6 @@
 "use client";
 import ProductCard from "@/components/card/ProductCard";
 import "@/styles/global.css";
-// import Link from "next/link";
 import { useCart } from "@/components/cart/CartContext";
 import Spinner from "react-bootstrap/Spinner";
 
