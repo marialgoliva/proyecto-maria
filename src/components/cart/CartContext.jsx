@@ -141,7 +141,6 @@ export function CartProvider({ children }) {
       setCart(updatedCart);
     }
   };
-  console.log("Cart: ", cart);
   return (
     <CartContext.Provider
       value={{
