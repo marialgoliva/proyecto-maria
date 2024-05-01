@@ -45,6 +45,7 @@ export async function POST(request) {
       calle: datosCliente.calle,
       ciudad: datosCliente.ciudad,
       cp: datosCliente.cp,
+      dni: datosCliente.dni,
     };
 
     //Objeto que contiene los datos a insertar en la tabla Pedidos
@@ -55,6 +56,7 @@ export async function POST(request) {
       estado: "Pagado",
       tipoPago: "tarjeta",
       importeTotal: totalPagado,
+      idCliente: datosCliente.dni,
     };
 
     //Insertamos los datos del cliente

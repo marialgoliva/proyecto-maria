@@ -171,6 +171,7 @@ function FormPedido() {
           placeholder="0.00 €"
           onChange={handleChange}
           value={pedido.importeTotal}
+          disabled
         />
         <div className={styles.button}>
           <button type="submit" className="btn btn-dark">

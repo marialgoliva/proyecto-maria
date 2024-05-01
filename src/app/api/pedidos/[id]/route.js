@@ -5,9 +5,10 @@ import { conn } from "../../../../../database/mysql";
 
 export async function GET(request, { params }) {
   try {
-    const result = await conn.query("SELECT * FROM PEDIDO WHERE idPedido = ?", [
-      params.id,
-    ]);
+    const result = await conn.query(
+      "SELECT * FROM PEDIDOS WHERE idPedido = ?",
+      [params.id],
+    );
 
     if (result.length === 0) {
       return NextResponse.json(

@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { useCart } from "./CartContext";
 
 function ProductCart({ product }) {
-  const { removeFromCart, addToCart } = useCart();
+  const { removeFromCart, addToCart, updateQuantity } = useCart();
 
   return (
     <div className={styles.productCart}>
@@ -30,7 +30,7 @@ function ProductCart({ product }) {
           {product.cantidad}
           <button
             className="border-0 bg-transparent fs-4"
-            onClick={() => addToCart(product)}
+            onClick={() => updateQuantity(product)}
           >
             <IoMdAdd />
           </button>

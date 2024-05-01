@@ -8,21 +8,34 @@ async function cargarPedido(id) {
   return data;
 }
 
-async function getNombre(id) {
-  const { data } = await axios.get(`http://localhost:3000/api/usuarios/${id}`);
-  return data;
-}
+// async function getNombre(id) {
+//   const { data } = await axios.get(`http://localhost:3000/api/usuarios/${id}`);
+//   return data;
+// }
 
+async function getNombreCliente(id) {
+  try {
+    const { data } = await axios.get(`http://localhost:3000/api/cliente/${id}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
 async function getProductos(id) {
-  const { data } = await axios.get(
-    `http://localhost:3000/api/producto-pedido/${id}`,
-  );
-  return data;
+  try {
+    const { data } = await axios.get(
+      `http://localhost:3000/api/producto-pedido/${id}`,
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+    return "";
+  }
 }
 
 async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
-  const { nombre, apellidos } = await getNombre(pedido.idCliente);
+  const data = await getNombreCliente(pedido.idCliente);
   const arrayProductos = await getProductos(params.id);
 
   return (
@@ -30,7 +43,8 @@ async function PaginaPedido({ params }) {
       <h2 className="mb-3">Pedido {params.id}</h2>
       <ul className="fs-5 list-group">
         <li className="list-group-item">
-          Cliente: {pedido.idCliente} - {nombre} {apellidos}
+          Cliente: {data?.nombre && `${data.nombre} - `}
+          {pedido.idCliente}
         </li>
         <li className="list-group-item py-3">Estado: {pedido.estado}</li>
         <li className="list-group-item py-3">
@@ -48,8 +62,14 @@ async function PaginaPedido({ params }) {
         </li>
         <li className="list-group-item py-3">Tipo pago: {pedido.tipoPago}</li>
         <li className="list-group-item py-3">
-          <h5>Productos incluidos:</h5>
-          <ContenidoPedido idsProductos={arrayProductos} />
+          {arrayProductos ? (
+            <>
+              <h5>Productos incluidos:</h5>
+              <ContenidoPedido idsProductos={arrayProductos} />
+            </>
+          ) : (
+            <h5>No se encuentran productos asociados a este pedido.</h5>
+          )}
         </li>
       </ul>
     </div>

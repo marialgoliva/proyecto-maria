@@ -11,8 +11,9 @@ export function CartProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
-  const [productsInCart, setProductsInCart] = useState(0);
+  const [contador, setContador] = useState(0);
 
+  //Obtnemos los productos de la base de datos. Se renderiza una vez.
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -26,52 +27,59 @@ export function CartProvider({ children }) {
     }
     fetchProducts();
   }, []);
+
+  //Obtenemos los productos almacenados en el localStorage, y los seteamos en el carrito. Se renderiza una vez
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     // const storedProductsInCart = localStorage.getItem("productsInCart");
     if (storedCart) {
       setCart(JSON.parse(storedCart));
-      // setProductsInCart(JSON.parse(storedProductsInCart));
+      // setContador(JSON.parse(storedProductsInCart));
     }
   }, []);
 
+  //Añadimos los productos existentes en el carrito al localStorage.
+  //Actualizamos el contador
   useEffect(() => {
-    if (cart.length === 0) {
-      console.log("El carrito está vacio.");
-    } else {
+    if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
       // localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
+    } else {
+      //Si el carrito está vacío lo eliminamos del localStorage
+      localStorage.removeItem("cart");
     }
-    setProductsInCart(cart.reduce((total, item) => total + item.cantidad, 0));
+    setContador(cart.reduce((total, item) => total + item.cantidad, 0));
   }, [cart]);
 
   const addToCart = (product) => {
+    console.log("producto que vamos a añadir en el carrito", product);
     // Verificar si el producto ya está en el carrito
     const existingProductIndex = cart.findIndex(
       (item) => item.idProducto === product.idProducto,
     );
 
     if (existingProductIndex > -1) {
+      console.log("1111111111");
       // Si el producto ya está en el carrito, aumentar la cantidad
 
       const updatedCart = [...cart];
-      const cantidadNueva = updatedCart[existingProductIndex].cantidad + 1;
-      console.log(cantidadNueva);
+      const cantidadNueva =
+        updatedCart[existingProductIndex].cantidad + product.cantidad;
       updatedCart[existingProductIndex].cantidad = cantidadNueva;
       setCart(updatedCart);
     } else if (existingProductIndex <= -1) {
+      console.log("22222222222");
       // Si el producto no está en el carrito, añadirlo con cantidad inicial de 1
       const updatedCart = [...cart];
       updatedCart.push({
         ...product,
-        cantidad: 1,
+        cantidad: product.cantidad ? product.cantidad : 1,
       });
       setCart(updatedCart);
-      console.log("No estaba: ", cart);
     }
     toast.success("Producto añadido al carrito.");
     // const productsNumber = productsInCart;
-    // setProductsInCart(productsNumber + 1);
+    // setContador(productsNumber + 1);
   };
 
   const removeFromCart = (productId) => {
@@ -97,17 +105,28 @@ export function CartProvider({ children }) {
       .filter(Boolean); // Filtra los elementos nulos (productos eliminados)
 
     setCart(updatedCart);
+
     toast.success("Item removed from cart");
     // const productsNumber = productsInCart;
-    // setProductsInCart(productsNumber - 1); // si se elimina un producto con cantidad 2 solo se resta uno.
+    // setContador(productsNumber - 1); // si se elimina un producto con cantidad 2 solo se resta uno.
   };
 
   const deleteCart = () => {
     setCart([]); // Vaciamos el carrito
     localStorage.removeItem("cart"); //Lo eliminamos del localStorage
-    setProductsInCart(0); // Reseteamos el contador de productos en el carrito
+    setContador(0); // Reseteamos el contador de productos en el carrito
   };
 
+  const updateQuantity = (product) => {
+    const existingProductIndex = cart.findIndex(
+      (item) => item.idProducto === product.idProducto,
+    );
+    const updatedCart = [...cart];
+    const cantidadNueva = updatedCart[existingProductIndex].cantidad + 1;
+    updatedCart[existingProductIndex].cantidad = cantidadNueva;
+    setCart(updatedCart);
+  };
+  console.log("Cart: ", cart);
   return (
     <CartContext.Provider
       value={{
@@ -116,8 +135,9 @@ export function CartProvider({ children }) {
         cart,
         addToCart,
         removeFromCart,
-        productsInCart,
+        contador,
         deleteCart,
+        updateQuantity,
       }}
     >
       {children}

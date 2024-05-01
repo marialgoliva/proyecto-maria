@@ -1,13 +1,34 @@
 "use client";
 import Link from "next/link";
-
-const handleClickTalla = (e) => {
-  console.log(e.target.value);
-};
+import { useEffect, useState } from "react";
+import { useCart } from "../cart/CartContext";
 
 function InfoCard({ product, tallas }) {
-  console.log(tallas);
   const { descripcion, nombre, precio, color } = product;
+  const [tallaElegida, setTallaElegida] = useState();
+  const [productoElegido, setProductoElegido] = useState(product);
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    setProductoElegido(product);
+  }, [product]);
+
+  const handleClickTalla = (talla) => {
+    const updateProduct = {
+      ...productoElegido,
+      talla: talla,
+    };
+    setProductoElegido(updateProduct);
+    setTallaElegida(talla);
+  };
+
+  const onChange = (e) => {
+    const updateProduct = {
+      ...productoElegido,
+      cantidad: parseInt(e.target.value),
+    };
+    setProductoElegido(updateProduct);
+  };
 
   return (
     <div className="rounded p-4 bg-light d-flex row justify-content-between">
@@ -31,8 +52,8 @@ function InfoCard({ product, tallas }) {
                     key={talla}
                     value={talla}
                     type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={handleClickTalla}
+                    className={`btn btn-outline-secondary ${talla === tallaElegida ? "active" : ""}`}
+                    onClick={() => handleClickTalla(talla)}
                   >
                     {talla}
                   </button>
@@ -48,17 +69,11 @@ function InfoCard({ product, tallas }) {
             </Link>
           )}
         </div>
-        <div className="d-flex row justify-content-end">
-          {/* <select name="color" id="color" className="form-select form-select-lg mb-3 w-50">
-                {colors.map((color) => {
-                    return <option value={color}>{color}</option>
-                })}
-            </select> */}
-        </div>
+        <div className="d-flex row justify-content-end"></div>
         <div className="d-flex row justify-content-end my-3">
           <div className="w-25">
             <h6 className="text-secondary">Cantidad</h6>
-            <input type="number" className="form-control" />
+            <input type="number" className="form-control" onChange={onChange} />
           </div>
         </div>
       </div>
@@ -66,6 +81,7 @@ function InfoCard({ product, tallas }) {
         type="button"
         className="btn btn-secondary mt-5 w-75"
         style={{ height: "40px" }}
+        onClick={() => addToCart(productoElegido)}
       >
         Añadir al carrito
       </button>

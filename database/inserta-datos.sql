@@ -25,6 +25,13 @@ INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
 ('45678901D', 'Calle 4', 'Ciudad D', '45678'),
 ('56789012E', 'Calle 5', 'Ciudad E', '56789');
 
+INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
+('12345678A', 'Calle 1', 'Ciudad A', '12345'),
+('23456789B', 'Calle 2', 'Ciudad B', '23456'),
+('34567890C', 'Calle 3', 'Ciudad C', '34567'),
+('45678901D', 'Calle 4', 'Ciudad D', '45678'),
+('56789012E', 'Calle 5', 'Ciudad E', '56789');
+
 -- Insertamos datos en la tabla pedido
 
 INSERT INTO `PEDIDO` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`) VALUES 
@@ -33,6 +40,21 @@ INSERT INTO `PEDIDO` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPag
 ('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'Mano', 75.80),
 ('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'Transferencia', 120.30),
 ('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'Bizum', 90.25);
+
+INSERT INTO `PEDIDOS` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`,`email`) VALUES 
+('12345678A', '2024-01-01', '2024-01-10', 'En Proceso', 'tarjeta', 150.00, 'juan.perez@email.com'),
+('23456789B', '2024-02-05', '2024-02-15', 'Entregado', 'bizum', 200.50, 'maria.rodriguez@email.com'),
+('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'efectivo', 75.80, 'carlos.martinez@email.com'),
+('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'tarjeta', 120.30, 'laura.gonzalez@email.com'),
+('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'bizum', 90.25, 'alejandro.perez@email.com');
+
+
+INSERT INTO `CLIENTES` (`dni`,`nombre`, `calle`,`ciudad`,`cp`, `email`) VALUES
+('12345678A', 'Juan Pérez García','Calle 1', 'Ciudad A', '12345', 'juan.perez@email.com'),
+('23456789B', 'María Rodríguez López','Calle 2', 'Ciudad B', '23456', 'maria.rodriguez@email.com'),
+('34567890C', 'Carlos Martínez Ruiz','Calle 3', 'Ciudad C', '34567', 'carlos.martinez@email.com'),
+('45678901D', 'Laura González Sánchez','Calle 4', 'Ciudad D', '45678', 'laura.gonzalez@email.com'),
+('56789012E', 'Alejandro Pérez Rodríguez','Calle 5', 'Ciudad E', '56789', 'alejandro.perez@email.com');
 
 
 -- Insertamos categorias que no tienen categoria padre sin especificar este.
@@ -140,6 +162,13 @@ INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantida
 (2,2,30,1),
 (3,2,30,3);
 
+INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
+(1,8,35,1),
+(1,9,35,1),
+(2,11,25,1),
+(2,8,30,1),
+(2,9,30,1),
+(3,9,30,3);
 -- Insertamos datos en la tabla comentario relacionada con la tabla producto
 
 INSERT INTO `COMENTARIO` (`idCliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
