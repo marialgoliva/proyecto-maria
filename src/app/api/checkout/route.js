@@ -29,6 +29,7 @@ export async function POST(request) {
     payProducts.push({
       productId: product.idProducto,
       cantidad: product.cantidad,
+      talla: product.talla || null,
     });
   });
   const session = await stripe.checkout.sessions.create({

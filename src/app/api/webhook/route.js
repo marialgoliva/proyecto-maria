@@ -72,7 +72,7 @@ export async function POST(request) {
       const dataProducto = {
         idPedido: idPedido,
         idProducto: producto.productId,
-        precioUnitario: null,
+        talla: producto.talla,
         cantidad: producto.cantidad,
       };
       const resultProductos = await addPedidoProducto(dataProducto);

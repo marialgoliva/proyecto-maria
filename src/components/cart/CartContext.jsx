@@ -55,11 +55,11 @@ export function CartProvider({ children }) {
     console.log("producto que vamos a añadir en el carrito", product);
     // Verificar si el producto ya está en el carrito
     const existingProductIndex = cart.findIndex(
-      (item) => item.idProducto === product.idProducto,
+      (item) =>
+        item.idProducto === product.idProducto && item.talla === product.talla,
     );
 
     if (existingProductIndex > -1) {
-      console.log("1111111111");
       // Si el producto ya está en el carrito, aumentar la cantidad
 
       const updatedCart = [...cart];
@@ -117,14 +117,29 @@ export function CartProvider({ children }) {
     setContador(0); // Reseteamos el contador de productos en el carrito
   };
 
-  const updateQuantity = (product) => {
+  const addQuantity = (product) => {
     const existingProductIndex = cart.findIndex(
-      (item) => item.idProducto === product.idProducto,
+      (item) =>
+        item.idProducto === product.idProducto && item.talla === product.talla,
     );
     const updatedCart = [...cart];
     const cantidadNueva = updatedCart[existingProductIndex].cantidad + 1;
     updatedCart[existingProductIndex].cantidad = cantidadNueva;
     setCart(updatedCart);
+  };
+  const reduceQuantity = (product) => {
+    const existingProductIndex = cart.findIndex(
+      (item) =>
+        item.idProducto === product.idProducto && item.talla === product.talla,
+    );
+    if (product.cantidad === 1) {
+      removeFromCart(product.idProducto);
+    } else {
+      const updatedCart = [...cart];
+      const cantidadNueva = updatedCart[existingProductIndex].cantidad - 1;
+      updatedCart[existingProductIndex].cantidad = cantidadNueva;
+      setCart(updatedCart);
+    }
   };
   console.log("Cart: ", cart);
   return (
@@ -137,7 +152,8 @@ export function CartProvider({ children }) {
         removeFromCart,
         contador,
         deleteCart,
-        updateQuantity,
+        addQuantity,
+        reduceQuantity,
       }}
     >
       {children}
