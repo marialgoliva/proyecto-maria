@@ -32,6 +32,10 @@ export async function POST(request) {
     const productosPedido = JSON.parse(
       checkoutSessionCompleted.metadata.pagados,
     );
+    const datosCliente = JSON.parse(
+      checkoutSessionCompleted.metadata.dataCliente,
+    );
+    console.log("Datos cliente: ", datosCliente);
 
     const fechaPedido = formatDate(new Date()); //Fecha actual (fecha en la que se realiza el pedido)
     const fechaEntrega = getFechaEntrega(new Date()); //Fecha estimada de entrega, 5 días después de realizar el pedido.
@@ -39,9 +43,10 @@ export async function POST(request) {
     //Objeto que contiene los datos a insertar en la tabla CLIENTES
     const dataCliente = {
       email: cliente,
-      calle: "calle",
-      ciudad: "ciudad",
-      cp: "cp",
+      nombre: datosCliente.nombre,
+      calle: datosCliente.calle,
+      ciudad: datosCliente.ciudad,
+      cp: datosCliente.cp,
     };
 
     //Objeto que contiene los datos a insertar en la tabla Pedidos

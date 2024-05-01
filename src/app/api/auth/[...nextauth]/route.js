@@ -50,14 +50,14 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log("JWT callback", { user, token });
+      // console.log("JWT callback", { user, token });
       if (user) {
         token.role = await getUserRole(user.email);
       }
       return token;
     },
     async session({ session, token }) {
-      console.log("Session callback", { session, token });
+      // console.log("Session callback", { session, token });
       session.user.role = token.role;
       return session;
     },
