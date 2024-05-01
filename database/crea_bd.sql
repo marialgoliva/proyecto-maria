@@ -79,7 +79,7 @@ CREATE TABLE PEDIDO_PRODUCTO(
     idProducto INT NOT NULL,
     precioUnitario DOUBLE,
     cantidad INTEGER,
-    FOREIGN key (idPedido) REFERENCES Pedido(idPedido),
+    FOREIGN key (idPedido) REFERENCES Pedidos(idPedido),
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto),
     UNIQUE KEY pedido_producto_unique (idPedido, idProducto)
 );

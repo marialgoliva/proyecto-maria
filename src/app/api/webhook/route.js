@@ -35,8 +35,6 @@ export async function POST(request) {
     const datosCliente = JSON.parse(
       checkoutSessionCompleted.metadata.dataCliente,
     );
-    console.log("Datos cliente: ", datosCliente);
-
     const fechaPedido = formatDate(new Date()); //Fecha actual (fecha en la que se realiza el pedido)
     const fechaEntrega = getFechaEntrega(new Date()); //Fecha estimada de entrega, 5 días después de realizar el pedido.
 
@@ -60,21 +58,28 @@ export async function POST(request) {
     };
 
     //Insertamos los datos del cliente
-    const result = await crearUnCliente(dataCliente);
+    await crearUnCliente(dataCliente);
     //Creamos el pedido
+
     const idPedido = await crearUnPedido(dataPedido);
+
+    console.log("el id del pedido insertadooooo ", idPedido);
+
     //Recorremos el array con los datos de los productos
-    productosPedido.forEach((producto) => {
-      //Objeto que contiene los datos de los productos a insertar en la tabla PEDIDO_PRODUCTO
+    for (const producto of productosPedido) {
       const dataProducto = {
         idPedido: idPedido,
         idProducto: producto.productId,
         precioUnitario: null,
         cantidad: producto.cantidad,
       };
-      //Insertamos los datos del pedido
-      addPedidoProducto(dataProducto);
-    });
+      const resultProductos = await addPedidoProducto(dataProducto);
+
+      console.log(
+        "Producto insertado en PEDIDO_PRODUCTO con ID:",
+        resultProductos.insertId,
+      );
+    }
   } else {
     console.log(`Evento no manejado: ${event.type}`);
   }

@@ -9,7 +9,7 @@ export async function POST(request) {
   const productos = [];
   const payProducts = [];
   const dataCliente = body.dataCliente;
-  console.log("dataaaaaaa", dataCliente);
+
   body.cart.forEach((product) => {
     productos.push({
       price_data: {

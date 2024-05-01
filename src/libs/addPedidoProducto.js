@@ -8,8 +8,11 @@ export default async function addPedidoProducto(dataProducto) {
       dataProducto,
     );
 
-    return result;
+    console.log("Resultado de la inserción:", result);
+
+    return result.insertId;
   } catch (error) {
+    console.log("Error al insertar en PEDIDO_PRODUCTO:", error);
     return NextResponse.json(
       {
         message: error.message,
