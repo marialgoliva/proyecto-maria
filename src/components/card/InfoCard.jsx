@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCart } from "../cart/CartContext";
+import styles from "./styles.module.css";
 
-function InfoCard({ product, tallas }) {
+function InfoCard({ product, stock }) {
   const { descripcion, nombre, precio, color } = product;
   const [tallaElegida, setTallaElegida] = useState();
   const [productoElegido, setProductoElegido] = useState(product);
@@ -45,7 +46,7 @@ function InfoCard({ product, tallas }) {
         </div>
         <div className="d-flex row gap-3">
           <div className="d-flex justify-content-end gap-2">
-            {tallas.length > 1 &&
+            {/* {tallas.length > 1 &&
               tallas.map((talla) => {
                 return (
                   <button
@@ -58,9 +59,38 @@ function InfoCard({ product, tallas }) {
                     {talla}
                   </button>
                 );
+              })} */}
+            {stock.length > 0 &&
+              stock.map((item) => {
+                console.log(item.talla);
+                return (
+                  <div key={item.talla}>
+                    {item.talla !== "null" ? (
+                      <>
+                        <button
+                          value={item.talla}
+                          type="button"
+                          className={`btn btn-outline-secondary ${item.talla === tallaElegida ? "active" : ""}`}
+                          onClick={() => handleClickTalla(item.talla)}
+                        >
+                          {item.talla}
+                        </button>
+                        <div className={styles.fontTiny}>({item.stock})</div>
+                      </>
+                    ) : (
+                      <div className={styles.fontTiny}>
+                        Stock ({item.stock})
+                      </div>
+                    )}
+                  </div>
+                );
               })}
           </div>
-          {tallas.length > 1 && (
+          <p className={styles.fontTiny}>
+            Si aparece stock disponible, se confeccionará el producto para ti
+            por lo que los plazos de entrega pueden aumentar.
+          </p>
+          {stock.length > 1 && (
             <Link
               href=""
               className="text-decoration-none text-secondary text-end"

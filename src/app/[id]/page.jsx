@@ -10,20 +10,21 @@ import axios from "axios";
 const BASE_API_URL = process.env.BASE_URL;
 
 async function ProductPage({ params }) {
-  const tallas = [];
   const stock = [];
   const comentarios = await getComentarios(params.id);
 
   try {
     const product = await loadProduct(params.id);
     const result = await axios.get(`${BASE_API_URL}/api/stock/${params.id}`);
+
     result.data.map((element) => {
-      tallas.push(element.talla);
       stock.push({
         talla: element.talla,
         stock: element.stock,
       });
+      console.log("tallaaaa", typeof element.talla);
     });
+    console.log("resuuuuulst", result.data);
 
     return (
       <div>
@@ -31,7 +32,7 @@ async function ProductPage({ params }) {
           <div className="d-flex w-75 gap-2">
             <BackButton />
             <ImageCard product={product} />
-            <InfoCard product={product} tallas={tallas} />
+            <InfoCard product={product} stock={stock} />
           </div>
         </div>
         {comentarios && (
