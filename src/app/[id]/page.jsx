@@ -11,14 +11,18 @@ const BASE_API_URL = process.env.BASE_URL;
 
 async function ProductPage({ params }) {
   const tallas = [];
+  const stock = [];
   const comentarios = await getComentarios(params.id);
 
   try {
     const product = await loadProduct(params.id);
-    const { data } = await axios.get(`${BASE_API_URL}/api/tallas/${params.id}`);
-
-    data.map((element) => {
+    const result = await axios.get(`${BASE_API_URL}/api/stock/${params.id}`);
+    result.data.map((element) => {
       tallas.push(element.talla);
+      stock.push({
+        talla: element.talla,
+        stock: element.stock,
+      });
     });
 
     return (

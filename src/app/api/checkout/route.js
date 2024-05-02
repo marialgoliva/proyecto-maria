@@ -5,7 +5,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
   const body = await request.json();
-  console.log(body);
   const productos = [];
   const payProducts = [];
   const dataCliente = body.dataCliente;
@@ -42,6 +41,6 @@ export async function POST(request) {
     },
     mode: "payment",
   });
-  console.log(session);
+  // console.log(session);
   return NextResponse.json(session);
 }

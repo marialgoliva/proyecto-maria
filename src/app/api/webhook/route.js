@@ -5,6 +5,7 @@ import crearUnCliente from "@/libs/crearUnCliente";
 import crearUnPedido from "@/libs/crearUnPedido";
 import { formatDate, getFechaEntrega } from "@/libs/utils";
 import addPedidoProducto from "@/libs/addPedidoProducto";
+import { updateStock } from "@/libs/stock/updateStock";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -21,7 +22,7 @@ export async function POST(request) {
   try {
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (error) {
-    console.log(error);
+    console.log("ERRORRRRRRRR", error);
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
   if (event.type === "checkout.session.completed") {
@@ -65,8 +66,6 @@ export async function POST(request) {
 
     const idPedido = await crearUnPedido(dataPedido);
 
-    console.log("el id del pedido insertadooooo ", idPedido);
-
     //Recorremos el array con los datos de los productos
     for (const producto of productosPedido) {
       const dataProducto = {
@@ -75,12 +74,21 @@ export async function POST(request) {
         talla: producto.talla,
         cantidad: producto.cantidad,
       };
+      //Insertamos los datos que relacionan cada pedido con sus productos
       const resultProductos = await addPedidoProducto(dataProducto);
 
       console.log(
         "Producto insertado en PEDIDO_PRODUCTO con ID:",
         resultProductos.insertId,
       );
+
+      //Actualizamos el stock en la base de datos
+      const response = await updateStock(
+        producto.productId,
+        producto.talla,
+        producto.cantidad,
+      );
+      console.log("response", response.message);
     }
   } else {
     console.log(`Evento no manejado: ${event.type}`);
