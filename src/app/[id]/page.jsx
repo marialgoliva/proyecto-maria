@@ -4,27 +4,23 @@ import InfoCard from "@/components/card/InfoCard";
 import Starts from "@/components/stars";
 import { getNombreCliente } from "@/libs/clientes/getNombreCliente";
 import { getComentarios } from "@/libs/comentarios/getComentarios";
-import loadProduct from "@/libs/loadProduct";
-import axios from "axios";
-
-const BASE_API_URL = process.env.BASE_URL;
+import loadProduct from "@/libs/productos/loadProduct";
+import getStock from "@/libs/stock/getStock";
 
 async function ProductPage({ params }) {
   const stock = [];
-  const comentarios = await getComentarios(params.id);
 
   try {
     const product = await loadProduct(params.id);
-    const result = await axios.get(`${BASE_API_URL}/api/stock/${params.id}`);
+    const stockProducto = await getStock(params.id);
+    const comentarios = await getComentarios(params.id);
 
-    result.data.map((element) => {
+    stockProducto.map((element) => {
       stock.push({
         talla: element.talla,
         stock: element.stock,
       });
-      console.log("tallaaaa", typeof element.talla);
     });
-    console.log("resuuuuulst", result.data);
 
     return (
       <div>
@@ -41,7 +37,7 @@ async function ProductPage({ params }) {
               const data = await getNombreCliente(comentario.idCliente);
               return (
                 <div
-                  className="w-75 bg-body-secondary rounded p-4 m-2"
+                  className="w-75 rounded p-4 m-2 ms-5"
                   key={comentario.idComentario}
                 >
                   <h6>{data.nombre}</h6>

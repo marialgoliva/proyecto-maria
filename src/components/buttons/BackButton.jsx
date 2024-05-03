@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack } from "react-icons/io";
+import styles from "@/components/buttons/styles.module.css";
 
 function BackButton() {
   const router = useRouter();
@@ -9,11 +10,8 @@ function BackButton() {
   };
   return (
     <div>
-      <button
-        onClick={onClick}
-        className="bg-transparent border-0 text-secondary"
-      >
-        <IoIosArrowBack className="fs-3" />
+      <button onClick={onClick} className={styles.backButton}>
+        <IoIosArrowBack className="fs-5" />
       </button>
     </div>
   );

@@ -4,8 +4,9 @@ import { getServerSession } from "next-auth";
 
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-import { CartProvider } from "@/components/cart/CartContext";
+import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "react-hot-toast";
+import "@/styles/global.css";
 
 export const metadata = {
   title: "Mi tienda online",

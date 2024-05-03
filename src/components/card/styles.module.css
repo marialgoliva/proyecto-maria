@@ -16,22 +16,27 @@
     color: black;
     padding: 2rem;
     margin: 2rem;
+    
+  }
+
+  .productCard:hover{
+    transform: scale(1.05);
   }
   
   .image {
+    width: 500px;
     height: 100%;
   }
-  
-  .description,
-  .price,
-  .title {
-    margin: 0.2rem 0;
-    font-size: 1rem;
+  .image img{
+    border-radius: 10px;
   }
+
   
-  .title {
+  .title, .price {
+    margin: 0.2rem 0;
+    font-size: 16px;
+    margin-top: 20px;
     padding: 5px;
-    font-weight: bold;
     text-transform: uppercase;
   }
   
@@ -40,9 +45,6 @@
     width: 70%;
   }
   
-  .price {
-    font-weight: bold;
-  }
   
   .button {
     border: none;
@@ -59,4 +61,18 @@
   
   .fontTiny{
     font-size: 10px;
+    text-align: center;
   }
+
+  .imageCard{
+    border-radius: 10px;
+    background-color: #f7f9fa;
+    padding: 40px;
+    display: flex;
+  }
+
+  .imageCard img{
+    border-radius: 20px;
+    width: 35vw;
+  }
+  

@@ -1,29 +1,53 @@
 .navHeader{
     margin: 20px;
+    display: flex;
+    justify-content: center;
 
 }
 
 .navContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 4px 4px;
+    padding: 0 4px;
+    width: 100%;
 }
 
+.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+}
+
+
+.logo img{
+    height: 140px;
+}
 .linkNav{
     text-decoration: none;
     color: #272727;
 }
+.linkNav:hover{
+    border-bottom: 2px solid #272727;
+}
 
-.navTitle{
-    font-size: 4xl;
+.signOut{
+    background: white;
+    border-radius: 7px;
+    padding: 2px 7px;
+    margin-left: 5px;
 }
-.nav {
-    text-decoration: none;
-    gap: 10px;
-    display: flex;
+.signOut:hover{
+    background: #272727;
+    border-radius: 7px;
+    padding: 2px 7px;
+    margin-left: 5px;
+    color: aliceblue;
 }
+
+
 
 @media (min-width: 992px) {
     .nav {

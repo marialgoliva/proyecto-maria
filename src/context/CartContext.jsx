@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
   const [contador, setContador] = useState(0);
-
+  const storedProducts = localStorage.getItem("products");
   //Obtnemos los productos de la base de datos. Se renderiza una vez.
   useEffect(() => {
     async function fetchProducts() {
@@ -25,8 +25,19 @@ export function CartProvider({ children }) {
         setLoading(false);
       }
     }
-    fetchProducts();
-  }, []);
+    if (!storedProducts) {
+      fetchProducts();
+    } else {
+      setProducts(JSON.parse(storedProducts));
+      setLoading(false);
+    }
+  }, [storedProducts]);
+
+  useEffect(() => {
+    if (products.length !== 0) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+  }, [products]);
 
   //Obtenemos los productos almacenados en el localStorage, y los seteamos en el carrito. Se renderiza una vez
   useEffect(() => {

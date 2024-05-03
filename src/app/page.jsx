@@ -1,8 +1,8 @@
 "use client";
-import ProductCard from "@/components/card/ProductCard";
 import "@/styles/global.css";
-import { useCart } from "@/components/cart/CartContext";
+import ProductCard from "@/components/card/ProductCard";
 import Spinner from "react-bootstrap/Spinner";
+import { useCart } from "@/context/CartContext";
 
 function HomePage() {
   const { products, loading } = useCart();
@@ -10,11 +10,15 @@ function HomePage() {
   return (
     <>
       {loading && (
-        <Spinner animation="border" role="status" className="m-5">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <div className="d-flex justify-content-center mt-5">
+          <Spinner
+            animation="border"
+            className="m-5"
+            variant="secondary"
+          ></Spinner>
+        </div>
       )}
-      <div className="flex row">
+      <div className="d-flex justify-content-center row gap-3">
         {products ? (
           products.map((product) => (
             <div

@@ -1,5 +1,5 @@
 import ProductCard from "@/components/card/ProductCard";
-import loadProduct from "@/libs/loadProduct";
+import loadProduct from "@/libs/productos/loadProduct";
 
 async function ProductPage({ params }) {
   const product = await loadProduct(params.id);

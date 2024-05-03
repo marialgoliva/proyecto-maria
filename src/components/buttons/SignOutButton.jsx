@@ -1,6 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import styles from "../Navbar/styles.module.css";
 
 function SignOutButton() {
   const router = useRouter();
@@ -9,10 +10,7 @@ function SignOutButton() {
     router.push("../");
   };
   return (
-    <button
-      className="bg-white text-black border rounded px-3 me-5"
-      onClick={signOutHandler}
-    >
+    <button className={styles.signOut} onClick={signOutHandler}>
       Cerrar sesión
     </button>
   );

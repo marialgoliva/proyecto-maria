@@ -7,24 +7,31 @@ import SignOutButton from "../buttons/SignOutButton";
 
 import ButtonCart from "../cart/ButtonCart";
 
-const linksSub = [
-  { name: "Registrarse", href: "/auth/register" },
-  { name: "Iniciar sesión", href: "/auth/login" },
-];
-
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
     <header className={styles.navHeader}>
       <div className={styles.navContainer}>
-        <Link href="/" className={styles.linkNav}>
-          <h1 className="display-5"> Moon Design - Tienda Online</h1>
+        <Link href="./" className={styles.logo}>
+          <img src="/logo_reducido.svg" alt="Logotipo de Moon Design" />
         </Link>
+        <nav className={styles.nav}>
+          <div className="d-flex flex-row gap-4 me-5">
+            <Link href="/auth/register" className={styles.linkNav}>
+              Registrarse
+            </Link>
+            {session ? (
+              <SignOutButton />
+            ) : (
+              <Link href="/auth/login" className={styles.linkNav}>
+                Iniciar sesión
+              </Link>
+            )}
+          </div>
 
-        <nav className="d-flex column align-items-center gap-5">
-          <div className="d-flex flex-row gap-3 fs-4">
-            <div>
+          <div className="d-flex flex-row gap-3 fs-4 me-5">
+            {/* <div>
               <Link href="/" className={styles.linkNav}>
                 Productos
               </Link>
@@ -38,19 +45,9 @@ export default async function Navbar() {
               <Link href="/contacto" className={styles.linkNav}>
                 Contacto
               </Link>
-            </div>
+            </div> */}
             <ButtonCart />
           </div>
-          <div className="d-flex flex-row gap-2">
-            {linksSub.map((link, id) => (
-              <div key={id} className="border rounded px-2 py-1 fs-5">
-                <Link href={link.href} className={styles.linkNav}>
-                  {link.name}
-                </Link>
-              </div>
-            ))}
-          </div>
-          {session && <SignOutButton />}
         </nav>
       </div>
     </header>

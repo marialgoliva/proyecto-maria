@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Promise } from "es6-promise";
-import loadProduct from "@/libs/loadProduct";
+import loadProduct from "@/libs/productos/loadProduct";
 
 function ContenidoPedido({ idsProductos }) {
   const [productos, setProductos] = useState([]);

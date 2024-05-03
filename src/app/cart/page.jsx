@@ -1,8 +1,12 @@
 "use client";
-import { useCart } from "@/components/cart/CartContext";
+import { useCart } from "@/context/CartContext";
 import ProductCart from "@/components/cart/ProductCart";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { BsShop } from "react-icons/bs";
+import Link from "next/link";
+import { sendCart } from "@/libs/stock/checkout/sendCart";
+import { checkForm } from "@/libs/utils";
 
 function CartPage() {
   const { cart } = useCart();
@@ -12,39 +16,48 @@ function CartPage() {
   );
   const router = useRouter();
   const [dataCliente, setDataCliente] = useState({});
-  console.log(dataCliente);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handlePay = async (cart, dataCliente) => {
-    const requestBody = {
-      cart: cart,
-      dataCliente: dataCliente,
-    };
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      body: JSON.stringify(requestBody),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const session = await res.json();
-    router.push(session.url);
+    const check = checkForm(dataCliente);
+    if (check.valido) {
+      const requestBody = {
+        cart: cart,
+        dataCliente: dataCliente,
+      };
+      const res = await sendCart(requestBody);
+      const session = await res.json();
+      router.push(session.url);
+    } else {
+      setShowAlert(true);
+      setAlertMessage(check.mensaje);
+    }
   };
 
   const onChange = (e) => {
+    setShowAlert(false);
+    setAlertMessage("");
     setDataCliente({
       ...dataCliente,
       [e.target.name]: e.target.value,
     });
   };
-  console.log("lengthhhh", cart.length);
 
   return (
     <div className="w-100 d-flex justify-content-center">
       {cart.length > 0 ? (
-        <div className="w-75 d-flex row justify-content-center">
-          <h1 className="ms-3 display-6">Productos en tu carrito</h1>
-          <div className="d-flex justify-content-end">
-            <h5 className="me-5">Total: {totalPrice}€</h5>
+        <div className="w-75 d-flex row justify-content-center mb-5">
+          <h1 className="m-3 display-6 w-75">Productos en tu carrito</h1>
+          <div className="d-flex justify-content-between w-75">
+            <Link
+              href="/"
+              className="text-decoration-none text-dark d-flex gap-2"
+            >
+              <BsShop />
+              <p>Seguir comprando </p>
+            </Link>
+            <h4>Total: {totalPrice}€</h4>
           </div>
 
           <div className="d-flex row w-75">
@@ -53,8 +66,15 @@ function CartPage() {
                 <ProductCart product={product} />
               </div>
             ))}
-            <div>
+            <div className="mt-5 mb-2">
               <h4>Datos de facturación y envío</h4>
+              {showAlert && (
+                <div>
+                  <div class="alert alert-warning mt-2 " role="alert">
+                    {alertMessage}
+                  </div>
+                </div>
+              )}
               <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-sm">
@@ -142,7 +162,16 @@ function CartPage() {
           </button>
         </div>
       ) : (
-        <h1 className="ms-3 display-6">No hay productos en el carrito</h1>
+        <div className="d-flex flex-column align-items-center">
+          <h1 className="ms-3 display-6">No hay productos en el carrito</h1>
+          <Link
+            href="/"
+            className="d-flex align-items-center justify-content-center flex-column text-decoration-none m-5"
+          >
+            <img className="w-25" src="/storeOpen.jpg" alt="Tienda abierta" />
+            <h5 className="ms-3">Volver a la tienda</h5>
+          </Link>
+        </div>
       )}
     </div>
   );

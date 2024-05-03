@@ -1,15 +1,29 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
 
 
 
 :root {
     --primary: #72876a;
-    --secondary: #9c6843;
+    --secondary: #fffdfc;
     --terciary: #ae4c4c;
+    
+}
+body{
+    background-color: #fffdfc;
 }
 .productContainer {
     display: flex;
     justify-content: column;
 }
 
+h4 {
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    font-size: 14px;
+}
+
+p{
+    font-family: "Montserrat";
+    font-size: 12px;
+}
