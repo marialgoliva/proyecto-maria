@@ -4,7 +4,7 @@ import { conn } from "../../../../../database/mysql";
 import bcrypt from "bcrypt";
 
 async function getUserRole(email) {
-  const result = await conn.query("SELECT rol FROM usuario WHERE email=?", [
+  const result = await conn.query("SELECT rol FROM usuarios WHERE email=?", [
     email,
   ]);
   // console.log(result);
@@ -16,12 +16,16 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "usuario@email" },
-        password: { label: "Password", type: "password" },
+        email: {
+          label: "Email",
+          type: "text",
+          placeholder: "Introduce tu email",
+        },
+        password: { label: "Password", type: "Introduce tu contraseña" },
       },
       async authorize(credentials) {
         const result = await conn.query(
-          "SELECT * FROM USUARIO WHERE email =?",
+          "SELECT * FROM USUARIOS WHERE email =?",
           [credentials.email],
         );
 
@@ -64,6 +68,7 @@ export const authOptions = {
   },
   pages: {
     signIn: "/auth/login",
+    signOut: "/",
   },
 };
 

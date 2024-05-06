@@ -47,6 +47,15 @@ export default async function Navbar() {
               </Link>
             </div> */}
             <ButtonCart />
+            {session?.user.email && (
+              <nav className={styles.navRight}>
+                <div className="d-flex flex-row gap-4 me-5">
+                  <Link href="/mi-pedido" className={styles.linkNav}>
+                    Mis pedidos
+                  </Link>
+                </div>
+              </nav>
+            )}
           </div>
         </nav>
       </div>

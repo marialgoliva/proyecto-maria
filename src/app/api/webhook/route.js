@@ -33,6 +33,7 @@ export async function POST(request) {
     const productosPedido = JSON.parse(
       checkoutSessionCompleted.metadata.pagados,
     );
+    console.log("pagados :>> ", checkoutSessionCompleted.metadata.pagados);
     const datosCliente = JSON.parse(
       checkoutSessionCompleted.metadata.dataCliente,
     );

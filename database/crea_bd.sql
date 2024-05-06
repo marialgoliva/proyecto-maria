@@ -15,6 +15,16 @@ CREATE TABLE USUARIO (
     rol ENUM('user','admin') DEFAULT 'user' NOT NULL
 );
 
+CREATE TABLE USUARIOS (
+    dni CHAR(9) PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    apellidos VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(25) NOT NULL,
+    password CHAR(60) NOT NULL,
+    rol ENUM('user','admin') DEFAULT 'user' NOT NULL
+);
+
 CREATE TABLE CLIENTE (
     dni CHAR(9) PRIMARY KEY,
     calle VARCHAR(100),
@@ -81,7 +91,6 @@ CREATE TABLE PEDIDO_PRODUCTO(
     cantidad INTEGER,
     FOREIGN key (idPedido) REFERENCES Pedidos(idPedido),
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto),
-    UNIQUE KEY pedido_producto_unique (idPedido, idProducto)
 );
 
 CREATE TABLE COMENTARIO (

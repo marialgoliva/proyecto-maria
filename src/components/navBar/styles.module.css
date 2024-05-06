@@ -20,6 +20,14 @@
     align-items: center;
     font-size: 15px;
 }
+.navRight{
+    margin-left: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+}
 
 
 .logo img{

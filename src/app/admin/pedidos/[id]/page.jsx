@@ -37,6 +37,7 @@ async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
   const data = await getNombreCliente(pedido.idCliente);
   const arrayProductos = await getProductos(params.id);
+  console.log("arrayProductos :>> ", arrayProductos);
 
   return (
     <div className="d-flex flex-column m-4">
@@ -65,7 +66,7 @@ async function PaginaPedido({ params }) {
           {arrayProductos ? (
             <>
               <h5>Productos incluidos:</h5>
-              <ContenidoPedido idsProductos={arrayProductos} />
+              <ContenidoPedido dataProductos={arrayProductos} />
             </>
           ) : (
             <h5>No se encuentran productos asociados a este pedido.</h5>

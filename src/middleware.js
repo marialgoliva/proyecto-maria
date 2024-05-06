@@ -6,5 +6,6 @@ export const config = {
     // "/admin/products",
     // "/admin/new",
     // "/admin/pedidos",
+    "/mi-pedido",
   ],
 };

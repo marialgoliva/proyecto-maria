@@ -9,11 +9,14 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
   const [contador, setContador] = useState(0);
-  const storedProducts = localStorage.getItem("products");
-  //Obtnemos los productos de la base de datos. Se renderiza una vez.
+  const storedProducts =
+    typeof window !== "undefined" ? localStorage.getItem("products") : ""; //Evitamos el mensaje de error cuando no estamos en el entorno del navegador
+
+  //Obtenemos los productos de la base de datos
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -33,13 +36,14 @@ export function CartProvider({ children }) {
     }
   }, [storedProducts]);
 
+  //Guardamos los productos en el localStorage
   useEffect(() => {
     if (products.length !== 0) {
       localStorage.setItem("products", JSON.stringify(products));
     }
   }, [products]);
 
-  //Obtenemos los productos almacenados en el localStorage, y los seteamos en el carrito. Se renderiza una vez
+  //Obtenemos el carrito almacenado en el localStorage, y los seteamos en el carrito
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     // const storedProductsInCart = localStorage.getItem("productsInCart");
@@ -47,20 +51,21 @@ export function CartProvider({ children }) {
       setCart(JSON.parse(storedCart));
       // setContador(JSON.parse(storedProductsInCart));
     }
-  }, []);
+  }, [user]);
 
-  //Añadimos los productos existentes en el carrito al localStorage.
+  //Obtenemos los productos del carrito los almacenamos en el localStorage
   //Actualizamos el contador
   useEffect(() => {
     if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
+
       // localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
     } else {
       //Si el carrito está vacío lo eliminamos del localStorage
       localStorage.removeItem("cart");
     }
     setContador(cart.reduce((total, item) => total + item.cantidad, 0));
-  }, [cart]);
+  }, [cart, user]);
 
   const addToCart = (product) => {
     console.log("producto que vamos a añadir en el carrito", product);
@@ -79,7 +84,6 @@ export function CartProvider({ children }) {
       updatedCart[existingProductIndex].cantidad = cantidadNueva;
       setCart(updatedCart);
     } else if (existingProductIndex <= -1) {
-      console.log("22222222222");
       // Si el producto no está en el carrito, añadirlo con cantidad inicial de 1
       const updatedCart = [...cart];
       updatedCart.push({
@@ -92,7 +96,6 @@ export function CartProvider({ children }) {
     // const productsNumber = productsInCart;
     // setContador(productsNumber + 1);
   };
-
   const removeFromCart = (productId) => {
     // Verificar si el producto ya está en el carrito
     const updatedCart = cart
@@ -121,13 +124,11 @@ export function CartProvider({ children }) {
     // const productsNumber = productsInCart;
     // setContador(productsNumber - 1); // si se elimina un producto con cantidad 2 solo se resta uno.
   };
-
   const deleteCart = () => {
     setCart([]); // Vaciamos el carrito
     localStorage.removeItem("cart"); //Lo eliminamos del localStorage
     setContador(0); // Reseteamos el contador de productos en el carrito
   };
-
   const addQuantity = (product) => {
     const existingProductIndex = cart.findIndex(
       (item) =>
@@ -164,6 +165,7 @@ export function CartProvider({ children }) {
         deleteCart,
         addQuantity,
         reduceQuantity,
+        setUser,
       }}
     >
       {children}

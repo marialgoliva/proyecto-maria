@@ -3,10 +3,12 @@ import "@/styles/global.css";
 import ProductCard from "@/components/card/ProductCard";
 import Spinner from "react-bootstrap/Spinner";
 import { useCart } from "@/context/CartContext";
+import { useSession } from "next-auth/react";
 
 function HomePage() {
-  const { products, loading } = useCart();
-
+  const session = useSession();
+  const { products, loading, setUser } = useCart();
+  setUser(session.data?.user.email);
   return (
     <>
       {loading && (

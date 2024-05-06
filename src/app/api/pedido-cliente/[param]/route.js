@@ -1,14 +1,16 @@
-import { conn } from "../../../../../database/mysql";
 import { NextResponse } from "next/server";
+import { conn } from "../../../../../database/mysql";
 
 export async function GET(request, { params }) {
   try {
-    const results = await conn.query(
-      "SELECT * FROM PEDIDO_PRODUCTO WHERE idPedido = ?",
-      [params.id],
+    const result = await conn.query(
+      "SELECT idPedido FROM pedidos WHERE email = ?",
+      [params.param],
     );
 
-    return NextResponse.json(results);
+    if (result.length > 0) {
+      return NextResponse.json(result);
+    }
   } catch (error) {
     return NextResponse.json(
       {

@@ -31,6 +31,7 @@ export async function POST(request) {
       talla: product.talla || null,
     });
   });
+  console.log("payProducts :>> ", payProducts);
   const session = await stripe.checkout.sessions.create({
     success_url: "http://localhost:3000/success",
     cancel_url: "http://localhost:3000/cancel",

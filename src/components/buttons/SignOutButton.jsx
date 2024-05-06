@@ -7,7 +7,7 @@ function SignOutButton() {
   const router = useRouter();
   const signOutHandler = () => {
     signOut();
-    router.push("../");
+    router.push("/cart");
   };
   return (
     <button className={styles.signOut} onClick={signOutHandler}>

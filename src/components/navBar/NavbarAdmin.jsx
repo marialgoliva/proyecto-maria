@@ -9,10 +9,11 @@ function NavbarAdmin() {
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand>Administra tu tienda</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/admin/products">Productos</Nav.Link>
+          <Nav className="me-auto ms-5">
+            <Nav.Link href="/admin/products">Gestion de productos</Nav.Link>
             <Nav.Link href="/admin/new">Nuevo producto</Nav.Link>
-            <Nav.Link href="/admin/pedidos">Pedidos</Nav.Link>
+            <Nav.Link href="/admin/pedidos">Gestión de pedidos</Nav.Link>
+            <Nav.Link href="/">Volver a la tienda</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
