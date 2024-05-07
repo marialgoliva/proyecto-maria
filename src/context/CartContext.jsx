@@ -9,6 +9,7 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [updatedProduct, setUpdatedProduct] = useState(false);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
@@ -28,13 +29,13 @@ export function CartProvider({ children }) {
         setLoading(false);
       }
     }
-    if (!storedProducts) {
+    if (!storedProducts || updatedProduct) {
       fetchProducts();
     } else {
       setProducts(JSON.parse(storedProducts));
       setLoading(false);
     }
-  }, [storedProducts]);
+  }, [storedProducts, updatedProduct]);
 
   //Guardamos los productos en el localStorage
   useEffect(() => {
@@ -166,6 +167,7 @@ export function CartProvider({ children }) {
         addQuantity,
         reduceQuantity,
         setUser,
+        setUpdatedProduct,
       }}
     >
       {children}
