@@ -3,9 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function RegisterPage() {
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
   const [success, setSuccess] = useState(false);
   const {
     register,
@@ -17,24 +18,24 @@ function RegisterPage() {
 
   const onSubmit = handleSubmit(async (data) => {
     setErrorMessage("");
-
     if (data.password !== data.cPass) {
       setErrorMessage("Las contraseñas no coinciden");
-    }
-    try {
-      const res = await axios.post("/api/auth/register", {
-        dni: data.dni,
-        nombre: data.nombre,
-        apellidos: data.apellidos,
-        email: data.email,
-        username: data.username,
-        password: data.password,
-      });
-      if (res.status == 200) {
-        setSuccess(true);
+    } else {
+      try {
+        const res = await axios.post("/api/auth/register", {
+          dni: data.dni,
+          nombre: data.nombre,
+          apellidos: data.apellidos,
+          email: data.email,
+          username: data.username,
+          password: data.password,
+        });
+        if (res.status == 200) {
+          setSuccess(true);
+        }
+      } catch (e) {
+        setErrorMessage(e.response.data.message);
       }
-    } catch (e) {
-      setErrorMessage(e.response.data.message);
     }
   });
 
@@ -46,37 +47,51 @@ function RegisterPage() {
     <div className="d-flex justify-content-center w-100">
       {success ? (
         <div className="m-4 d-flex flex-column gap-2">
-          <h2>Usuario registrado con éxito</h2>
+          <h2 className="bigtitle">Usuario registrado con éxito</h2>
           <button
             onClick={onClick}
-            className="btn border border-dark text-bg-light py-2 px-3 rounded"
+            className="btn btn-dark w-100 mt-3 mb-4 font-monospace"
           >
             Iniciar sesión
           </button>
         </div>
       ) : (
-        <form onSubmit={onSubmit} className="d-flex flex-column w-50 m-2 gap-2">
-          <h2>Registrar un usuario</h2>
+        <form onSubmit={onSubmit} className="d-flex flex-column w-50 m-2 gap-4">
+          <h2 className="bigtitle">Registrate para consultar tus pedidos</h2>
           {errorMessage && (
-            <span className="text-bg-danger px-1">{errorMessage}</span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errorMessage}
+              </div>
+            </div>
           )}
-          <label htmlFor="dni">DNI: </label>
+
           <input
+            className="rounded p-2 border-1"
             type="text"
             {...register("dni", {
               required: {
                 value: true,
                 message: "El DNI no puede estar vacio.",
               },
+              pattern: {
+                value: /^[0-9]{8}[A-Za-z]$/,
+                message:
+                  "Formato del DNI inválido. Debe contener 8 dígitos seguidos de una letra.",
+              },
             })}
-            placeholder="Identificación - DNI - NIE ..."
+            placeholder="Identificación (DNI/NIE)"
           />
           {errors.dni && (
-            <span className="text-bg-danger px-1">{errors.dni.message}</span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.dni.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="nombre">Nombre: </label>
           <input
+            className="rounded p-2 border-1"
             type="text"
             {...register("nombre", {
               required: {
@@ -87,11 +102,15 @@ function RegisterPage() {
             placeholder="Nombre"
           />
           {errors.nombre && (
-            <span className="text-bg-danger px-1">{errors.nombre.message}</span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.nombre.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="apellidos">Apellidos: </label>
           <input
+            className="rounded p-2 border-1"
             type="text"
             {...register("apellidos", {
               required: {
@@ -102,13 +121,15 @@ function RegisterPage() {
             placeholder="Apellidos"
           />
           {errors.apellidos && (
-            <span className="text-bg-danger px-1">
-              {errors.apellidos.message}
-            </span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.apellidos.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="username">Usuario: </label>
           <input
+            className="rounded p-2 border-1"
             type="text"
             {...register("username", {
               required: {
@@ -119,13 +140,15 @@ function RegisterPage() {
             placeholder="Nombre de usuario"
           />
           {errors.username && (
-            <span className="text-bg-danger px-1">
-              {errors.username.message}
-            </span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.username.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="email">Email: </label>
           <input
+            className="rounded p-2 border-1"
             type="email"
             {...register("email", {
               required: {
@@ -137,11 +160,15 @@ function RegisterPage() {
           />
 
           {errors.email && (
-            <span className="text-bg-danger px-1">{errors.email.message}</span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.email.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="password">Contraseña: </label>
           <input
+            className="rounded p-2 border-1"
             type="password"
             {...register("password", {
               required: {
@@ -153,13 +180,15 @@ function RegisterPage() {
           />
 
           {errors.password && (
-            <span className="text-bg-danger px-1">
-              {errors.password.message}
-            </span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.password.message}
+              </div>
+            </div>
           )}
 
-          <label htmlFor="cPass">Confirma contraseña: </label>
           <input
+            className="rounded p-2 border-1"
             type="password"
             {...register("cPass", {
               required: {
@@ -171,10 +200,16 @@ function RegisterPage() {
           />
 
           {errors.cPass && (
-            <span className="text-bg-danger px-1">{errors.cPass.message}</span>
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {errors.cPass.message}
+              </div>
+            </div>
           )}
 
-          <button>Registrarse</button>
+          <button className="btn btn-dark w-100 mt-3 mb-4 font-monospace">
+            Registrarse
+          </button>
         </form>
       )}
     </div>

@@ -44,7 +44,7 @@ function LoginPage() {
         onSubmit={onSubmit}
         className="d-flex flex-column w-50 m-2 gap-2 w-1/4"
       >
-        <h1>Login</h1>
+        <h1 className="bigtitle">Iniciar sesión</h1>
         {loading && (
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -53,8 +53,9 @@ function LoginPage() {
         {errorMessage && (
           <span className="text-bg-danger px-1">{errorMessage}</span>
         )}
-        <label htmlFor="email">Email: </label>
+
         <input
+          className="rounded p-2 border-1"
           type="email"
           {...register("email", {
             required: {
@@ -62,14 +63,19 @@ function LoginPage() {
               message: "El email no puede estar vacio.",
             },
           })}
-          placeholder="user@email.com"
+          placeholder="Introduce tu email registrado"
           onChange={onChange}
         />
         {errors.email && (
-          <span className="text-bg-danger px-1">{errors.email.message}</span>
+          <div>
+            <div class="alert alert-warning mt-2 " role="alert">
+              {errors.email.message}
+            </div>
+          </div>
         )}
-        <label htmlFor="email">Password: </label>
+
         <input
+          className="rounded p-2 border-1"
           type="password"
           {...register("password", {
             required: {
@@ -77,13 +83,19 @@ function LoginPage() {
               message: "La contraseña no puede estar vacia.",
             },
           })}
-          placeholder="******"
+          placeholder="Introduce tu contraseña"
           onChange={onChange}
         />
         {errors.password && (
-          <span className="text-bg-danger px-1">{errors.password.message}</span>
+          <div>
+            <div class="alert alert-warning mt-2 " role="alert">
+              {errors.password.message}
+            </div>
+          </div>
         )}
-        <button>Iniciar sesión</button>
+        <button className="btn btn-dark w-100 mt-3 mb-4 font-monospace">
+          Iniciar sesión
+        </button>
       </form>
     </div>
   );

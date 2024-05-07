@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import Spinner from "react-bootstrap/Spinner";
+import { checkForm, checkFormProducto } from "@/libs/utils";
 
 function ProductForm() {
   const [product, setProduct] = useState({
@@ -20,15 +21,31 @@ function ProductForm() {
   const form = useRef(null);
   const router = useRouter();
   const params = useParams();
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
+    setShowAlert(false);
+    setAlertMessage("");
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleChangeFile = (e) => {
+    setShowAlert(false);
+    setAlertMessage("");
+    setImage(e.target.files[0]);
+  };
+  useEffect(() => {
+    setProduct({
+      ...product,
+      imagen: image,
+    });
+  }, [image]);
 
   useEffect(() => {
     if (params.id) {
@@ -41,40 +58,56 @@ function ProductForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    const formData = new FormData();
-    formData.append("nombre", product.nombre);
-    formData.append("descripcion", product.descripcion);
-    formData.append("categoria", product.categoria);
-    formData.append("color", product.color);
-    formData.append("precio", product.precio);
+    console.log("product :>> ", product);
+    const check = checkFormProducto(product);
+    if (check.valido) {
+      setShowAlert(false);
+      const formData = new FormData();
+      formData.append("nombre", product.nombre);
+      formData.append("descripcion", product.descripcion);
+      formData.append("categoria", parseInt(product.categoria));
+      formData.append("color", product.color);
+      formData.append("precio", product.precio);
 
-    if (image) {
-      formData.append("imagen", image);
-    }
+      if (image) {
+        formData.append("imagen", image);
+      }
 
-    if (!params.id) {
-      await axios.post("/api/products", formData, {
-        headers: {
-          "Content-type": "multipart/form-data",
-        },
-      });
+      if (!params.id) {
+        await axios.post("/api/products", formData, {
+          headers: {
+            "Content-type": "multipart/form-data",
+          },
+        });
+      } else {
+        await axios.put(`/api/products/${params.id}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+      setLoading(false);
+      router.push("/admin/products");
+      router.refresh();
     } else {
-      await axios.put(`/api/products/${params.id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      setLoading(false);
+      setShowAlert(true);
+      setAlertMessage(check.mensaje);
     }
-    setLoading(false);
-    router.push("/admin/products");
-    router.refresh();
   }
 
   return (
     <div className={styles.formContainer}>
       <form className={styles.form} onSubmit={handleSubmit} ref={form}>
         <header>
-          <h1>Añadir un producto</h1>
+          <h1 className={styles.bigtitle}>Añadir un producto</h1>
+          {showAlert && (
+            <div>
+              <div class="alert alert-warning mt-2 " role="alert">
+                {alertMessage}
+              </div>
+            </div>
+          )}
         </header>
         {loading && (
           <Spinner animation="border" role="status">
@@ -130,9 +163,7 @@ function ProductForm() {
           <input
             type="file"
             className="appearance-none border border-black rounded w-full py-3 px-3"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-            }}
+            onChange={handleChangeFile}
           />
         </div>
         <div className={styles.button}>

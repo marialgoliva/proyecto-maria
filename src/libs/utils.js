@@ -60,3 +60,31 @@ export function checkForm(data) {
   // Si todas las validaciones son correctas
   return { valido: true, mensaje: "Todos los datos son válidos." };
 }
+
+export function checkFormProducto(data) {
+  const { nombre, descripcion, color, imagen, categoria, precio } = data;
+
+  // Verificar que todos los campos requeridos estén rellenos
+  if (!nombre || !descripcion || !color || !imagen || !categoria || !precio) {
+    return {
+      valido: false,
+      mensaje: "Todos los campos deben estar rellenos.",
+    };
+  }
+
+  // Verificar que la categoría sea un número entero
+  if (!Number.isInteger(parseInt(categoria))) {
+    return {
+      valido: false,
+      mensaje: "La categoría debe ser un número entero.",
+    };
+  }
+
+  // Verificar que el precio sea un número
+  if (isNaN(precio)) {
+    return { valido: false, mensaje: "El precio debe ser un número válido." };
+  }
+
+  // Si todas las validaciones son correctas
+  return { valido: true, mensaje: "Todos los datos son válidos." };
+}

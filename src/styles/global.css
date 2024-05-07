@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
 
 
 
@@ -28,10 +28,20 @@ p{
     font-size: 12px;
 }
 
-.title{
+.title, .bigtitle{
     margin: 0.2rem 0;
     font-size: 16px;
     margin-top: 20px;
     padding: 5px;
     text-transform: uppercase;
-  }
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+}
+
+.bigtitle{
+    font-family: 'Ubuntu Sans Mono';
+    font-size: 18px;
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: center;
+}

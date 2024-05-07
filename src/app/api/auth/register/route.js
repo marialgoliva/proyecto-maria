@@ -6,7 +6,7 @@ export async function POST(request) {
   const data = await request.json();
 
   const existingUser = await conn.query(
-    "SELECT * FROM USUARIO WHERE dni = ? OR email = ?",
+    "SELECT * FROM USUARIOS WHERE dni = ? OR email = ?",
     [data.dni, data.email],
   );
 
@@ -23,7 +23,7 @@ export async function POST(request) {
 
   try {
     data.password = await bcrypt.hash(data.password, 10);
-    const result = await conn.query("INSERT INTO USUARIO SET ?", data);
+    const result = await conn.query("INSERT INTO USUARIOS SET ?", data);
     return NextResponse.json({ result });
   } catch (error) {
     return NextResponse.json(
