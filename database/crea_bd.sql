@@ -1,5 +1,5 @@
 /*Creamos la base de datos*/
-CREATE DATABASE IF NOT EXISTS PROYECTO_MARIA;
+CREATE DATABASE IF NOT EXISTS PROYECTO_TEST;
 
 /*Utilizar la base de datos*/
 USE PROYECTO_TEST;
@@ -38,7 +38,7 @@ CREATE TABLE CLIENTES (
     calle VARCHAR(100) NOT NULL,
     ciudad VARCHAR(50) NOT NULL,
     cp CHAR(5) NOT NULL,
-    nombre VARCHAR(250),
+    nombre VARCHAR(250) UNIQUE,
     dni CHAR(9)
     );
     
@@ -93,16 +93,16 @@ CREATE TABLE PEDIDO_PRODUCTO(
     cantidad INT,
     talla VARCHAR(4),
     FOREIGN key (idPedido) REFERENCES Pedidos(idPedido),
-    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto),
+    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
 );
 
 CREATE TABLE COMENTARIO (
   	idComentario  INT AUTO_INCREMENT PRIMARY KEY,
-    idCliente CHAR(9),
+    cliente VARCHAR(100),
     idProducto INT NOT NULL,
     puntuacion INT NOT NULL,
     texto TEXT,
-    FOREIGN KEY (idCliente) REFERENCES Cliente(dni),
+    FOREIGN KEY (cliente) REFERENCES Clientes(nombre),
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
 );
 

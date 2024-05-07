@@ -1,20 +1,20 @@
-USE PROYECTO_MARIA;
+USE PROYECTO_TEST;
 -- Insertamos en la tabla usuarios datos del administrador
 
 ALTER DATABASE PROYECTO_TEST CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- Configuramos la codificación de caracteres para no tener problemas al insertar los datos
 
-INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
+-- INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
 
--- Insertamos otros datos de usuario
+-- -- Insertamos otros datos de usuario
 
-INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) 
-VALUES 
-('12345678A', 'Juan', 'Pérez García', 'juan.perez@email.com', 'juanperez', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
-('23456789B', 'María', 'Rodríguez López', 'maria.rodriguez@email.com', 'mariarod', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
-('34567890C', 'Carlos', 'Martínez Ruiz', 'carlos.martinez@email.com', 'carlosmr', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
-('45678901D', 'Laura', 'González Sánchez', 'laura.gonzalez@email.com', 'laurags', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
-('56789012E', 'Alejandro', 'Pérez Rodríguez', 'alejandro.perez@email.com', 'alejandrop', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user');
+-- INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) 
+-- VALUES 
+-- ('12345678A', 'Juan', 'Pérez García', 'juan.perez@email.com', 'juanperez', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+-- ('23456789B', 'María', 'Rodríguez López', 'maria.rodriguez@email.com', 'mariarod', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+-- ('34567890C', 'Carlos', 'Martínez Ruiz', 'carlos.martinez@email.com', 'carlosmr', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+-- ('45678901D', 'Laura', 'González Sánchez', 'laura.gonzalez@email.com', 'laurags', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
+-- ('56789012E', 'Alejandro', 'Pérez Rodríguez', 'alejandro.perez@email.com', 'alejandrop', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user');
 
 
 INSERT INTO `USUARIOS` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@email.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
@@ -29,43 +29,38 @@ VALUES
 
 -- Insertamos datos en la tabla cliente
 
-INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
-('12345678A', 'Calle 1', 'Ciudad A', '12345'),
-('23456789B', 'Calle 2', 'Ciudad B', '23456'),
-('34567890C', 'Calle 3', 'Ciudad C', '34567'),
-('45678901D', 'Calle 4', 'Ciudad D', '45678'),
-('56789012E', 'Calle 5', 'Ciudad E', '56789');
+-- INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
+-- ('12345678A', 'Calle 1', 'Ciudad A', '12345'),
+-- ('23456789B', 'Calle 2', 'Ciudad B', '23456'),
+-- ('34567890C', 'Calle 3', 'Ciudad C', '34567'),
+-- ('45678901D', 'Calle 4', 'Ciudad D', '45678'),
+-- ('56789012E', 'Calle 5', 'Ciudad E', '56789');
 
-INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
-('12345678A', 'Calle 1', 'Ciudad A', '12345'),
-('23456789B', 'Calle 2', 'Ciudad B', '23456'),
-('34567890C', 'Calle 3', 'Ciudad C', '34567'),
-('45678901D', 'Calle 4', 'Ciudad D', '45678'),
-('56789012E', 'Calle 5', 'Ciudad E', '56789');
+INSERT INTO `CLIENTES` (`email`, `calle`,`ciudad`,`cp`, `nombre` ,`dni`) VALUES
+('juan.perez@email.com', 'Calle 1', 'Ciudad A', '12345', 'Juan Pérez García', '12345678A'),
+('maria.rodriguez@email.com', 'Calle 2', 'Ciudad B', '23456', 'María Rodríguez López', '23456789B'),
+('carlos.martinez@email.com', 'Calle 3', 'Ciudad C', '34567', 'Carlos Martínez Ruiz', '34567890C'),
+('laura.gonzalez@email.com', 'Calle 4', 'Ciudad D', '45678', 'Laura González Sánchez', '45678901D'),
+('alejandro.perez@email.com', 'Calle 5', 'Ciudad E', '56789', 'Alejandro Pérez Rodríguez', '56789012E');
 
 -- Insertamos datos en la tabla pedido
 
-INSERT INTO `PEDIDO` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`) VALUES 
-('12345678A', '2024-01-01', '2024-01-10', 'En Proceso', 'Transferencia', 150.00),
-('23456789B', '2024-02-05', '2024-02-15', 'Entregado', 'Bizum', 200.50),
-('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'Mano', 75.80),
-('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'Transferencia', 120.30),
-('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'Bizum', 90.25);
+-- INSERT INTO `PEDIDO` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`) VALUES 
+-- ('12345678A', '2024-01-01', '2024-01-10', 'En Proceso', 'Transferencia', 150.00),
+-- ('23456789B', '2024-02-05', '2024-02-15', 'Entregado', 'Bizum', 200.50),
+-- ('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'Mano', 75.80),
+-- ('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'Transferencia', 120.30),
+-- ('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'Bizum', 90.25);
 
-INSERT INTO `PEDIDOS` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`,`email`) VALUES 
-('12345678A', '2024-01-01', '2024-01-10', 'En Proceso', 'tarjeta', 150.00, 'juan.perez@email.com'),
-('23456789B', '2024-02-05', '2024-02-15', 'Entregado', 'bizum', 200.50, 'maria.rodriguez@email.com'),
-('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'efectivo', 75.80, 'carlos.martinez@email.com'),
-('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'tarjeta', 120.30, 'laura.gonzalez@email.com'),
-('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'bizum', 90.25, 'alejandro.perez@email.com');
+INSERT INTO `PEDIDOS` (`email`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`,`idCliente`) VALUES 
+('juan.perez@email.com', '2024-01-01', '2024-01-10', 'En Proceso', 'tarjeta', 150.00, '12345678A'),
+('maria.rodriguez@email.com', '2024-02-05', '2024-02-15', 'Entregado', 'bizum', 200.50, '23456789B'),
+('carlos.martinez@email.com', '2024-03-10', '2024-03-20', 'En Proceso', 'efectivo', 75.80, '34567890C'),
+('laura.gonzalez@email.com', '2024-04-15', '2024-04-25', 'Entregado', 'tarjeta', 120.30, '45678901D'),
+('alejandro.perez@email.com', '2024-05-20', '2024-05-30', 'En Proceso', 'bizum', 90.25, '56789012E');
 
 
-INSERT INTO `CLIENTES` (`dni`,`nombre`, `calle`,`ciudad`,`cp`, `email`) VALUES
-('12345678A', 'Juan Pérez García','Calle 1', 'Ciudad A', '12345', 'juan.perez@email.com'),
-('23456789B', 'María Rodríguez López','Calle 2', 'Ciudad B', '23456', 'maria.rodriguez@email.com'),
-('34567890C', 'Carlos Martínez Ruiz','Calle 3', 'Ciudad C', '34567', 'carlos.martinez@email.com'),
-('45678901D', 'Laura González Sánchez','Calle 4', 'Ciudad D', '45678', 'laura.gonzalez@email.com'),
-('56789012E', 'Alejandro Pérez Rodríguez','Calle 5', 'Ciudad E', '56789', 'alejandro.perez@email.com');
+
 
 
 -- Insertamos categorias que no tienen categoria padre sin especificar este.
@@ -145,7 +140,7 @@ VALUES
 
 -- Insertamos las tallas y su stock correspondiente para cada producto
 INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES 
-(1,'S',3),
+(1,'S',10),
 (2,'S',2),
 (3,'S',5),
 (4,'S',4),
@@ -165,24 +160,27 @@ INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES
 
 -- Insertamos datos de ejemplo en la tabla Pedido-Producto, que relacionará los productos con sus correspondientes pedidos
 
-INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
-(1,4,35,1),
-(1,5,35,1),
-(2,7,25,1),
-(2,1,30,1),
-(2,2,30,1),
-(3,2,30,3);
+INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`cantidad`,`talla`) VALUES 
+(1,4,2,'S'),
+(1,4,2,'M'),
+(1,4,1,'L'),
+(1,5,2,'L'),
+(1,5,3,'M'),
+(1,5,1,'S'),
+(2,7,1,null),
+(2,2,1,'S'),
+(3,2,2,'M');
 
-INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
-(1,8,35,1),
-(1,9,35,1),
-(2,11,25,1),
-(2,8,30,1),
-(2,9,30,1),
-(3,9,30,3);
+-- INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
+-- (1,8,35,1),
+-- (1,9,35,1),
+-- (2,11,25,1),
+-- (2,8,30,1),
+-- (2,9,30,1),
+-- (3,9,30,3);
 -- Insertamos datos en la tabla comentario relacionada con la tabla producto
 
-INSERT INTO `COMENTARIO` (`idCliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
-('23456789B', 10, 4,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
-('45678901D', 10, 5,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
-('12345678A', 9, '5','Este gorro de punto es increíblemente cálido y cómodo. Me encanta su diseño clásico y la calidad del tejido. ¡Es perfecto para mantenerme abrigado durante los días fríos de invierno! Definitivamente recomendaría este gorro a cualquiera que busque estilo y funcionalidad.' );
+INSERT INTO `COMENTARIO` (`cliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
+('María Rodríguez López', 1, 4,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
+('Laura González Sánchez', 1, 5,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),
+('Juan Pérez García', 7, '5','Este gorro de punto es increíblemente cálido y cómodo. Me encanta su diseño clásico y la calidad del tejido. ¡Es perfecto para mantenerme abrigado durante los días fríos de invierno! Definitivamente recomendaría este gorro a cualquiera que busque estilo y funcionalidad.' );
