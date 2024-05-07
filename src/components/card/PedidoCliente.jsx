@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+import styles from "./styles.module.css";
 import { Promise } from "es6-promise";
 import loadProduct from "@/libs/productos/loadProduct";
 
@@ -31,7 +31,7 @@ function ContenidoPedido({ dataProductos }) {
           key={index}
           className="d-flex flex-row gap-5 justify-content-between"
         >
-          <h6>{producto.nombre}</h6>
+          <h6 className={styles.title}>{producto.nombre}</h6>
           <div>
             <p>
               Color: <strong>{producto.color}</strong>

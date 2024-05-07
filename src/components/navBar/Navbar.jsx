@@ -18,6 +18,9 @@ export default async function Navbar() {
         </Link>
         <nav className={styles.nav}>
           <div className="d-flex flex-row gap-4 me-5">
+            <Link href={"/"} className={`fw-bold ${styles.linkNav}`}>
+              Home
+            </Link>
             <Link href="/auth/register" className={styles.linkNav}>
               Registrarse
             </Link>
