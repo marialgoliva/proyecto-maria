@@ -6,6 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import Spinner from "react-bootstrap/Spinner";
 import { checkForm, checkFormProducto } from "@/libs/utils";
+import { useCart } from "@/context/CartContext";
 
 function ProductForm() {
   const [product, setProduct] = useState({
@@ -16,6 +17,7 @@ function ProductForm() {
     precio: "",
     imagen: "",
   });
+  const { setUpdatedProduct } = useCart();
 
   const [image, setImage] = useState(null);
   const form = useRef(null);
@@ -58,7 +60,6 @@ function ProductForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    console.log("product :>> ", product);
     const check = checkFormProducto(product);
     if (check.valido) {
       setShowAlert(false);
@@ -87,6 +88,7 @@ function ProductForm() {
         });
       }
       setLoading(false);
+      setUpdatedProduct(true);
       router.push("/admin/products");
       router.refresh();
     } else {
