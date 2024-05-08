@@ -34,13 +34,14 @@ async function ProductPage({ params }) {
         {comentarios && (
           <div className="d-flex row justify-content-center align-items-center m-5">
             {comentarios.map(async (comentario) => {
-              const data = await getNombreCliente(comentario.idCliente);
+              // const data = await getNombreCliente(comentario.idCliente);
+
               return (
                 <div
                   className="w-75 rounded p-4 m-2 ms-5"
                   key={comentario.idComentario}
                 >
-                  <h6>{data.nombre}</h6>
+                  <h6>{comentario.cliente}</h6>
                   <Starts puntuacion={comentario.puntuacion} />
                   <p> {comentario.texto} </p>
                 </div>
