@@ -16,5 +16,5 @@ Utiliza  "show tables;"  para ver las tablas creadas.
 "decribe nombre_tabla;"  para ver los campos de cada tabla.
 "select * from nombre_tabla;"  para ver los datos que contiene la tabla.
 Para eliminar la base de datos  "drop database nombre_basededatos;"
-Para cambiar de base de datos  "use Nombre_BD;"
+Para cambiar de base de datos  "use nombre_basededatos;"
 

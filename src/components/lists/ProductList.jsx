@@ -6,20 +6,6 @@ import ViewButton from "../buttons/ViewButton";
 import EditButton from "../buttons/EditButton";
 
 function ProductList({ products }) {
-  // const [productList, setProductList] = useState(products);
-
-  // const handleDeleteProduct = async (productId) => {
-  //   try {
-  //     await axios.delete(`/api/products/${productId}`);
-  //     const updatedProductList = productList.filter(
-  //       (product) => product.idProducto !== productId,
-  //     );
-  //     setProductList(updatedProductList);
-  //   } catch (error) {
-  //     console.error("Error al eliminar el producto:", error);
-  //   }
-  // };
-
   return (
     <div className={styles.tableContainer}>
       <Table striped hover className="w-75">

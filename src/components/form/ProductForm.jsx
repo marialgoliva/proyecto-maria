@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import Spinner from "react-bootstrap/Spinner";
-import { checkForm, checkFormProducto } from "@/libs/utils";
+import { checkFormProducto } from "@/libs/utils";
 import { useCart } from "@/context/CartContext";
 
 function ProductForm() {

@@ -1,6 +1,7 @@
 "use client";
 import { MdEdit } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function EditButton({ id, type }) {
   const router = useRouter();

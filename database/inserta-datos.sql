@@ -4,18 +4,8 @@ USE PROYECTO_TEST;
 ALTER DATABASE PROYECTO_TEST CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- Configuramos la codificación de caracteres para no tener problemas al insertar los datos
 
--- INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@gmail.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
 
 -- -- Insertamos otros datos de usuario
-
--- INSERT INTO `USUARIO` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) 
--- VALUES 
--- ('12345678A', 'Juan', 'Pérez García', 'juan.perez@email.com', 'juanperez', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
--- ('23456789B', 'María', 'Rodríguez López', 'maria.rodriguez@email.com', 'mariarod', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
--- ('34567890C', 'Carlos', 'Martínez Ruiz', 'carlos.martinez@email.com', 'carlosmr', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
--- ('45678901D', 'Laura', 'González Sánchez', 'laura.gonzalez@email.com', 'laurags', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user'),
--- ('56789012E', 'Alejandro', 'Pérez Rodríguez', 'alejandro.perez@email.com', 'alejandrop', '$2b$10$YBvkE6le2Pn.D7jdfHjb5eZ9rA61EllOjT2VEh6eoaNGDM7CyJbam','user');
-
 
 INSERT INTO `USUARIOS` (`dni`, `nombre`, `apellidos`, `email`, `username`, `password`, `rol`) VALUES ('76088478a', 'María', 'Ladrón de Guevara', 'admin@email.com', 'maria_admin', '$2b$10$srBMGktnnwF0JP4EQJdXb.NzFofKsF7iEAUicMg2gVbTQ0A3WptQy', 'admin');
 
@@ -29,13 +19,6 @@ VALUES
 
 -- Insertamos datos en la tabla cliente
 
--- INSERT INTO `CLIENTE` (`dni`, `calle`,`ciudad`,`cp`) VALUES
--- ('12345678A', 'Calle 1', 'Ciudad A', '12345'),
--- ('23456789B', 'Calle 2', 'Ciudad B', '23456'),
--- ('34567890C', 'Calle 3', 'Ciudad C', '34567'),
--- ('45678901D', 'Calle 4', 'Ciudad D', '45678'),
--- ('56789012E', 'Calle 5', 'Ciudad E', '56789');
-
 INSERT INTO `CLIENTES` (`email`, `calle`,`ciudad`,`cp`, `nombre` ,`dni`) VALUES
 ('juan.perez@email.com', 'Calle 1', 'Ciudad A', '12345', 'Juan Pérez García', '12345678A'),
 ('maria.rodriguez@email.com', 'Calle 2', 'Ciudad B', '23456', 'María Rodríguez López', '23456789B'),
@@ -45,22 +28,12 @@ INSERT INTO `CLIENTES` (`email`, `calle`,`ciudad`,`cp`, `nombre` ,`dni`) VALUES
 
 -- Insertamos datos en la tabla pedido
 
--- INSERT INTO `PEDIDO` (`idCliente`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`) VALUES 
--- ('12345678A', '2024-01-01', '2024-01-10', 'En Proceso', 'Transferencia', 150.00),
--- ('23456789B', '2024-02-05', '2024-02-15', 'Entregado', 'Bizum', 200.50),
--- ('34567890C', '2024-03-10', '2024-03-20', 'En Proceso', 'Mano', 75.80),
--- ('45678901D', '2024-04-15', '2024-04-25', 'Entregado', 'Transferencia', 120.30),
--- ('56789012E', '2024-05-20', '2024-05-30', 'En Proceso', 'Bizum', 90.25);
-
 INSERT INTO `PEDIDOS` (`email`,`fechaPedido`,`fechaEntrega`,`estado`,`tipoPago`,`importeTotal`,`idCliente`) VALUES 
 ('juan.perez@email.com', '2024-01-01', '2024-01-10', 'En Proceso', 'tarjeta', 150.00, '12345678A'),
 ('maria.rodriguez@email.com', '2024-02-05', '2024-02-15', 'Entregado', 'bizum', 200.50, '23456789B'),
 ('carlos.martinez@email.com', '2024-03-10', '2024-03-20', 'En Proceso', 'efectivo', 75.80, '34567890C'),
 ('laura.gonzalez@email.com', '2024-04-15', '2024-04-25', 'Entregado', 'tarjeta', 120.30, '45678901D'),
 ('alejandro.perez@email.com', '2024-05-20', '2024-05-30', 'En Proceso', 'bizum', 90.25, '56789012E');
-
-
-
 
 
 -- Insertamos categorias que no tienen categoria padre sin especificar este.
@@ -139,6 +112,7 @@ VALUES
 );
 
 -- Insertamos las tallas y su stock correspondiente para cada producto
+
 INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES 
 (1,'S',10),
 (2,'S',2),
@@ -170,15 +144,6 @@ INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`cantidad`,`talla`) VALUE
 (2,7,1,null),
 (2,2,1,'S'),
 (3,2,2,'M');
-
--- INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`precioUnitario`,`cantidad`) VALUES 
--- (1,8,35,1),
--- (1,9,35,1),
--- (2,11,25,1),
--- (2,8,30,1),
--- (2,9,30,1),
--- (3,9,30,3);
--- Insertamos datos en la tabla comentario relacionada con la tabla producto
 
 INSERT INTO `COMENTARIO` (`cliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
 ('María Rodríguez López', 6, 4,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),

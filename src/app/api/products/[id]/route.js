@@ -35,6 +35,7 @@ export async function GET(request, { params }) {
 
 export async function DELETE(request, { params }) {
   try {
+    console.log("params.id :>> ", params.id);
     const result = await conn.query(
       "DELETE FROM PRODUCTO WHERE idProducto = ?",
       [params.id],

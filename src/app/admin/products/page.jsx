@@ -1,7 +1,6 @@
 import axios from "axios";
 import "@/styles/global.css";
 import ProductList from "@/components/lists/ProductList";
-import Link from "next/link";
 import BackButton from "@/components/buttons/BackButton";
 
 async function loadProducts() {
