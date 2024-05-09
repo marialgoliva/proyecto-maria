@@ -8,6 +8,15 @@ import Spinner from "react-bootstrap/Spinner";
 import { checkFormProducto } from "@/libs/utils";
 import { useCart } from "@/context/CartContext";
 
+/**
+ * Componente de formulario para agregar o actualizar un producto.
+ *
+ * @component
+ * @example
+ * return (
+ *   <ProductForm />
+ * )
+ */
 function ProductForm() {
   const [product, setProduct] = useState({
     nombre: "",
@@ -75,7 +84,7 @@ function ProductForm() {
       }
 
       if (!params.id) {
-        await axios.post("/api/products", formData, {
+        const { data } = await axios.post("/api/products", formData, {
           headers: {
             "Content-type": "multipart/form-data",
           },

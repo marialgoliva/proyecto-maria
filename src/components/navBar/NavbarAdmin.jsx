@@ -2,7 +2,15 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
+/**
+ * Componente de barra de navegación para el panel de administración.
+ *
+ * @component
+ * @example
+ * return (
+ *   <NavbarAdmin />
+ * )
+ */
 function NavbarAdmin() {
   return (
     <>

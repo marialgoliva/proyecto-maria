@@ -1,3 +1,4 @@
+//Configuración para poder subir imágenes a Cloudinary
 import { v2 as cloudinary } from "cloudinary";
 cloudinary.config({
   cloud_name: "dfx2u327l",

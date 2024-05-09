@@ -8,13 +8,24 @@ import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "react-hot-toast";
 import "@/styles/global.css";
 
+// Metadata para el sitio web
 export const metadata = {
   title: "Mi tienda online",
   description: "Descubre productos hechos a mano para el día a día",
 };
 
+/**
+ * Componente RootLayout que envuelve todo el contenido de la aplicación.
+ *
+ * @param {Object} props - Las propiedades del componente.
+ * @param {React.ReactNode} props.children - Los componentes hijos.
+ * @returns {JSX.Element} El componente RootLayout que envuelve todo el contenido de la aplicación.
+ */
 export default async function RootLayout({ children }) {
+  // Obtenemos la sesión del servidor
   const session = await getServerSession(authOptions);
+
+  // Devolvemos el componente RootLayout
   return (
     <html lang="en">
       <body>

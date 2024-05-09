@@ -3,28 +3,44 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import ContenidoPedido from "@/components/card/ContenidoPedido";
 
+/**
+ * Carga un pedido específico.
+ *
+ * @param {string} id - El ID del pedido.
+ * @returns {Promise<Object>} El pedido.
+ */
 async function cargarPedido(id) {
-  const { data } = await axios.get(`http://localhost:3000/api/pedidos/${id}`);
+  const { data } = await axios.get(`${process.env.BASE_URL}/api/pedidos/${id}`);
   return data;
 }
 
-// async function getNombre(id) {
-//   const { data } = await axios.get(`http://localhost:3000/api/usuarios/${id}`);
-//   return data;
-// }
-
+/**
+ * Obtiene el nombre del cliente.
+ *
+ * @param {string} id - El ID del cliente.
+ * @returns {Promise<Object>} Los datos del cliente.
+ */
 async function getNombreCliente(id) {
   try {
-    const { data } = await axios.get(`http://localhost:3000/api/cliente/${id}`);
+    const { data } = await axios.get(
+      `${process.env.BASE_URL}/api/cliente/${id}`,
+    );
     return data;
   } catch (e) {
     console.log(e);
   }
 }
+
+/**
+ * Obtiene los productos de un pedido específico.
+ *
+ * @param {string} id - El ID del pedido.
+ * @returns {Promise<Object>} Los productos del pedido.
+ */
 async function getProductos(id) {
   try {
     const { data } = await axios.get(
-      `http://localhost:3000/api/producto-pedido/${id}`,
+      `${process.env.BASE_URL}/api/producto-pedido/${id}`,
     );
     return data;
   } catch (e) {
@@ -33,6 +49,13 @@ async function getProductos(id) {
   }
 }
 
+/**
+ * Componente de página de pedido que muestra los detalles de un pedido.
+ *
+ * @param {Object} params - Los parámetros del pedido.
+ * @param {string} params.id - El ID del pedido.
+ * @returns {JSX.Element} El componente de la página de pedido.
+ */
 async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
   const data = await getNombreCliente(pedido.idCliente);

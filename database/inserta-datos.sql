@@ -138,12 +138,14 @@ INSERT INTO `PEDIDO_PRODUCTO` (`idPedido`,`idProducto`,`cantidad`,`talla`) VALUE
 (1,4,2,'S'),
 (1,4,2,'M'),
 (1,4,1,'L'),
-(1,5,2,'L'),
-(1,5,3,'M'),
-(1,5,1,'S'),
 (2,7,1,null),
 (2,2,1,'S'),
-(3,2,2,'M');
+(3,2,2,'M'),
+(4,5,2,'L'),
+(4,5,3,'M'),
+(4,5,1,'S'),
+(5,6,1,null),
+(5,7,3,null);
 
 INSERT INTO `COMENTARIO` (`cliente`,`idProducto`,`puntuacion`,`texto`) VALUES 
 ('María Rodríguez López', 6, 4,'¡Me encanta mi nuevo bolso de mano! Es justo lo que estaba buscando: elegante, espacioso y de excelente calidad. Además, el diseño es tan versátil que combina perfectamente con cualquier atuendo. ¡Definitivamente mi bolso favorito para llevar a todas partes!'),

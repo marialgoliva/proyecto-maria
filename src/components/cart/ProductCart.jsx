@@ -1,9 +1,17 @@
 "use client";
+
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import styles from "./styles.module.css";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
-
+/**
+ * Componente que representa un producto en el carrito.
+ *
+ * @component
+ * @param {Object} props - Las propiedades del componente.
+ * @param {Object} props.product - La información del producto.
+ * @returns {JSX.Element} El elemento del producto en el carrito.
+ */
 function ProductCart({ product }) {
   const { addQuantity, reduceQuantity } = useCart();
 

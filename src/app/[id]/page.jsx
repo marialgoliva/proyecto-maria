@@ -2,25 +2,36 @@ import BackButton from "@/components/buttons/BackButton";
 import ImageCard from "@/components/card/ImageCard";
 import InfoCard from "@/components/card/InfoCard";
 import Starts from "@/components/stars";
-import { getNombreCliente } from "@/libs/clientes/getNombreCliente";
 import { getComentarios } from "@/libs/comentarios/getComentarios";
 import loadProduct from "@/libs/productos/loadProduct";
 import getStock from "@/libs/stock/getStock";
 
+/**
+ * Componente de página de producto que muestra detalles de un producto específico.
+ *
+ * @param {Object} props - Las propiedades del componente.
+ * @param {Object} props.params - Los parámetros de la ruta, incluyendo el ID del producto.
+ * @returns {JSX.Element} El componente de la página de producto.
+ */
 async function ProductPage({ params }) {
   const stock = [];
 
   try {
     const product = await loadProduct(params.id);
-    const stockProducto = await getStock(params.id);
     const comentarios = await getComentarios(params.id);
-
-    stockProducto.map((element) => {
-      stock.push({
-        talla: element.talla,
-        stock: element.stock,
-      });
-    });
+    try {
+      const stockProducto = await getStock(params.id);
+      if (stockProducto && stockProducto.length > 0) {
+        stockProducto.map((element) => {
+          stock.push({
+            talla: element.talla,
+            stock: element.stock,
+          });
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
 
     return (
       <div>
@@ -34,8 +45,6 @@ async function ProductPage({ params }) {
         {comentarios && (
           <div className="d-flex row justify-content-center align-items-center m-5">
             {comentarios.map(async (comentario) => {
-              // const data = await getNombreCliente(comentario.idCliente);
-
               return (
                 <div
                   className="w-75 rounded p-4 m-2 ms-5"
@@ -52,6 +61,7 @@ async function ProductPage({ params }) {
       </div>
     );
   } catch (e) {
+    console.log(e);
     return <h1 className="text-center">Producto no encontrado</h1>;
   }
 }

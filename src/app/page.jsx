@@ -4,11 +4,26 @@ import ProductCard from "@/components/card/ProductCard";
 import Spinner from "react-bootstrap/Spinner";
 import { useCart } from "@/context/CartContext";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
+/**
+ * Componente HomePage que muestra los productos en el carrito y un spinner si los productos están cargando.
+ *
+ * @returns {JSX.Element} Un fragmento de React que muestra un spinner si los productos están cargando y los productos en el carrito.
+ */
 function HomePage() {
+  // Usamos el hook useSession para obtener la sesión del usuario
   const session = useSession();
   const { products, loading, setUser } = useCart();
-  setUser(session.data?.user.email);
+  useEffect(() => {
+    // Usamos el hook useCart para obtener los productos, el estado de carga y la función setUser
+
+    // Usamos la función setUser para establecer el usuario en el contexto del carrito
+
+    setUser(session.data?.user.email);
+  }, [session, setUser]);
+
+  // Devolvemos un fragmento de React que muestra un spinner si los productos están cargando y los productos en el carrito
   return (
     <>
       {loading && (

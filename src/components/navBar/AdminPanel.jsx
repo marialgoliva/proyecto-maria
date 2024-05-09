@@ -2,7 +2,12 @@
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import SimpleCard from "../card/Card";
-
+/**
+ * Componente que representa el panel de administración para el usuario administrador.
+ *
+ * @component
+ * @returns {JSX.Element} El panel de administración.
+ */
 function AdminPanel() {
   const router = useRouter();
   const signOutHandler = () => {

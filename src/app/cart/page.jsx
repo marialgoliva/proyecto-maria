@@ -5,45 +5,72 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BsShop } from "react-icons/bs";
 import Link from "next/link";
-import { sendCart } from "@/libs/stock/checkout/sendCart";
+import { sendCart } from "@/libs/checkout/sendCart";
 import { checkForm } from "@/libs/utils";
-
+/**
+ * Página del carrito de compras.
+ * @returns {JSX.Element} La página del carrito de compras.
+ */
 function CartPage() {
+  // Usa el contexto del carrito para obtener los productos en el carrito
   const { cart } = useCart();
+
+  // Calcula el precio total de los productos en el carrito
   const totalPrice = cart.reduce(
     (total, item) => total + item.precio * item.cantidad,
     0,
   );
+
+  // Usa el router de Next.js para la navegación
   const router = useRouter();
+
+  // Define el estado para los datos del cliente, la alerta y el mensaje de la alerta
   const [dataCliente, setDataCliente] = useState({});
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
+  /**
+   * Maneja el pago del carrito.
+   * @param {Array} cart - El carrito de compras.
+   * @param {Object} dataCliente - Los datos del cliente.
+   */
   const handlePay = async (cart, dataCliente) => {
+    // Verifica los datos del formulario
     const check = checkForm(dataCliente);
     if (check.valido) {
+      // Prepara el cuerpo de la solicitud
       const requestBody = {
         cart: cart,
         dataCliente: dataCliente,
       };
+      // Envía el carrito al servidor
       const res = await sendCart(requestBody);
       const session = await res.json();
+      // Navega a la URL de la sesión
       router.push(session.url);
     } else {
+      // Muestra una alerta si los datos del formulario no son válidos
       setShowAlert(true);
       setAlertMessage(check.mensaje);
     }
   };
 
+  /**
+   * Maneja el cambio en los campos del formulario.
+   * @param {Event} e - El evento del cambio.
+   */
   const onChange = (e) => {
+    // Oculta la alerta
     setShowAlert(false);
     setAlertMessage("");
+    // Actualiza los datos del cliente
     setDataCliente({
       ...dataCliente,
       [e.target.name]: e.target.value,
     });
   };
 
+  // Renderiza la página del carrito de compras
   return (
     <div className="w-100 d-flex justify-content-center">
       {cart.length > 0 ? (

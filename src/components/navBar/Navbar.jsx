@@ -6,7 +6,11 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "../buttons/SignOutButton";
 
 import ButtonCart from "../cart/ButtonCart";
-
+/**
+ * Componente de la barra de navegación.
+ *
+ * @returns {JSX.Element} El elemento de la barra de navegación.
+ */
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
 

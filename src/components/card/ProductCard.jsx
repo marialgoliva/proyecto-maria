@@ -1,24 +1,19 @@
 "use client";
 import { FaClipboardList } from "react-icons/fa";
-// import { MdShoppingCart } from "react-icons/md";
 import Link from "next/link";
 import DeleteButton from "../buttons/DeleteButton";
 import EditButton from "../buttons/EditButton";
 import styles from "./styles.module.css";
-// import { useCart } from "../cart/CartContext";
-
+/**
+ * Componente que representa una tarjeta de producto.
+ *
+ * @component
+ * @param {Object} props - Las propiedades del componente.
+ * @param {Object} props.product - Los datos del producto.
+ * @param {boolean} props.editable - Indica si el producto es editable.
+ * @returns {JSX.Element} La tarjeta de producto.
+ */
 function ProductCard({ product, editable }) {
-  // const { addToCart } = useCart();
-
-  // const handleAddToCart = () => {
-  //   if (product.)
-  //   const updateProduct = {
-  //     ...product,
-  //     cantidad: 1,
-  //   };
-  //   addToCart(updateProduct);
-  // };
-
   return (
     <Link
       className="text-decoration-none text-body"
@@ -34,11 +29,6 @@ function ProductCard({ product, editable }) {
 
           <p className={styles.price}>{product.precio} €</p>
         </div>
-        {/* <div>
-        <button className={styles.button} onClick={handleAddToCart}>
-          <MdShoppingCart className={styles.shoppingcart} />
-        </button>
-      </div> */}
 
         {editable && (
           <div className="border-top border-secondary pt-3 w-100">

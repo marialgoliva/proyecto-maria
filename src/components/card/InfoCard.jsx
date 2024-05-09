@@ -3,7 +3,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import styles from "./styles.module.css";
-
+/**
+ * Componente de tarjeta de información.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {Object} props.product - Objeto que representa el producto.
+ * @param {Array} props.stock - Array que contiene el stock del producto.
+ * @returns {JSX.Element} Elemento JSX que representa la tarjeta de información.
+ */
 function InfoCard({ product, stock }) {
   const { descripcion, nombre, precio, color } = product;
   const [tallaElegida, setTallaElegida] = useState();
@@ -38,10 +46,10 @@ function InfoCard({ product, stock }) {
   };
 
   const handleAddToCart = (productoElegido) => {
-    if (stock[0].talla === "null") {
+    if (stock[0].talla === null) {
       const updateProduct = {
         ...productoElegido,
-        talla: "null",
+        talla: null,
       };
       setProductoElegido(updateProduct);
       addToCart(productoElegido);
@@ -55,7 +63,6 @@ function InfoCard({ product, stock }) {
       }
     }
   };
-  console.log("productoElegido despues :>> ", productoElegido);
 
   return (
     <div className="rounded p-4 bg-light d-flex row justify-content-between pt-5">
@@ -98,8 +105,8 @@ function InfoCard({ product, stock }) {
               })}
           </div>
           <p className={styles.fontTiny}>
-            Si aparece stock disponible, se confeccionará el producto para ti
-            por lo que los plazos de entrega pueden aumentar.
+            Si no hay stock disponible, se confeccionará el producto para ti por
+            lo que los plazos de entrega pueden aumentar.
           </p>
           {stock.length > 1 && (
             <Link

@@ -5,23 +5,15 @@ import ViewButton from "../buttons/ViewButton";
 import EditButton from "../buttons/EditButton";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
-
+/**
+ * Componente que muestra una lista de pedidos.
+ *
+ * @component
+ * @param {Object[]} pedidos - La lista de pedidos a mostrar.
+ * @returns {JSX.Element} El componente ListaPedidos.
+ */
 function ListaPedidos({ pedidos }) {
   dayjs.locale("es");
-
-  // const [listaPedidos, setlistaPedidos] = useState(pedidos);
-
-  // const handleDeleteProduct = async (idPedido) => {
-  //   try {
-  //     await axios.delete(`/api/pedidos/${idPedido}`);
-  //     const updatedlistaPedidos = listaPedidos.filter(
-  //       (product) => product.idPedido !== idPedido,
-  //     );
-  //     setlistaPedidos(updatedlistaPedidos);
-  //   } catch (error) {
-  //     console.error("Error al eliminar el producto:", error);
-  //   }
-  // };
 
   return (
     <div className={styles.tableContainer}>

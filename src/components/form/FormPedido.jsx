@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
@@ -8,6 +9,15 @@ import "dayjs/locale/es";
 import { FaClipboardList } from "react-icons/fa";
 import Link from "next/link";
 
+/**
+ * Componente de formulario para editar o crear un pedido.
+ *
+ * @component
+ * @example
+ * return (
+ *   <FormPedido />
+ * )
+ */
 function FormPedido() {
   const [pedido, setPedido] = useState({
     idPedido: "",
@@ -23,6 +33,12 @@ function FormPedido() {
   const router = useRouter();
   const params = useParams();
 
+  /**
+   * Maneja el evento de cambio en los inputs.
+   *  Actualiza el estado del pedido.
+   *
+   * @param {Object} e - Evento de cambio en los inputs.
+   */
   const handleChange = (e) => {
     setPedido({
       ...pedido,
@@ -75,13 +91,13 @@ function FormPedido() {
     <div className={styles.formContainer}>
       <form className={styles.form} onSubmit={handleSubmit} ref={form}>
         <header className="mb-4 d-flex flex-row justify-content-between w-100">
-          <h1>Editar Pedido</h1>
+          <h1 className={styles.bigtitle}>Editar Pedido</h1>
           <Link className="text-reset m-2" href={"../"}>
             <FaClipboardList size={30} />
           </Link>
         </header>
         <label>
-          <h3>Id pedido:</h3>
+          <h3 className={styles.label}>Id pedido:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -95,7 +111,7 @@ function FormPedido() {
         />
 
         <label>
-          <h3>Cliente:</h3>
+          <h3 className={styles.label}>Cliente:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -108,7 +124,7 @@ function FormPedido() {
         />
 
         <label>
-          <h3>Tipo de pago</h3>
+          <h3 className={styles.label}>Tipo de pago</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -122,7 +138,7 @@ function FormPedido() {
         />
 
         <label>
-          <h3>Fecha de creación del pedido:</h3>
+          <h3 className={styles.label}>Fecha de creación del pedido:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -137,7 +153,7 @@ function FormPedido() {
         <hr></hr>
 
         <label>
-          <h3>Fecha de entrega:</h3>
+          <h3 className={styles.label}>Fecha de entrega:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -149,7 +165,7 @@ function FormPedido() {
         />
 
         <label>
-          <h3>Estado del pedido:</h3>
+          <h3 className={styles.label}>Estado del pedido:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}
@@ -161,7 +177,7 @@ function FormPedido() {
         />
 
         <label>
-          <h3>Importe total:</h3>
+          <h3 className={styles.label}>Importe total:</h3>
         </label>
         <input
           className={"row my-3 col-10 p-2 rounded"}

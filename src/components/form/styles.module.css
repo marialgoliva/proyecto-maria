@@ -24,6 +24,12 @@
     font-family: 'Ubuntu Sans Mono';
 }
 
+.label{
+    font-family: 'Ubuntu Sans Mono';
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
 .bigtitle{
     font-family: 'Ubuntu Sans Mono';
     font-size: 25px;

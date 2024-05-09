@@ -1,4 +1,6 @@
+const { default: App } = require("next/app");
 const { authOptions } = require("./auth/[...nextauth]/route");
+const { getServerSession } = require("next-auth");
 
 // Obtener la sesión del servidor
 const serverSession = await getServerSession(authOptions);

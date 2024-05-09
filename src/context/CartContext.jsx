@@ -1,12 +1,29 @@
+/**
+ * Archivo: CartContext.jsx
+ * Descripción: Este archivo contiene la implementación del contexto y el proveedor del carrito de compras.
+ * Proporciona funciones y estados relacionados con la gestión de productos y el carrito.
+ */
+
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-//1. Crear el contexto
+//Crear el contexto
 export const CartContext = createContext();
 
-//2. Crear el provider
-
+//Crear el provider
+/**
+ * Función que se encarga de manejar el estado de los productos y el carrito
+ * @param {Object} children - Componentes hijos
+ * @returns {Object} - Componente Provider
+ * @example
+ * return (
+ * <CartProvider>
+ * <App />
+ * </CartProvider>
+ * )
+ *
+ */
 export function CartProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [updatedProduct, setUpdatedProduct] = useState(false);
@@ -15,9 +32,9 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [contador, setContador] = useState(0);
   const storedProducts =
-    typeof window !== "undefined" ? localStorage.getItem("products") : ""; //Evitamos el mensaje de error cuando no estamos en el entorno del navegador
+    typeof window !== "undefined" ? localStorage.getItem("products") : ""; //Evitar el mensaje de error cuando no  se esta en el entorno del navegador
 
-  //Obtenemos los productos de la base de datos
+  //Obtener los productos de la base de datos
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -30,6 +47,7 @@ export function CartProvider({ children }) {
       }
     }
     if (!storedProducts || updatedProduct) {
+      localStorage.removeItem("products");
       fetchProducts();
     } else {
       setProducts(JSON.parse(storedProducts));
@@ -37,37 +55,37 @@ export function CartProvider({ children }) {
     }
   }, [storedProducts, updatedProduct]);
 
-  //Guardamos los productos en el localStorage
+  //Guardar los productos en el localStorage
   useEffect(() => {
     if (products.length !== 0) {
       localStorage.setItem("products", JSON.stringify(products));
     }
   }, [products]);
 
-  //Obtenemos el carrito almacenado en el localStorage, y los seteamos en el carrito
+  //Obtener el carrito almacenado en el localStorage, y setearlo en el estado
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
-    // const storedProductsInCart = localStorage.getItem("productsInCart");
     if (storedCart) {
       setCart(JSON.parse(storedCart));
-      // setContador(JSON.parse(storedProductsInCart));
     }
   }, [user]);
 
-  //Obtenemos los productos del carrito los almacenamos en el localStorage
-  //Actualizamos el contador
+  //Obtener los productos del carrito los almacenamos en el localStorage
+  //Actualizar el contador
   useEffect(() => {
     if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
-
-      // localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
     } else {
-      //Si el carrito está vacío lo eliminamos del localStorage
+      //Si el carrito está vacío se elimina del localStorage
       localStorage.removeItem("cart");
     }
     setContador(cart.reduce((total, item) => total + item.cantidad, 0));
   }, [cart, user]);
 
+  /**
+   * Función para añadir un producto al carrito
+   * @param {Object} product - Producto a añadir
+   */
   const addToCart = (product) => {
     console.log("producto que vamos a añadir en el carrito", product);
     // Verificar si el producto ya está en el carrito
@@ -78,7 +96,6 @@ export function CartProvider({ children }) {
 
     if (existingProductIndex > -1) {
       // Si el producto ya está en el carrito, aumentar la cantidad
-
       const updatedCart = [...cart];
       const cantidadNueva =
         updatedCart[existingProductIndex].cantidad + product.cantidad;
@@ -94,27 +111,26 @@ export function CartProvider({ children }) {
       setCart(updatedCart);
     }
     toast.success("Producto añadido al carrito.");
-    // const productsNumber = productsInCart;
-    // setContador(productsNumber + 1);
   };
+
+  /**
+   * Función para eliminar un producto del carrito
+   * @param {string} productId - ID del producto a eliminar
+   */
   const removeFromCart = (productId) => {
     // Verificar si el producto ya está en el carrito
     const updatedCart = cart
       .map((item) => {
         if (item.idProducto === productId) {
-          // Si el ID coincide, verifica si la cantidad es mayor que 1
           if (item.cantidad > 1) {
-            // Si la cantidad es mayor que la cantidad a reducir, reduce la cantidad en 1
             return {
               ...item,
               cantidad: item.cantidad - 1,
             };
           } else {
-            // Si la cantidad es igual o menor que la cantidad a reducir, no lo incluyas en el nuevo array
-            return null; // Devuelve null para eliminar el producto del carrito
+            return null;
           }
         }
-        // Si el ID no coincide, incluye el producto en el nuevo array sin modificar
         return item;
       })
       .filter(Boolean); // Filtra los elementos nulos (productos eliminados)
@@ -122,14 +138,21 @@ export function CartProvider({ children }) {
     setCart(updatedCart);
 
     toast.success("Item removed from cart");
-    // const productsNumber = productsInCart;
-    // setContador(productsNumber - 1); // si se elimina un producto con cantidad 2 solo se resta uno.
   };
+
+  /**
+   * Función para vaciar el carrito
+   */
   const deleteCart = () => {
-    setCart([]); // Vaciamos el carrito
-    localStorage.removeItem("cart"); //Lo eliminamos del localStorage
-    setContador(0); // Reseteamos el contador de productos en el carrito
+    setCart([]); // Vaciar el carrito
+    localStorage.removeItem("cart"); //Eliminarlo del localStorage
+    setContador(0); // Resetear el contador de productos en el carrito
   };
+
+  /**
+   * Función para aumentar la cantidad de un producto en el carrito
+   * @param {Object} product - Producto al que se le aumentará la cantidad
+   */
   const addQuantity = (product) => {
     const existingProductIndex = cart.findIndex(
       (item) =>
@@ -140,6 +163,11 @@ export function CartProvider({ children }) {
     updatedCart[existingProductIndex].cantidad = cantidadNueva;
     setCart(updatedCart);
   };
+
+  /**
+   * Función para reducir la cantidad de un producto en el carrito
+   * @param {Object} product - Producto al que se le reducirá la cantidad
+   */
   const reduceQuantity = (product) => {
     const existingProductIndex = cart.findIndex(
       (item) =>
@@ -154,6 +182,7 @@ export function CartProvider({ children }) {
       setCart(updatedCart);
     }
   };
+
   return (
     <CartContext.Provider
       value={{
@@ -175,7 +204,7 @@ export function CartProvider({ children }) {
   );
 }
 
-//3. Crear use context hook
+//Crear use context hook
 export function useCart() {
   const context = useContext(CartContext);
   return context;

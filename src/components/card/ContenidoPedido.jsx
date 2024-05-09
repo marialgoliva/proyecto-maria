@@ -3,7 +3,13 @@ import React, { useState, useEffect } from "react";
 
 import { Promise } from "es6-promise";
 import loadProduct from "@/libs/productos/loadProduct";
-
+/**
+ * Componente que muestra el contenido de un pedido.
+ *
+ * @component
+ * @param {Object[]} dataProductos - Los datos de los productos del pedido.
+ * @returns {JSX.Element} El contenido del pedido.
+ */
 function ContenidoPedido({ dataProductos }) {
   const [productos, setProductos] = useState([]);
 

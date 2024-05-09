@@ -4,7 +4,13 @@ import Table from "react-bootstrap/Table";
 import DeleteButton from "../buttons/DeleteButton";
 import ViewButton from "../buttons/ViewButton";
 import EditButton from "../buttons/EditButton";
-
+/**
+ * Componente que muestra una lista de productos.
+ *
+ * @component
+ * @param {Object[]} products - La lista de productos a mostrar.
+ * @returns {JSX.Element} El componente de la lista de productos.
+ */
 function ProductList({ products }) {
   return (
     <div className={styles.tableContainer}>
@@ -40,7 +46,7 @@ function ProductList({ products }) {
                 {
                   <>
                     <EditButton type="productos" id={product.idProducto} />
-                    <DeleteButton idProducto={product.idProducto} />
+                    <DeleteButton type="productos" id={product.idProducto} />
                     <ViewButton type="productos" id={product.idProducto} />
                   </>
                 }

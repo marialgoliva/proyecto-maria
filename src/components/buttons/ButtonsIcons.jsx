@@ -4,19 +4,18 @@ import { MdDelete } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
+/**
+ * Componente botones de iconos
+ *
+ * @component
+ * @param {Object} props Propiedades del componente
+ * @param {string} props.idProducto ID del producto
+ * @returns {Object} Componente botones de iconos
+ */
 function ButtonsIcons({ idProducto }) {
   const router = useRouter();
   return (
     <>
-      {/* <button
-        className="btn border border-primary text-primary py-2 px-3 rounded"
-        onClick={(event) => {
-          event.preventDefault();
-          console.log(idProducto);
-        }}
-      >
-        Editar
-      </button> */}
       <button className="border-0 bg-transparent">
         <FaEye />
       </button>

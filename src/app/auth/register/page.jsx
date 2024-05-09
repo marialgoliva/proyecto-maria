@@ -3,9 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 function RegisterPage() {
+  //Define el estado del mensaje de error y el estado de éxito
   const [errorMessage, setErrorMessage] = useState();
   const [success, setSuccess] = useState(false);
   const {
@@ -15,12 +15,15 @@ function RegisterPage() {
   } = useForm();
 
   const router = useRouter();
-
+  //Función onSubmit que se ejecuta cuando se envía el formulario
   const onSubmit = handleSubmit(async (data) => {
+    //Limpia el mensaje de error
     setErrorMessage("");
+    //Comprueba si las contraseñas coinciden
     if (data.password !== data.cPass) {
       setErrorMessage("Las contraseñas no coinciden");
     } else {
+      //Intenta registrar al usuario con los datos proporcionados
       try {
         const res = await axios.post("/api/auth/register", {
           dni: data.dni,
@@ -30,19 +33,24 @@ function RegisterPage() {
           username: data.username,
           password: data.password,
         });
+        //Si el registro es exitoso, establece el estado de éxito a true
         if (res.status == 200) {
           setSuccess(true);
         }
+        //Si hay un error, establece el mensaje de error al mensaje de error proporcionado por el servidor
       } catch (e) {
         setErrorMessage(e.response.data.message);
       }
     }
   });
 
+  //Función onClick que se ejecuta cuando se hace clic en el botón de inicio de sesión
   const onClick = () => {
+    //Redirige al usuario a la página de inicio de sesión
     router.push("/auth/login");
     setSuccess(false);
   };
+  //Renderiza el formulario de registro
   return (
     <div className="d-flex justify-content-center w-100">
       {success ? (
@@ -58,6 +66,7 @@ function RegisterPage() {
       ) : (
         <form onSubmit={onSubmit} className="d-flex flex-column w-50 m-2 gap-4">
           <h2 className="bigtitle">Registrate para consultar tus pedidos</h2>
+          {/* Muestra el mensaje de error si hay un error */}
           {errorMessage && (
             <div>
               <div class="alert alert-warning mt-2 " role="alert">
@@ -69,6 +78,7 @@ function RegisterPage() {
           <input
             className="rounded p-2 border-1"
             type="text"
+            // Registra el campo de entrada DNI con las reglas de validación
             {...register("dni", {
               required: {
                 value: true,
@@ -82,6 +92,7 @@ function RegisterPage() {
             })}
             placeholder="Identificación (DNI/NIE)"
           />
+          {/* Muestra el mensaje de error si hay un error. Se realiza igual para el resto de campos.*/}
           {errors.dni && (
             <div>
               <div class="alert alert-warning mt-2 " role="alert">

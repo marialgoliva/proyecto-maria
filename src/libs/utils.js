@@ -1,3 +1,9 @@
+/**
+ * Formatea una fecha en el formato "YYYY-MM-DD".
+ *
+ * @param {Date} date - La fecha a formatear.
+ * @returns {string} La fecha formateada en el formato "YYYY-MM-DD".
+ */
 export function formatDate(date) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -12,6 +18,12 @@ export function formatDate(date) {
   );
 }
 
+/**
+ * Obtiene la fecha de entrega sumando 5 días a la fecha dada.
+ *
+ * @param {Date} date - La fecha de referencia.
+ * @returns {string} La fecha de entrega formateada como una cadena en el formato "YYYY-MM-DD".
+ */
 export function getFechaEntrega(date) {
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -31,6 +43,16 @@ export function getFechaEntrega(date) {
   return formattedFechaEntrega;
 }
 
+/**
+ * Verifica si todos los campos de un formulario están rellenos y realiza validaciones específicas.
+ * @param {Object} data - Los datos del formulario.
+ * @param {string} data.nombre - El nombre del usuario.
+ * @param {string} data.dni - El DNI del usuario.
+ * @param {string} data.calle - La calle del usuario.
+ * @param {string} data.cp - El código postal del usuario.
+ * @param {string} data.ciudad - La ciudad del usuario.
+ * @returns {Object} - Un objeto con dos propiedades: 'valido' indica si los datos son válidos y 'mensaje' contiene un mensaje descriptivo.
+ */
 export function checkForm(data) {
   const { nombre, dni, calle, cp, ciudad } = data;
 
@@ -61,6 +83,17 @@ export function checkForm(data) {
   return { valido: true, mensaje: "Todos los datos son válidos." };
 }
 
+/**
+ * Verifica si los campos de un formulario de producto están correctamente rellenados.
+ * @param {Object} data - Los datos del formulario de producto.
+ * @param {string} data.nombre - El nombre del producto.
+ * @param {string} data.descripcion - La descripción del producto.
+ * @param {string} data.color - El color del producto.
+ * @param {string} data.imagen - La imagen del producto.
+ * @param {string} data.categoria - La categoría del producto.
+ * @param {string} data.precio - El precio del producto.
+ * @returns {Object} - Un objeto con dos propiedades: 'valido' indica si los datos son válidos y 'mensaje' contiene un mensaje descriptivo.
+ */
 export function checkFormProducto(data) {
   const { nombre, descripcion, color, imagen, categoria, precio } = data;
 
@@ -72,8 +105,8 @@ export function checkFormProducto(data) {
     };
   }
 
-  // Verificar que la categoría sea un número entero
-  if (!Number.isInteger(parseInt(categoria))) {
+  // Verificar que la categoría sea un número entero positivo
+  if (!Number.isInteger(parseInt(categoria)) || parseInt(categoria) <= 0) {
     return {
       valido: false,
       mensaje: "La categoría debe ser un número entero.",

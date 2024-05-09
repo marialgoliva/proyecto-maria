@@ -1,9 +1,21 @@
+/**
+ * Importa NextResponse de next/server, conn de la base de datos MySQL,
+ * cloudinary para la gestión de imágenes, processImage para el procesamiento de imágenes
+ * y unlink para eliminar archivos.
+ */
 import { NextResponse } from "next/server";
 import { conn } from "../../../../../database/mysql";
 import cloudinary from "@/libs/cloudinary";
 import { processImage } from "@/libs/processImage";
 import { unlink } from "fs/promises";
 
+/**
+ * Controlador de ruta GET para obtener un producto específico.
+ *
+ * @param {import("next/server").NextRequest} request - La solicitud HTTP.
+ * @param {Object} params - Los parámetros de la ruta.
+ * @returns {Promise<import("next/server").NextResponse>} La respuesta HTTP.
+ */
 export async function GET(request, { params }) {
   try {
     const result = await conn.query(
@@ -33,9 +45,16 @@ export async function GET(request, { params }) {
   }
 }
 
+/**
+ * Controlador de ruta DELETE para eliminar un producto específico.
+ *
+ * @param {import("next/server").NextRequest} request - La solicitud HTTP.
+ * @param {Object} params - Los parámetros de la ruta.
+ * @returns {Promise<import("next/server").NextResponse>} La respuesta HTTP.
+ */
 export async function DELETE(request, { params }) {
+  console.log("params.id :>> ", params.id);
   try {
-    console.log("params.id :>> ", params.id);
     const result = await conn.query(
       "DELETE FROM PRODUCTO WHERE idProducto = ?",
       [params.id],
@@ -56,6 +75,7 @@ export async function DELETE(request, { params }) {
       status: 204,
     });
   } catch (error) {
+    console.log("error error error :>> ", error);
     return NextResponse.json(
       {
         message: error.message,
@@ -65,6 +85,13 @@ export async function DELETE(request, { params }) {
   }
 }
 
+/**
+ * Controlador de ruta PUT para actualizar un producto específico.
+ *
+ * @param {import("next/server").NextRequest} request - La solicitud HTTP.
+ * @param {Object} params - Los parámetros de la ruta.
+ * @returns {Promise<import("next/server").NextResponse>} La respuesta HTTP.
+ */
 export async function PUT(request, { params }) {
   try {
     const data = await request.formData();

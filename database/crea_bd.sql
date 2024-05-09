@@ -80,8 +80,7 @@ CREATE TABLE COMENTARIO (
 
 CREATE TABLE STOCK (
   	idProducto INT ,
-    talla VARCHAR(25) NOT NULL,
+    talla VARCHAR(25),
     stock INT NOT NULL,
-    PRIMARY KEY (idProducto,talla),
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto) ON DELETE CASCADE
 );

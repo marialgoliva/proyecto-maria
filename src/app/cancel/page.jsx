@@ -1,5 +1,10 @@
 "use client";
-
+/**
+ * @name Cancel
+ * @description Componente de cancelación de pedido
+ * return <Cancel />
+ * @returns {React.Component} <Cancel />
+ */
 function Cancel() {
   return (
     <div className=" text-center m-5 py-10 h-100 d-flex row justify-content-center align-items-center">
