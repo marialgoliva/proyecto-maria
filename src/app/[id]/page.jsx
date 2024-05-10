@@ -48,7 +48,7 @@ function ProductPage({ params }) {
 
   if (!product) {
     return (
-      <div className="d-flex justify-content-center mt-5">
+      <div className="d-flex justify-content-center mt-5 mtop">
         <Spinner animation="border" className="m-5" variant="secondary" />
       </div>
     );
@@ -57,7 +57,7 @@ function ProductPage({ params }) {
   return (
     <div>
       <div className="d-flex justify-content-center m-5">
-        <div className="d-flex w-75 gap-2">
+        <div className="d-flex w-xl-75 w-lg-50 gap-2 flex-sm-column flex-md-column flex-lg-row flex-column align-items-md-start align-items-lg-start align-items-center">
           <BackButton />
           <ImageCard product={product} />
           <InfoCard product={product} stock={stock} />

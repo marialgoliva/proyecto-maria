@@ -59,7 +59,7 @@ function LoginPage() {
 
   // Renderiza el formulario de inicio de sesión
   return (
-    <div className="d-flex justify-content-center w-100">
+    <div className="d-flex justify-content-center w-100 mtop">
       <form
         onSubmit={onSubmit}
         className="d-flex flex-column w-50 m-2 gap-2 w-1/4"

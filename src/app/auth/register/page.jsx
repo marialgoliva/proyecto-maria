@@ -52,7 +52,7 @@ function RegisterPage() {
   };
   //Renderiza el formulario de registro
   return (
-    <div className="d-flex justify-content-center w-100">
+    <div className="d-flex justify-content-center w-100 mtop">
       {success ? (
         <div className="m-4 d-flex flex-column gap-2">
           <h2 className="bigtitle">Usuario registrado con éxito</h2>

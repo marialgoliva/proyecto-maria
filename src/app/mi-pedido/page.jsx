@@ -45,9 +45,9 @@ async function OrderPage() {
           </h2>
           <div>
             {pedidosFiltrados.map((pedido, index) => (
-              <div key={index} className="m-5">
+              <div key={index} className="m-md-5 m-1">
                 <h4>#{pedido.id}</h4>
-                <div className="w-50 bg-light p-3 rounded shadow-sm ">
+                <div className="w-100 w-md-50 bg-light p-3 rounded shadow-sm ">
                   {/* Renderiza un componente PedidoCliente para cada pedido */}
                   <PedidoCliente dataProductos={pedido.infoPedido} />
                 </div>

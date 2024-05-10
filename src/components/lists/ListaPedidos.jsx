@@ -5,6 +5,8 @@ import ViewButton from "../buttons/ViewButton";
 import EditButton from "../buttons/EditButton";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import { isScreenSmall } from "@/libs/utils";
+
 /**
  * Componente que muestra una lista de pedidos.
  *
@@ -14,51 +16,88 @@ import "dayjs/locale/es";
  */
 function ListaPedidos({ pedidos }) {
   dayjs.locale("es");
-
-  return (
-    <div className={styles.tableContainer}>
-      <Table striped hover className="w-75">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Cliente</th>
-            <th>Email</th>
-            <th>Fecha entrante</th>
-            <th>Fecha entrega</th>
-            <th>Estado actual</th>
-            <th>Tipo de Pago</th>
-            <th>Importe total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pedidos.map((pedido) => (
-            <tr key={pedido.idPedido} className="col">
-              <td>{pedido.idPedido}</td>
-              <td>{pedido.idCliente}</td>
-              <td>{pedido.email}</td>
-              <td>
-                {dayjs(pedido.fechaPedido).locale("es").format("DD/MM/YYYY")}
-              </td>
-              <td>
-                {dayjs(pedido.fechaEntrega).locale("es").format("DD/MM/YYYY")}
-              </td>
-              <td>{pedido.estado}</td>
-              <td>{pedido.tipoPago}</td>
-              <td>{pedido.importeTotal}</td>
-              <td>
-                {
-                  <>
-                    <EditButton type="pedidos" id={pedido.idPedido} />
-                    <ViewButton type="pedidos" id={pedido.idPedido} />
-                  </>
-                }
-              </td>
+  if (isScreenSmall()) {
+    return (
+      <div className={styles.smallTable}>
+        <Table striped hover className="w-100">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha entrante</th>
+              <th>Fecha entrega</th>
+              <th>Más</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
-  );
+          </thead>
+          <tbody>
+            {pedidos.map((pedido) => (
+              <tr key={pedido.idPedido} className="col">
+                <td>{pedido.idCliente}</td>
+                <td>
+                  {dayjs(pedido.fechaPedido).locale("es").format("DD/MM/YYYY")}
+                </td>
+                <td>
+                  {dayjs(pedido.fechaEntrega).locale("es").format("DD/MM/YYYY")}
+                </td>
+                <td>
+                  {
+                    <>
+                      <EditButton type="pedidos" id={pedido.idPedido} />
+                      <ViewButton type="pedidos" id={pedido.idPedido} />
+                    </>
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.tableContainer}>
+        <Table striped hover className="w-75">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Cliente</th>
+              <th>Email</th>
+              <th>Fecha entrante</th>
+              <th>Fecha entrega</th>
+              <th>Estado actual</th>
+              <th>Tipo de Pago</th>
+              <th>Importe total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pedidos.map((pedido) => (
+              <tr key={pedido.idPedido} className="col">
+                <td>{pedido.idPedido}</td>
+                <td>{pedido.idCliente}</td>
+                <td>{pedido.email}</td>
+                <td>
+                  {dayjs(pedido.fechaPedido).locale("es").format("DD/MM/YYYY")}
+                </td>
+                <td>
+                  {dayjs(pedido.fechaEntrega).locale("es").format("DD/MM/YYYY")}
+                </td>
+                <td>{pedido.estado}</td>
+                <td>{pedido.tipoPago}</td>
+                <td>{pedido.importeTotal}</td>
+                <td>
+                  {
+                    <>
+                      <EditButton type="pedidos" id={pedido.idPedido} />
+                      <ViewButton type="pedidos" id={pedido.idPedido} />
+                    </>
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    );
+  }
 }
 
 export default ListaPedidos;

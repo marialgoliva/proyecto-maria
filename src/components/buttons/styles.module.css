@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
 .backButton{
     background-color: transparent;
     border: none;
+    display: flex;
+    gap: 5px;
+}
+.backButton:hover{
+    transform: scale(1.05);
+}
+.backButton p{
+    font-family: 'Ubuntu Sans Mono';
 }

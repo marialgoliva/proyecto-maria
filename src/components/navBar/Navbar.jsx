@@ -86,24 +86,31 @@ export default function Navbar() {
               Registrarse
             </Link>
             {data ? (
-              <SignOutButton />
+              <SignOutButton hideNav={hideNav} />
             ) : (
-              <Link href="/auth/login" className={styles.linkNav}>
-                Iniciar sesión
-              </Link>
-            )}
-            <ButtonCart onClick={hideNav} />
-            {data?.user.email && (
               <Link
-                href="/mi-pedido"
+                href="/auth/login"
                 className={styles.linkNav}
                 onClick={hideNav}
               >
+                Iniciar sesión
+              </Link>
+            )}
+            <ButtonCart hideNav={hideNav} />
+            {data?.user.email && (
+              <Link href="/mi-pedido" className={styles.linkNav}>
                 Mis pedidos
               </Link>
             )}
           </div>
         </nav>
+        {data?.user.role && (
+          <div className="w-100">
+            <p className="text-end m-3">
+              Has iniciado sesion como {data.user.email}
+            </p>
+          </div>
+        )}
       </div>
     </header>
   );

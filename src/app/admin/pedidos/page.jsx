@@ -22,7 +22,7 @@ async function PaginaPedidos() {
   if (pedidos.length === 0) return <h1>No hay pedidos</h1>;
 
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <ListaPedidos pedidos={pedidos} />
     </div>
   );

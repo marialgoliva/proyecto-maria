@@ -27,7 +27,7 @@ function HomePage() {
   return (
     <>
       {loading && (
-        <div className="d-flex justify-content-center mt-5">
+        <div className="d-flex justify-content-center mt-5 mtop">
           <Spinner
             animation="border"
             className="m-5"

@@ -7,13 +7,14 @@ import { BsShop } from "react-icons/bs";
 import Link from "next/link";
 import { sendCart } from "@/libs/checkout/sendCart";
 import { checkForm } from "@/libs/utils";
+import { Spinner } from "react-bootstrap";
 /**
  * Página del carrito de compras.
  * @returns {JSX.Element} La página del carrito de compras.
  */
 function CartPage() {
   // Usa el contexto del carrito para obtener los productos en el carrito
-  const { cart } = useCart();
+  const { cart, loading } = useCart();
 
   // Calcula el precio total de los productos en el carrito
   const totalPrice = cart.reduce(
@@ -60,23 +61,46 @@ function CartPage() {
    * @param {Event} e - El evento del cambio.
    */
   const onChange = (e) => {
-    // Oculta la alerta
-    setShowAlert(false);
-    setAlertMessage("");
     // Actualiza los datos del cliente
     setDataCliente({
       ...dataCliente,
       [e.target.name]: e.target.value,
     });
+
+    // Verifica los datos del formulario
+    const check = checkForm({
+      ...dataCliente,
+      [e.target.name]: e.target.value,
+    });
+
+    if (check.valido) {
+      // Oculta la alerta si los datos del formulario son válidos
+      setShowAlert(false);
+      setAlertMessage("");
+    } else {
+      // Muestra una alerta si los datos del formulario no son válidos
+      setShowAlert(true);
+      setAlertMessage(check.mensaje);
+    }
   };
 
   // Renderiza la página del carrito de compras
   return (
-    <div className="w-100 d-flex justify-content-center">
-      {cart.length > 0 ? (
-        <div className="w-75 d-flex row justify-content-center mb-5">
-          <h1 className="m-3 display-6 w-75">Productos en tu carrito</h1>
-          <div className="d-flex justify-content-between w-75">
+    <div className={`w-100 d-flex justify-content-center mtop`}>
+      {loading ? (
+        <div className="d-flex justify-content-center mt-5">
+          <Spinner
+            animation="border"
+            className="m-5"
+            variant="secondary"
+          ></Spinner>
+        </div>
+      ) : cart.length > 0 ? (
+        <div className="w-md-75 w-100 mx-3 d-flex row justify-content-center mb-5">
+          <h1 className="m-3 display-6 w-100 w-lg-75">
+            Productos en tu carrito
+          </h1>
+          <div className="d-flex justify-content-between w-100 w-lg-75">
             <Link
               href="/"
               className="text-decoration-none text-dark d-flex gap-2"
@@ -87,7 +111,7 @@ function CartPage() {
             <h4>Total: {totalPrice}€</h4>
           </div>
 
-          <div className="d-flex row w-75">
+          <div className="d-flex row w-100 w-lg-75">
             {cart?.map((product) => (
               <div key={product.idProducto + product.talla}>
                 <ProductCart product={product} />
@@ -182,7 +206,7 @@ function CartPage() {
 
           <button
             type="button"
-            className="btn btn-light w-75 mt-3"
+            className="btn btn-light w-md-75 w-100 mt-3"
             onClick={() => handlePay(cart, dataCliente)}
           >
             Confirmar compra

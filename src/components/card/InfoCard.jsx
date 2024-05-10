@@ -65,7 +65,7 @@ function InfoCard({ product, stock }) {
   };
 
   return (
-    <div className="rounded p-4 bg-light d-flex row justify-content-between pt-5">
+    <div className={styles.infoCard}>
       <h4 className={styles.title}>
         {nombre}{" "}
         <span className="text-secondary fs-5 fw-normal text-capitalize">
@@ -77,12 +77,12 @@ function InfoCard({ product, stock }) {
           <h5 className="price text-end">{precio} €</h5>
           <p className="description text-end">{descripcion}</p>
         </div>
-        <div className="d-flex row gap-3">
-          <div className="d-flex justify-content-end gap-2">
+        <div className="d-flex flex-column align-items-end gap-3">
+          <div className="d-flex justify-content-end gap-2 flex-md-column flex-lg-row flex-column">
             {stock.length > 0 &&
               stock.map((item) => {
                 return (
-                  <div key={item.talla}>
+                  <div key={item.talla} className="d-flex flex-row">
                     {item.talla !== "null" ? (
                       <>
                         <button

@@ -1,5 +1,6 @@
 "use client";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 import { useEffect } from "react";
 /**
  * Página de éxito después de una compra.
@@ -16,15 +17,19 @@ function Success() {
 
   // Renderiza la página de éxito
   return (
-    <div className=" text-center m-5 py-10 h-100 d-flex row justify-content-center align-items-center">
-      <span className="fs-1">🎉</span>
-      <h1 className="display-6">Gracias por tu compra</h1>
-      <a
-        href="/"
-        className="text-decoration-none d-block mt-4 text-blue display-6"
-      >
-        Volver a la tienda
-      </a>
+    <div className="mtop">
+      <div className=" text-center m-5 py-10 h-100 d-flex row justify-content-center align-items-center ">
+        <span className="fs-1">🎉</span>
+        <h1 className="display-6">Gracias por tu compra</h1>
+
+        <Link
+          href="/"
+          className="d-flex align-items-center justify-content-center flex-column text-decoration-none m-5"
+        >
+          <img className="w-25" src="/storeOpen.jpg" alt="Tienda abierta" />
+          <h5 className="ms-3">Volver a la tienda</h5>
+        </Link>
+      </div>
     </div>
   );
 }

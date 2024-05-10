@@ -50,6 +50,6 @@ p{
 
 @media (max-width: 600px) {
     .mtop{
-        margin-top: 200px;
+        margin-top: 25vh;
     }
 }

@@ -12,13 +12,14 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import styles from "../Navbar/styles.module.css";
 
-function SignOutButton() {
+function SignOutButton({ hideNav }) {
   const router = useRouter();
 
   /**
    * Manejador de evento para cerrar sesión.
    */
   const signOutHandler = () => {
+    hideNav();
     signOut();
     router.push("/cart");
   };

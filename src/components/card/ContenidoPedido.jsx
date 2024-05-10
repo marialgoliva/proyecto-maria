@@ -31,25 +31,26 @@ function ContenidoPedido({ dataProductos }) {
   }, [dataProductos]);
 
   return (
-    <div className="d-flex m-3">
+    <div className="d-flex m-3 flex-column flex-lg-row gap-4 text-center">
       {productos.map((producto, index) => (
-        <div key={index}>
-          <p>{producto.nombre}</p>
-          <p>
-            Color: <strong>{producto.color}</strong>
-          </p>
-          <p>
-            Talla: <strong>{producto.talla}</strong>
-          </p>
-          <p>
-            Cantidad: <strong>{producto.cantidad}</strong>
-          </p>
-          <p>Precio unitario: {producto.precio} €</p>
-          <img
-            src={producto.imagen}
-            alt="Imagen del producto"
-            className="w-25"
-          />
+        <div
+          key={index}
+          className="d-flex flex-row flex-lg-column justify-content-between align-items-center"
+        >
+          <div>
+            <h6>{producto.nombre}</h6>
+            <p>Color: {producto.color}</p>
+            <p>Talla: {producto.talla}</p>
+            <p>Cantidad: {producto.cantidad}</p>
+            <p>Precio unitario: {producto.precio} €</p>
+          </div>
+          <div className="w-25">
+            <img
+              src={producto.imagen}
+              alt="Imagen del producto"
+              className="w-100"
+            />
+          </div>
         </div>
       ))}
     </div>

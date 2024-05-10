@@ -17,40 +17,37 @@ function ProductCart({ product }) {
 
   return (
     <div className={styles.productCart}>
-      <div className={styles.image}>
-        <Link href={`/${product.idProducto}`}>
-          <img src={product.imagen} alt="Imagen" className="w-50" />
-        </Link>
-      </div>
-      <div className="d-flex column gap-5 align-items-center w-100">
-        <div>
+      <div className="d-flex column align-items-center w-100 gap-3">
+        <div className={styles.image}>
+          <Link href={`/${product.idProducto}`}>
+            <img src={product.imagen} alt="Imagen" />
+          </Link>
+        </div>
+        <div className="d-flex align-items-center w-100 gap-3">
           <p className={styles.title}>
-            {product.nombre + " - " + product.color}
+            {product.nombre + "(" + product.color + ")"}
           </p>
-        </div>
-        <div>
           <p className={styles.price}>{product.precio}€</p>
-        </div>
-        {product.talla && (
-          <div>
+          {product.talla && (
             <p className={styles.title}>{"Talla " + product.talla}</p>
-          </div>
-        )}
-      </div>
-      <div className={styles.panel}>
-        <button
-          className="border-0 bg-transparent fs-4"
-          onClick={() => reduceQuantity(product)}
-        >
-          <IoMdRemove />
-        </button>
-        {product.cantidad}
-        <button
-          className="border-0 bg-transparent fs-4"
-          onClick={() => addQuantity(product)}
-        >
-          <IoMdAdd />
-        </button>
+          )}
+        </div>
+
+        <div className={styles.panel}>
+          <button
+            className="border-0 bg-transparent fs-4"
+            onClick={() => reduceQuantity(product)}
+          >
+            <IoMdRemove />
+          </button>
+          {product.cantidad}
+          <button
+            className="border-0 bg-transparent fs-4"
+            onClick={() => addQuantity(product)}
+          >
+            <IoMdAdd />
+          </button>
+        </div>
       </div>
     </div>
   );

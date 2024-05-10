@@ -184,7 +184,7 @@ function ProductForm() {
         </div>
       </form>
       {image && (
-        <div className="w-25 h-25 m-4 align-self-center">
+        <div className="w-50 h-25 m-4 align-self-center">
           <Image
             src={URL.createObjectURL(image)}
             alt="Imagen del producto"
@@ -195,8 +195,12 @@ function ProductForm() {
         </div>
       )}
       {product.imagen && !image && (
-        <div className="w-25 h-25 m-4 align-self-center">
-          <img src={product.imagen} alt="Imagen del producto" />
+        <div className="w-50 h-25 m-4 align-self-center">
+          <img
+            src={product.imagen}
+            alt="Imagen del producto"
+            className="w-100"
+          />
         </div>
       )}
     </div>

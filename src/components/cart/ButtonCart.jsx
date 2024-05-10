@@ -11,11 +11,11 @@ import { useCart } from "../../context/CartContext";
  * // Uso del componente:
  * <ButtonCart />
  */
-function ButtonCart() {
+function ButtonCart({ hideNav }) {
   const { contador } = useCart();
   return (
     <div>
-      <Link href="/cart" className={styles.buttonCart}>
+      <Link href="/cart" className={styles.buttonCart} onClick={hideNav}>
         <MdShoppingCart /> ({contador})
       </Link>
     </div>

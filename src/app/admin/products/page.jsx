@@ -18,7 +18,7 @@ function ProductsPage() {
     if (data?.user?.role === "admin") {
       if (products.length === 0)
         return (
-          <div className="d-flex justify-content-center mt-5">
+          <div className="d-flex justify-content-center mt-5 mtop">
             <Spinner
               animation="border"
               className="m-5"
@@ -28,7 +28,7 @@ function ProductsPage() {
         );
       setUpdatedProduct(false);
       return (
-        <div className="d-flex row">
+        <div className="d-flex row mtop">
           <div className="ms-5 mt-2">
             <BackButton />
           </div>
@@ -44,7 +44,7 @@ function ProductsPage() {
     }
   } else {
     return (
-      <div className="w-100 d-flex justify-content-center">
+      <div className="w-100 d-flex justify-content-center mtop">
         <Spinner
           animation="border"
           className="m-5"

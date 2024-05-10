@@ -35,7 +35,7 @@ function ContenidoPedido({ dataProductos }) {
       {productos.map((producto, index) => (
         <div
           key={index}
-          className="d-flex flex-row gap-5 justify-content-between"
+          className="d-flex flex-column flex-md-row gap-5 justify-content-between"
         >
           <h6 className={styles.title}>{producto.nombre}</h6>
           <div>
@@ -55,7 +55,7 @@ function ContenidoPedido({ dataProductos }) {
             <img
               src={producto.imagen}
               alt="Imagen del producto"
-              className="w-50"
+              className="w-100"
             />
           </div>
         </div>

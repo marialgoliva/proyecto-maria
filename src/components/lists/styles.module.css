@@ -3,4 +3,12 @@
     justify-content: center;
     margin: 20px;
 }
+.smallTable{
+    width: 50%;
+}
 
+@media (max-width: 768px) {
+    .smallTable{
+        width: 90%;
+    }
+}

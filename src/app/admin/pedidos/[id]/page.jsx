@@ -85,7 +85,7 @@ async function PaginaPedido({ params }) {
           Importe total: {pedido.importeTotal} €
         </li>
         <li className="list-group-item py-3">Tipo pago: {pedido.tipoPago}</li>
-        <li className="list-group-item py-3">
+        <li className="list-group-item py-3 d-flex flex-column align-items-center">
           {arrayProductos ? (
             <>
               <h5>Productos incluidos:</h5>

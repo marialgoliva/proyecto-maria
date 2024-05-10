@@ -121,3 +121,14 @@ export function checkFormProducto(data) {
   // Si todas las validaciones son correctas
   return { valido: true, mensaje: "Todos los datos son válidos." };
 }
+
+export function isScreenSmall() {
+  // Obtener el ancho de la ventana del navegador
+  const windowWidth = window.innerWidth;
+
+  // Definir un punto de corte para determinar si la pantalla es pequeña
+  const breakpoint = 768; // Por ejemplo, 768 píxeles
+
+  // Verificar si el ancho de la ventana es menor que el punto de corte
+  return windowWidth < breakpoint;
+}

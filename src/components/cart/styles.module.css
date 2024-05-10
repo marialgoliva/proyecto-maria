@@ -11,7 +11,7 @@
     overflow: hidden;
     box-shadow: 2px 2px 5px 0px rgba(0, 64, 128, 0.1);
     margin: 10px;
-    padding: 0 10px;
+    padding: 10px;
     color: black;
   }
 
@@ -23,14 +23,13 @@
   }
   
   .image {
-    width: 40%;
-    height: auto;
-    margin: 20px;
-    border-radius: 50%;
+    margin: auto;
+    border-radius: 15px;
   }
 
   .image img{
     border-radius: 10px;
+    width: 100%;
   }
   
   .description,
@@ -56,12 +55,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #ffffff; /* Color de fondo verde */
+    background-color: #ffffff;
     border: none;
     color: black;
     padding: 10px 20px;
     text-align: center;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -78,4 +77,13 @@
   }
   .buttonCart:hover {
     color: var(--terciary);
+}
+
+@media (max-width: 992px) {
+  .image{
+    width: 50%;
+  }
+  .panel{
+    padding: 5px 10px;
+  }
 }
