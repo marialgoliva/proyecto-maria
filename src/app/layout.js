@@ -34,14 +34,16 @@ export default async function RootLayout({ children }) {
       <body>
         <Toaster position="top right" toastOptions={{ duration: 3000 }} />
         <CartProvider>
-          <Navbar />
-          {session?.user.role && (
-            <p className="text-end m-3">
-              Has iniciado sesion como {session.user.email}
-            </p>
-          )}
-          {session?.user.role == "admin" && <NavbarAdmin />}
-          <Providers>{children}</Providers>
+          <Providers>
+            <Navbar />
+            {session?.user.role && (
+              <p className="text-end m-3">
+                Has iniciado sesion como {session.user.email}
+              </p>
+            )}
+            {session?.user.role == "admin" && <NavbarAdmin />}
+            {children}
+          </Providers>
         </CartProvider>
       </body>
     </html>

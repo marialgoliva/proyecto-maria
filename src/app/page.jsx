@@ -35,19 +35,21 @@ function HomePage() {
           ></Spinner>
         </div>
       )}
-      <div className="d-flex justify-content-center row gap-3">
-        {products ? (
-          products.map((product) => (
-            <div
-              key={product.idProducto}
-              className="text-decoration-none col-3"
-            >
-              <ProductCard product={product} />
-            </div>
-          ))
-        ) : (
-          <h2>No se han encontrado ningún producto</h2>
-        )}
+      <div className="mtop">
+        <div className="d-flex justify-content-center row gap-3">
+          {products ? (
+            products.map((product) => (
+              <div
+                key={product.idProducto}
+                className="d-flex justify-content-center text-decoration-none col-xl-3 col-lg-4 col-sm-6"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))
+          ) : (
+            <h2>No se han encontrado ningún producto</h2>
+          )}
+        </div>
       </div>
     </>
   );

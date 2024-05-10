@@ -1,25 +1,42 @@
+"use client";
 import Link from "next/link";
 import "@/styles/global.css";
 import styles from "../Navbar/styles.module.css";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "../buttons/SignOutButton";
-
 import ButtonCart from "../cart/ButtonCart";
+import { useSession } from "next-auth/react";
+import { BiMenu } from "react-icons/bi";
+import { useState } from "react";
 /**
  * Componente de la barra de navegación.
  *
  * @returns {JSX.Element} El elemento de la barra de navegación.
  */
-export default async function Navbar() {
-  const session = await getServerSession(authOptions);
-
+export default function Navbar() {
+  const { data } = useSession();
+  const [showNav, setShowNav] = useState(false);
+  const toggleNav = () => {
+    setShowNav(!showNav); // Cambia el estado para mostrar u ocultar el menú
+  };
+  const hideNav = () => {
+    setShowNav(false);
+  };
   return (
     <header className={styles.navHeader}>
       <div className={styles.navContainer}>
         <Link href="./" className={styles.logo}>
           <img src="/logo_reducido.svg" alt="Logotipo de Moon Design" />
         </Link>
+        <button
+          className={`navbar-toggler ${styles.navBurguer}`}
+          type="button"
+          onClick={toggleNav}
+        >
+          <span className="navbar-toggler-icon fs-5">
+            <BiMenu />
+          </span>{" "}
+          {/* Icono de hamburguesa */}
+        </button>
         <nav className={styles.nav}>
           <div className="d-flex flex-row gap-4 me-5">
             <Link href={"/"} className={`fw-bold ${styles.linkNav}`}>
@@ -28,7 +45,7 @@ export default async function Navbar() {
             <Link href="/auth/register" className={styles.linkNav}>
               Registrarse
             </Link>
-            {session ? (
+            {data ? (
               <SignOutButton />
             ) : (
               <Link href="/auth/login" className={styles.linkNav}>
@@ -38,23 +55,8 @@ export default async function Navbar() {
           </div>
 
           <div className="d-flex flex-row gap-3 fs-4 me-5">
-            {/* <div>
-              <Link href="/" className={styles.linkNav}>
-                Productos
-              </Link>
-            </div>
-            <div>
-              <Link href="/about" className={styles.linkNav}>
-                About
-              </Link>
-            </div>
-            <div>
-              <Link href="/contacto" className={styles.linkNav}>
-                Contacto
-              </Link>
-            </div> */}
             <ButtonCart />
-            {session?.user.email && (
+            {data?.user.email && (
               <nav className={styles.navRight}>
                 <div className="d-flex flex-row gap-4 me-5">
                   <Link href="/mi-pedido" className={styles.linkNav}>
@@ -62,6 +64,43 @@ export default async function Navbar() {
                   </Link>
                 </div>
               </nav>
+            )}
+          </div>
+        </nav>
+        <nav
+          className={`collapse navbar-collapse ${showNav ? "show" : ""} ${styles.navHidden}`}
+        >
+          <div className="d-flex flex-column gap-4 me-5">
+            <Link
+              href={"/"}
+              className={`fw-bold ${styles.linkNav}`}
+              onClick={hideNav}
+            >
+              Home
+            </Link>
+            <Link
+              href="/auth/register"
+              className={styles.linkNav}
+              onClick={hideNav}
+            >
+              Registrarse
+            </Link>
+            {data ? (
+              <SignOutButton />
+            ) : (
+              <Link href="/auth/login" className={styles.linkNav}>
+                Iniciar sesión
+              </Link>
+            )}
+            <ButtonCart onClick={hideNav} />
+            {data?.user.email && (
+              <Link
+                href="/mi-pedido"
+                className={styles.linkNav}
+                onClick={hideNav}
+              >
+                Mis pedidos
+              </Link>
             )}
           </div>
         </nav>

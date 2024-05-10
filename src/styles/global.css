@@ -45,3 +45,11 @@ p{
     padding: 10px;
     text-align: center;
 }
+
+
+
+@media (max-width: 600px) {
+    .mtop{
+        margin-top: 200px;
+    }
+}

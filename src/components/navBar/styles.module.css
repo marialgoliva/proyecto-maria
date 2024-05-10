@@ -23,6 +23,7 @@
     align-items: center;
     font-size: 15px;
 }
+
 .navRight{
     margin-left: 1rem;
     width: 100%;
@@ -32,7 +33,15 @@
     font-size: 15px;
 }
 
+.navHidden{
+    background-color: white;
+    opacity: 1.5;
+    padding: 20px;
+}
 
+.logo{
+    margin-bottom: 40px;
+}
 .logo img{
     height: 140px;
 }
@@ -59,8 +68,9 @@
     margin-left: 5px;
     color: aliceblue;
 }
-
-
+.navBurguer{
+    display: none;
+}
 
 
 
@@ -68,9 +78,35 @@
     .nav {
       display: flex;
     }
+    .navBurguer{
+        display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .show{
+        display: none;
+    }
+    
+    .nav{
+        display: none;
+    } 
+    .navBurguer{
+        display: block;
+        position: fixed;
+        top: 170px;
+        left: 50px;
+    }
+    .navContainer {
+        position: fixed;
+        z-index: 999;
+        background-color: white;
+        opacity: 0.9;
+        height: 200px;
+    }
   }
 @media (min-width: 1536px) {
     .nav {
       margin-left: 4rem;
     }
+    
 }
