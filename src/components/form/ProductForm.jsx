@@ -99,7 +99,6 @@ function ProductForm() {
       setLoading(false);
       setUpdatedProduct(true);
       router.push("/admin/products");
-      router.refresh();
     } else {
       setLoading(false);
       setShowAlert(true);

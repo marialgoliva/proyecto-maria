@@ -9,6 +9,14 @@ import loadProduct from "@/libs/productos/loadProduct";
 import getStock from "@/libs/stock/getStock";
 import { Spinner } from "react-bootstrap";
 
+/**
+ * Componente de página de producto.
+ *
+ * @component
+ * @param {Object} params - Los parámetros de la página.
+ * @param {string} params.id - El ID del producto.
+ * @returns {JSX.Element} El componente de la página de producto.
+ */
 function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
   const [comentarios, setComentarios] = useState(null);
@@ -18,11 +26,11 @@ function ProductPage({ params }) {
     async function fetchData() {
       if (params.id) {
         try {
-          const productData = await loadProduct(params.id);
+          const productData = await loadProduct(params.id); //Obtener los datos del producto
           setProduct(productData);
-          const comentariosData = await getComentarios(params.id);
+          const comentariosData = await getComentarios(params.id); //Obtener los comentarios del producto si los hay
           setComentarios(comentariosData);
-          const stockData = await getStock(params.id);
+          const stockData = await getStock(params.id); //Obtener los datos del stock y talla del producto
           if (stockData && stockData.length > 0) {
             const stockArray = stockData.map((element) => ({
               talla: element.talla,

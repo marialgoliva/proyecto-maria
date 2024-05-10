@@ -13,7 +13,7 @@ import Spinner from "react-bootstrap/Spinner";
  */
 function ProductsPage() {
   const { data } = useSession();
-  const { products } = useCart();
+  const { products, setUpdatedProduct } = useCart();
   if (data?.user) {
     if (data?.user?.role === "admin") {
       if (products.length === 0)
@@ -26,7 +26,7 @@ function ProductsPage() {
             ></Spinner>
           </div>
         );
-
+      setUpdatedProduct(false);
       return (
         <div className="d-flex row">
           <div className="ms-5 mt-2">
