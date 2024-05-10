@@ -16,8 +16,9 @@ import styles from "./styles.module.css";
 function ProductCard({ product, editable }) {
   return (
     <Link
+      prefetch={false}
       className="text-decoration-none text-body"
-      href={`/${product.idProducto}`}
+      href={product.idProducto ? `/${product.idProducto}` : "/"}
     >
       <div className={styles.productCard}>
         <div className={styles.image}>

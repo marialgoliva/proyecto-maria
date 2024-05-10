@@ -114,7 +114,7 @@ function ProductForm() {
           <h1 className={styles.bigtitle}>Añadir un producto</h1>
           {showAlert && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {alertMessage}
               </div>
             </div>
@@ -175,6 +175,7 @@ function ProductForm() {
             type="file"
             className="appearance-none border border-black rounded w-full py-3 px-3"
             onChange={handleChangeFile}
+            accept="image/*"
           />
         </div>
         <div className={styles.button}>

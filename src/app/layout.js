@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar/Navbar";
 import Providers from "./Providers";
 import { getServerSession } from "next-auth";
-
+import Head from "next/head";
 import NavbarAdmin from "@/components/navBar/NavbarAdmin";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { CartProvider } from "@/context/CartContext";
@@ -28,6 +28,9 @@ export default async function RootLayout({ children }) {
   // Devolvemos el componente RootLayout
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body>
         <Toaster position="top right" toastOptions={{ duration: 3000 }} />
         <CartProvider>

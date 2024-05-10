@@ -89,7 +89,7 @@ function CartPage() {
 
           <div className="d-flex row w-75">
             {cart?.map((product) => (
-              <div key={product.idProducto}>
+              <div key={product.idProducto + product.talla}>
                 <ProductCart product={product} />
               </div>
             ))}
@@ -97,80 +97,80 @@ function CartPage() {
               <h4>Datos de facturación y envío</h4>
               {showAlert && (
                 <div>
-                  <div class="alert alert-warning mt-2 " role="alert">
+                  <div className="alert alert-warning mt-2 " role="alert">
                     {alertMessage}
                   </div>
                 </div>
               )}
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
                     Nombre completo
                   </span>
                 </div>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
                   name="nombre"
                   onChange={onChange}
                 />
               </div>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
                     DNI
                   </span>
                 </div>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
                   name="dni"
                   onChange={onChange}
                 />
               </div>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
                     Calle y número
                   </span>
                 </div>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
                   name="calle"
                   onChange={onChange}
                 />
               </div>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
                     CP
                   </span>
                 </div>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
                   name="cp"
                   onChange={onChange}
                 />
               </div>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
                     Ciudad
                   </span>
                 </div>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
                   name="ciudad"
@@ -182,7 +182,7 @@ function CartPage() {
 
           <button
             type="button"
-            class="btn btn-light w-75 mt-3"
+            className="btn btn-light w-75 mt-3"
             onClick={() => handlePay(cart, dataCliente)}
           >
             Confirmar compra

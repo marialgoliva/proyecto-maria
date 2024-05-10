@@ -140,7 +140,7 @@ function InfoCard({ product, stock }) {
       </button>
       {showAlert && (
         <div>
-          <div class="alert alert-warning mt-2 " role="alert">
+          <div className="alert alert-warning mt-2 " role="alert">
             Elige una talla.
           </div>
         </div>

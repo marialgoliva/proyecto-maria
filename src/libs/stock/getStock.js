@@ -3,7 +3,7 @@ import axios from "axios";
  * La URL base de la API.
  * @type {string}
  */
-const BASE_API_URL = process.env.BASE_URL;
+const REQUEST_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 /**
  * Obtiene el stock de un producto.
@@ -12,7 +12,7 @@ const BASE_API_URL = process.env.BASE_URL;
  * @throws {Error} - Si ocurre algún error durante la obtención del stock.
  */
 async function getStock(productId) {
-  const { data } = await axios.get(`${BASE_API_URL}/api/stock/${productId}`);
+  const { data } = await axios.get(`${REQUEST_URL}/api/stock/${productId}`);
   return data;
 }
 

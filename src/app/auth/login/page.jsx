@@ -88,7 +88,7 @@ function LoginPage() {
         />
         {errors.email && (
           <div>
-            <div class="alert alert-warning mt-2 " role="alert">
+            <div className="alert alert-warning mt-2 " role="alert">
               {errors.email.message}
             </div>
           </div>
@@ -108,7 +108,7 @@ function LoginPage() {
         />
         {errors.password && (
           <div>
-            <div class="alert alert-warning mt-2 " role="alert">
+            <div className="alert alert-warning mt-2 " role="alert">
               {errors.password.message}
             </div>
           </div>

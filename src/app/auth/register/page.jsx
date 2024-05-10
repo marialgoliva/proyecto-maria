@@ -69,7 +69,7 @@ function RegisterPage() {
           {/* Muestra el mensaje de error si hay un error */}
           {errorMessage && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errorMessage}
               </div>
             </div>
@@ -95,7 +95,7 @@ function RegisterPage() {
           {/* Muestra el mensaje de error si hay un error. Se realiza igual para el resto de campos.*/}
           {errors.dni && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.dni.message}
               </div>
             </div>
@@ -114,7 +114,7 @@ function RegisterPage() {
           />
           {errors.nombre && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.nombre.message}
               </div>
             </div>
@@ -133,7 +133,7 @@ function RegisterPage() {
           />
           {errors.apellidos && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.apellidos.message}
               </div>
             </div>
@@ -152,7 +152,7 @@ function RegisterPage() {
           />
           {errors.username && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.username.message}
               </div>
             </div>
@@ -172,7 +172,7 @@ function RegisterPage() {
 
           {errors.email && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.email.message}
               </div>
             </div>
@@ -192,7 +192,7 @@ function RegisterPage() {
 
           {errors.password && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.password.message}
               </div>
             </div>
@@ -212,7 +212,7 @@ function RegisterPage() {
 
           {errors.cPass && (
             <div>
-              <div class="alert alert-warning mt-2 " role="alert">
+              <div className="alert alert-warning mt-2 " role="alert">
                 {errors.cPass.message}
               </div>
             </div>
