@@ -53,7 +53,6 @@ export async function GET(request, { params }) {
  * @returns {Promise<import("next/server").NextResponse>} La respuesta HTTP.
  */
 export async function DELETE(request, { params }) {
-  console.log("params.id :>> ", params.id);
   try {
     const result = await conn.query(
       "DELETE FROM PRODUCTO WHERE idProducto = ?",
@@ -75,7 +74,7 @@ export async function DELETE(request, { params }) {
       status: 204,
     });
   } catch (error) {
-    console.log("error error error :>> ", error);
+    console.log(error);
     return NextResponse.json(
       {
         message: error.message,

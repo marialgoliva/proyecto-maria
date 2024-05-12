@@ -61,7 +61,6 @@ export async function POST(request) {
     });
 
     if (result && result.insertId) {
-      console.log("result :>> ", result);
       try {
         // Ejecutar la inserción en la tabla STOCK
         await conn.query("INSERT INTO STOCK SET ?", {

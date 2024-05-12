@@ -55,7 +55,6 @@ function InfoCard({ product, stock }) {
       addToCart(productoElegido);
     } else {
       if (!productoElegido.talla) {
-        console.log("Elige una talla");
         setShowAlert(true);
       } else {
         setShowAlert(false);

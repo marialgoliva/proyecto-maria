@@ -60,7 +60,6 @@ async function PaginaPedido({ params }) {
   const pedido = await cargarPedido(params.id);
   const data = await getNombreCliente(pedido.idCliente);
   const arrayProductos = await getProductos(params.id);
-  console.log("arrayProductos :>> ", arrayProductos);
 
   return (
     <div className="d-flex flex-column m-4">

@@ -13,8 +13,6 @@ export default async function addPedidoProducto(dataProducto) {
       dataProducto,
     );
 
-    console.log("Resultado de la inserción:", result);
-
     return result.insertId;
   } catch (error) {
     console.log("Error al insertar en PEDIDO_PRODUCTO:", error);

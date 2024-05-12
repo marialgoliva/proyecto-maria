@@ -1,4 +1,5 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+import Promise from "bluebird";
 
 async function generateHash(password) {
   const salt = await bcrypt.genSalt(10);
@@ -15,8 +16,6 @@ async function main() {
   });
 
   const passwordHashPairs = await Promise.all(promises); // Espera a que todos los hashes estén listos
-
-  console.log(passwordHashPairs); // Imprime los objetos de contraseña y hash
 }
 
 main();

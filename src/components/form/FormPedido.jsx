@@ -80,7 +80,6 @@ function FormPedido() {
         importeTotal: "",
       });
     } else {
-      console.log("pedido :>> ", pedido);
       await axios.put(`/api/pedidos/${params.id}`, pedido);
     }
 

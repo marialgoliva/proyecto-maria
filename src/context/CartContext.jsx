@@ -87,7 +87,6 @@ export function CartProvider({ children }) {
    * @param {Object} product - Producto a añadir
    */
   const addToCart = (product) => {
-    console.log("producto que vamos a añadir en el carrito", product);
     // Verificar si el producto ya está en el carrito
     const existingProductIndex = cart.findIndex(
       (item) =>
