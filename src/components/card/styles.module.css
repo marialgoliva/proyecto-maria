@@ -72,6 +72,9 @@
     background-color: #f7f9fa;
     padding: 40px;
     display: flex;
+    justify-content: center;
+    width: 45%;
+    
   }
   .infoCard{
     border-radius: 10px;
@@ -80,7 +83,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 100%;
+    width: 40%;
     height: 100%;
   }
 
@@ -116,14 +119,15 @@
 
 @media (max-width: 530px) {
   .imgContainer{
-    width: 40vw;
+    width: 80%;
   }
   .imageCard{
     padding: 40px;
-    width: 90%;
+    width: 80%;
+    margin: 0 20px;
   }
   .infoCard{
-    width: 90%;
-    padding: 40px;
+    width: 80%;
+    padding: 50px;
   }
 }

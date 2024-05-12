@@ -28,8 +28,8 @@ function ProductsPage() {
         );
       setUpdatedProduct(false);
       return (
-        <div className="d-flex row mtop">
-          <div className="ms-5 mt-2">
+        <div className="d-flex row mtop justify-content-center">
+          <div className="ms-5 mt-3 mt-mlg-2">
             <BackButton />
           </div>
           <ProductList products={products} />

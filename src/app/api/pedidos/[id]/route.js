@@ -94,12 +94,14 @@ export async function PUT(request, { params }) {
   try {
     // Obtiene los datos del cuerpo de la solicitud
     const data = await request.json();
-
+    console.log("data :>> ", data);
+    console.log("params :>> ", params.id);
     // Ejecuta la consulta para actualizar el pedido
-    const result = await conn.query("UPDATE PEDIDO SET ? WHERE idPedido = ?", [
+    const result = await conn.query("UPDATE PEDIDOS SET ? WHERE idPedido = ?", [
       data,
       params.id,
     ]);
+    console.log("result :>> ", result);
 
     // Si no se encuentra el pedido, devuelve una respuesta con un mensaje de error y un código de estado 404
     if (result.affectedRows === 0) {
@@ -113,7 +115,7 @@ export async function PUT(request, { params }) {
 
     // Obtiene el pedido actualizado
     const updatedProduct = await conn.query(
-      "SELECT * FROM PEDIDO WHERE idPedido=?",
+      "SELECT * FROM PEDIDOS WHERE idPedido=?",
       [params.id],
     );
 

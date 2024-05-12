@@ -57,7 +57,7 @@ function ProductPage({ params }) {
   return (
     <div>
       <div className="d-flex justify-content-center m-5">
-        <div className="d-flex w-xl-75 w-lg-50 gap-2 flex-sm-column flex-md-column flex-lg-row flex-column align-items-md-start align-items-lg-start align-items-center">
+        <div className="d-flex w-xl-75 w-lg-50 gap-2 flex-sm-column flex-md-column flex-lg-row flex-column align-items-md-start align-items-lg-start align-items-center m-4">
           <BackButton />
           <ImageCard product={product} />
           <InfoCard product={product} stock={stock} />

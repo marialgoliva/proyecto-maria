@@ -110,7 +110,9 @@ function ProductForm() {
     <div className={styles.formContainer}>
       <form className={styles.form} onSubmit={handleSubmit} ref={form}>
         <header>
-          <h1 className={styles.bigtitle}>Añadir un producto</h1>
+          <h1 className={styles.bigtitle}>
+            {params.id ? "Editar un producto" : "Añadir un producto"}
+          </h1>
           {showAlert && (
             <div>
               <div className="alert alert-warning mt-2 " role="alert">

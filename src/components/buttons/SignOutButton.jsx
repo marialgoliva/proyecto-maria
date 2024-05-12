@@ -19,7 +19,7 @@ function SignOutButton({ hideNav }) {
    * Manejador de evento para cerrar sesión.
    */
   const signOutHandler = () => {
-    hideNav();
+    if (hideNav) hideNav();
     signOut();
     router.push("/cart");
   };

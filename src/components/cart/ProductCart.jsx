@@ -23,7 +23,7 @@ function ProductCart({ product }) {
             <img src={product.imagen} alt="Imagen" />
           </Link>
         </div>
-        <div className="d-flex align-items-center w-100 gap-3">
+        <div className={styles.info}>
           <p className={styles.title}>
             {product.nombre + "(" + product.color + ")"}
           </p>
