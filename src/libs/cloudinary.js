@@ -1,9 +1,9 @@
 //Configuración para poder subir imágenes a Cloudinary
 import { v2 as cloudinary } from "cloudinary";
 cloudinary.config({
-  cloud_name: "dfx2u327l",
-  api_key: "979517266328857",
-  api_secret: "F8VQIiYcSnHlCWPdS5enzB9QcmE",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 export default cloudinary;

@@ -1,4 +1,4 @@
-USE PROYECTO_TEST1;
+USE PROYECTO_MARIA;
 -- Insertamos en la tabla usuarios datos del administrador
 
 ALTER DATABASE PROYECTO_TEST1 CHARACTER SET utf8 COLLATE utf8_general_ci;
