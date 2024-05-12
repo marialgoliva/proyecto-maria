@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import "@/styles/global.css";
-import styles from "../Navbar/styles.module.css";
+import styles from "./styles.module.css";
 import SignOutButton from "../buttons/SignOutButton";
 import ButtonCart from "../cart/ButtonCart";
 import { useSession } from "next-auth/react";

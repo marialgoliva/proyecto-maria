@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "@/components/navBar/Navbar";
 import Providers from "./Providers";
 import { getServerSession } from "next-auth";
 import Head from "next/head";

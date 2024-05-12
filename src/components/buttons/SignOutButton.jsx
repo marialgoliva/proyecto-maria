@@ -10,7 +10,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import styles from "../Navbar/styles.module.css";
+import styles from "./styles.module.css";
 
 function SignOutButton({ hideNav }) {
   const router = useRouter();
