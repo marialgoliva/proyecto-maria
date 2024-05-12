@@ -45,7 +45,7 @@ function ProductList({ products }) {
                   {
                     <div className="d-flex">
                       <EditButton type="productos" id={product.idProducto} />
-                      <DeleteButton type="productos" id={product.idProducto} />
+                      <DeleteButton id={product.idProducto} />
                       <ViewButton type="productos" id={product.idProducto} />
                     </div>
                   }
@@ -91,7 +91,7 @@ function ProductList({ products }) {
                   {
                     <div className="d-flex">
                       <EditButton type="productos" id={product.idProducto} />
-                      <DeleteButton type="productos" id={product.idProducto} />
+                      <DeleteButton id={product.idProducto} />
                       <ViewButton type="productos" id={product.idProducto} />
                     </div>
                   }

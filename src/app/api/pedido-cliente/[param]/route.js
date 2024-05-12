@@ -21,6 +21,14 @@ export async function GET(request, { params }) {
     // Si se encontraron pedidos, devuelve una respuesta con los pedidos
     if (result.length > 0) {
       return NextResponse.json(result);
+    } else {
+      // Si no se encontraron pedidos, devuelve una respuesta con un mensaje de error y un código de estado 404
+      return NextResponse.json(
+        {
+          message: "No se encontraron pedidos para el cliente.",
+        },
+        { status: 404 },
+      );
     }
   } catch (error) {
     // Si ocurre un error, devuelve una respuesta con un mensaje de error y un código de estado 500

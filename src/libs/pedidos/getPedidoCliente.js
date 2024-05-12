@@ -11,6 +11,6 @@ export async function getPedidoCliente(email) {
     );
     return data;
   } catch (error) {
-    console.error(error);
+    console.log("No se encontraron pedidos para el cliente.");
   }
 }

@@ -3,7 +3,6 @@ import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { BiMenu } from "react-icons/bi";
 import styles from "../Navbar/styles.module.css";
 import Link from "next/link";
 /**

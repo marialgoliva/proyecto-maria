@@ -10,7 +10,7 @@ import { useCart } from "@/context/CartContext";
  * @param {string} props.idProducto - El ID del producto a eliminar.
  * @returns {JSX.Element} El elemento del botón de eliminación.
  */
-export default function DeleteButton({ id, type }) {
+export default function DeleteButton({ id }) {
   const router = useRouter();
   const { setUpdatedProduct } = useCart();
 

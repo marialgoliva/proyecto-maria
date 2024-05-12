@@ -84,7 +84,7 @@ function ProductForm() {
       }
 
       if (!params.id) {
-        const { data } = await axios.post("/api/products", formData, {
+        await axios.post("/api/products", formData, {
           headers: {
             "Content-type": "multipart/form-data",
           },

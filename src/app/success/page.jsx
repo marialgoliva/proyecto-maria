@@ -8,7 +8,7 @@ import { useEffect } from "react";
  */
 function Success() {
   // Usa el contexto del carrito para obtener el carrito y la función para eliminar el carrito
-  const { cart, deleteCart } = useCart();
+  const { deleteCart } = useCart();
 
   // UseEffect para eliminar el carrito cuando el componente se monta
   useEffect(() => {

@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { IoIosArrowBack } from "react-icons/io";
 import { CiShop } from "react-icons/ci";
 import styles from "@/components/buttons/styles.module.css";
 

@@ -38,7 +38,7 @@ function ProductCardAdmin({ product }) {
           <p className="categoria">Categoria: {product.categoria}</p>
           <p className="color">Color: {product.color}</p>
           <EditButton id={product.idProducto} type="productos" />
-          <DeleteButton id={product.idProducto} type="productos" />
+          <DeleteButton id={product.idProducto} />
           <Link className="text-reset m-2" href={"../"}>
             <FaClipboardList />
           </Link>
