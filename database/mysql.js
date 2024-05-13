@@ -11,5 +11,5 @@ export const conn = mysql({
       rejectUnauthorized: false,
     },
   },
-  library: "mysql2",
+  // library: "mysql2",
 });
