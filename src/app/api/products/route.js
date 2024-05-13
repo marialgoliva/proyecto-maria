@@ -1,8 +1,8 @@
 import { conn } from "../../../../database/mysql";
 import { NextResponse } from "next/server";
-import { unlink } from "fs/promises";
+// import { unlink } from "fs/promises";
 import cloudinary from "@/libs/cloudinary";
-import { processImage } from "@/libs/processImage";
+// import { processImage } from "@/libs/processImage";
 
 /**
  * Controlador de ruta GET para obtener todos los productos.
@@ -33,6 +33,7 @@ export async function POST(request) {
   try {
     const data = await request.formData();
     const image = data.get("imagen");
+
     if (!image) {
       return NextResponse.json(
         {
@@ -44,12 +45,32 @@ export async function POST(request) {
       );
     }
 
-    const imagePath = await processImage(image);
-    const res = await cloudinary.uploader.upload(imagePath);
+    const bytes = await image.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-    if (res) {
-      await unlink(imagePath);
-    }
+    // const imagePath = await processImage(image);
+    const res = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: "image",
+          },
+          (err, result) => {
+            if (err) {
+              console.error("Error al subir la imagen a Cloudinary:", err);
+              reject(err);
+            }
+
+            console.log("Imagen subida a Cloudinary con éxito:", result);
+            resolve(result);
+          },
+        )
+        .end(buffer);
+    });
+
+    // if (res) {
+    //   await unlink(imagePath);
+    // }
 
     const result = await conn.query("INSERT INTO PRODUCTO SET ?", {
       nombre: data.get("nombre"),
