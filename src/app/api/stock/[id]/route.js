@@ -12,7 +12,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   try {
     // Ejecuta la consulta para obtener la información de stock del producto
-    const result = await conn.query("SELECT * FROM stock WHERE idProducto =?", [
+    const result = await conn.query("SELECT * FROM STOCK WHERE idProducto =?", [
       params.id,
     ]);
 

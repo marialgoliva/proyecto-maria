@@ -43,8 +43,7 @@ CREATE TABLE CATEGORIA (
 	idCategoria INT AUTO_INCREMENT PRIMARY KEY,
     idCategoriaPadre INT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion TEXT,
-    FOREIGN KEY (idCategoriaPadre) REFERENCES Categoria(idCategoria) ON DELETE CASCADE
+    descripcion TEXT
 );
 
 CREATE TABLE PRODUCTO(
@@ -54,8 +53,7 @@ CREATE TABLE PRODUCTO(
     descripcion TEXT,
     color VARCHAR(25),
     precio DOUBLE NOT NULL,
-    imagen VARCHAR(250),
-    FOREIGN KEY (categoria) REFERENCES Categoria(idCategoria) ON DELETE CASCADE
+    imagen VARCHAR(250)
 );
 
 CREATE TABLE PEDIDO_PRODUCTO(
@@ -74,8 +72,8 @@ CREATE TABLE COMENTARIO (
     idProducto INT NOT NULL,
     puntuacion INT NOT NULL,
     texto TEXT,
-    FOREIGN KEY (cliente) REFERENCES Clientes(nombre),
-    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto) ON DELETE CASCADE
+    FOREIGN KEY (cliente) REFERENCES CLIENTES(nombre),
+    FOREIGN KEY (idProducto) REFERENCES PRODUCTO(idProducto) ON DELETE CASCADE
 );
 
 CREATE TABLE STOCK (
@@ -83,5 +81,5 @@ CREATE TABLE STOCK (
   	idProducto INT ,
     talla VARCHAR(25),
     stock INT NOT NULL,
-    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto) ON DELETE CASCADE
+    FOREIGN KEY (idProducto) REFERENCES PRODUCTO(idProducto) ON DELETE CASCADE
 );

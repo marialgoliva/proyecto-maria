@@ -12,7 +12,7 @@ export async function GET(request, { params }) {
   try {
     // Ejecuta la consulta para obtener los comentarios del producto
     const result = await conn.query(
-      "SELECT * FROM comentario WHERE idProducto = ? ",
+      "SELECT * FROM COMENTARIO WHERE idProducto = ? ",
       [params.id],
     );
 
