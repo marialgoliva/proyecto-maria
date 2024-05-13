@@ -46,7 +46,7 @@ function InfoCard({ product, stock }) {
   };
 
   const handleAddToCart = (productoElegido) => {
-    if (stock[0].talla === null) {
+    if (stock[0].talla === null || stock[0].talla === "null") {
       const updateProduct = {
         ...productoElegido,
         talla: null,
