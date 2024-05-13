@@ -12,3 +12,18 @@
 .backButton p{
     font-family: 'Ubuntu Sans Mono';
 }
+
+.signOut{
+    background: white;
+    border-radius: 7px;
+    padding: 2px 7px;
+    margin-left: 5px;
+    font-family: 'Ubuntu Sans Mono';
+}
+.signOut:hover{
+    background: #272727;
+    border-radius: 7px;
+    padding: 2px 7px;
+    margin-left: 5px;
+    color: aliceblue;
+}

@@ -63,7 +63,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'camel',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630589/f1r9jvwn1kwcu2o2bvle.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715517890/x3hmoarzsslbwmjofxx8.png'
 ),
 (
     'Gorro de Punto',
@@ -71,7 +71,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'crema',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630678/ohg6oxsw8jlm2dvz0pkk.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715517904/vhd80qwa3ksrnk4bjxfd.png'
 ),
 (
     'Gorro de Punto',
@@ -79,7 +79,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'agua',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630182/idmjgbzeerqxrj3tmatf.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715517920/rm6gbeqlooucjzynlnyo.png'
 ),
 (
     'Gorro de Punto',
@@ -87,7 +87,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'gris',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630182/idmjgbzeerqxrj3tmatf.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715332601/vw4aivraekfityunjs0o.png'
 ),
 (
     'Gorro de Punto',
@@ -95,7 +95,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'negro',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630182/idmjgbzeerqxrj3tmatf.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715332622/il3wor6uorp3ddeicr1r.png'
 ),
 (
     'Gorro de Punto',
@@ -103,7 +103,7 @@ VALUES
     'Gorros de punto únicos, tejidos a mano con cariño. Calidez y estilo en cada detalle.',
     'rosa tinto',
     30,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630182/idmjgbzeerqxrj3tmatf.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715332642/o99xufx9ge3psmsgavhm.png'
 ),
 (
     'Gorro bucket reversible',
@@ -111,7 +111,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'negro',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630246/pfbdysclokagzkyxhnxr.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715517964/kz3lznfwg2hwglebrjue.png'
 ),
 (
     'Gorro bucket reversible',
@@ -119,7 +119,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'verde',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333460/dfajfwiepztrfn8qranq.png'
 ),
 (
     'Gorro bucket reversible',
@@ -127,7 +127,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'topo',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333472/b7fy2g1je5jx56rrgh0o.png'
 ),
 (
     'Gorro bucket reversible',
@@ -135,7 +135,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'morado',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333488/fnzwae7preyhhkbi9bqm.png'
 ),
 (
     'Gorro bucket reversible',
@@ -143,7 +143,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'azul',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333510/syhedqoae6pndfzhensj.png'
 ),
 (
     'Gorro bucket reversible',
@@ -151,7 +151,7 @@ VALUES
     'Este gorro no solo te brinda un estilo único, sino que también te ofrece la versatilidad de dos diseños en uno',
     'natural',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333526/gjwr6feqaccolrvflyzo.png'
 ),
 (
     'Gorro bucket pana',
@@ -159,7 +159,7 @@ VALUES
     'Estilo clásico y urbano: gorros bucket de pana para un look casual y vintage.',
     'agua',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333575/v9zaofwhcgnquoaahqtu.png'
 ),
 (
     'Gorro bucket pana',
@@ -167,7 +167,7 @@ VALUES
     'Estilo clásico y urbano: gorros bucket de pana para un look casual y vintage.',
     'caldera',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333590/ns2vibhgelvyzfdzhfep.png'
 ),
 (
     'Gorro bucket pana',
@@ -175,7 +175,7 @@ VALUES
     'Estilo clásico y urbano: gorros bucket de pana para un look casual y vintage.',
     'oliva',
     35,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630267/rjmq4ocro8jqakmhfghw.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333613/jqlu2fserst7sssurvdj.png'
 ),
 (
     'Bolso de mano',
@@ -191,7 +191,7 @@ VALUES
     'El bolso de mano perfecto para acompañarte en tus aventuras diarias.',
     'verde',
     25,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630308/rkmndnmqflfudnjlwr8u.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333757/bkiyq9rogaoct2bphx4z.png'
 ),
 (
     'Bolso de mano',
@@ -199,7 +199,7 @@ VALUES
     'El bolso de mano perfecto para acompañarte en tus aventuras diarias.',
     'natural',
     25,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630308/rkmndnmqflfudnjlwr8u.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333854/jydlbqwwuuu8nvhpy6lg.png'
 ),
 (
     'Mochila Saco + Estuche',
@@ -207,7 +207,7 @@ VALUES
     'Con amplio espacio de almacenamiento y durabilidad, esta mochila te permite llevar todo lo que necesitas mientras exploras el mundo.',
     'agua, mostaza y oliva',
     40,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333880/pzdq1uro2hf2jzmjello.png'
 ),
 (
     'Mochila Saco + Estuche',
@@ -215,15 +215,7 @@ VALUES
     'Con amplio espacio de almacenamiento y durabilidad, esta mochila te permite llevar todo lo que necesitas mientras exploras el mundo.',
     'oliva, mostaza y camel',
     40,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
-),
-(
-    'Mochila Saco + Estuche',
-    8,
-    'Con amplio espacio de almacenamiento y durabilidad, esta mochila te permite llevar todo lo que necesitas mientras exploras el mundo.',
-    'rosa, natural y coral',
-    40,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333899/m46flkv40ow2q7fb1mg0.png'
 ),
 (
     'Mochila Saco + Estuche',
@@ -231,31 +223,31 @@ VALUES
     'Con amplio espacio de almacenamiento y durabilidad, esta mochila te permite llevar todo lo que necesitas mientras exploras el mundo.',
     'camel, agua y natural',
     40,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715333949/p7lf3hpjbdbejkp6qxrn.png'
 ),
 (
     'Bolsa de pana',
     9,
     'Bolso de pana grande: estilo moderno y funcional para llevar todo lo que necesitas con comodidad y estilo.',
-    'agua, mostaza y oliva',
+    'Gris oscuro',
     45,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715334043/kypastrrzeifwjehoewn.png'
 ),
 (
     'Bolsa de pana',
     9,
     'Bolso de pana grande: estilo moderno y funcional para llevar todo lo que necesitas con comodidad y estilo.',
-    'agua, mostaza y oliva',
+    'agua',
     45,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715334066/c85lzyeq1jmlyfcbrj7o.png'
 ),
 (
     'Bolsa de pana',
     9,
     'Bolso de pana grande: estilo moderno y funcional para llevar todo lo que necesitas con comodidad y estilo.',
-    'agua, mostaza y oliva',
+    'caldera',
     45,
-    'https://res.cloudinary.com/dfx2u327l/image/upload/v1711630387/olt2j963vimdxx38ud6x.png'
+    'https://res.cloudinary.com/dfx2u327l/image/upload/v1715380536/xll0t04atekgaul8d3n8.png'
 );
 
 
@@ -319,8 +311,7 @@ INSERT INTO `STOCK` (`idProducto`,`talla`,`stock`) VALUES
 (21,'null',8),
 (22,'null',6),
 (23,'null',9),
-(24,'null',10),
-(25,'null',6);
+(24,'null',10);
 
 -- Insertamos datos en la tabla pedido
 
@@ -373,7 +364,6 @@ INSERT INTO `COMENTARIO` (`cliente`,`idProducto`,`puntuacion`,`texto`) VALUES
 ('María Rodríguez López', 15, '4','¡El gorro bucket de pana es increíblemente suave y cómodo! Además, el diseño es muy estiloso.' ),
 ('Carlos Martínez Ruiz', 23, '5','La bolsa de pana es perfecta para el día a día. Muy cómoda de llevar y tiene un estilo único.' ),
 ('Laura González Sánchez', 24, '4','La bolsa de pana es perfecta para el día a día. Muy cómoda de llevar y tiene un estilo único.' ),
-('María Rodríguez López', 25, '4','La bolsa de pana es perfecta para el día a día. Muy cómoda de llevar y tiene un estilo único.' ),
 ('Carlos Martínez Ruiz', 20, '5','La mochila saco es impresionante! Tiene mucho espacio y es muy resistente. Perfecta para mis viajes.' ),
 ('Juan Pérez García', 21, '5','La mochila saco es impresionante! Tiene mucho espacio y es muy resistente. Perfecta para mis viajes.' ),
 ('Laura González Sánchez', 22, '4','La mochila saco es impresionante! Tiene mucho espacio y es muy resistente. Perfecta para mis viajes.' );
