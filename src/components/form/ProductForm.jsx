@@ -149,7 +149,7 @@ function ProductForm() {
           type="number"
           name="categoria"
           id="categoria"
-          placeholder="Categoría"
+          placeholder="Categoría. Introduce un número."
           onChange={handleChange}
           value={product.categoria}
         />
@@ -158,7 +158,7 @@ function ProductForm() {
           type="text"
           name="color"
           id="color"
-          placeholder="Color"
+          placeholder="Introduce el nombre del color"
           onChange={handleChange}
           value={product.color}
         />
