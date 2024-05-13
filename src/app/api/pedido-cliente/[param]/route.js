@@ -14,7 +14,7 @@ export async function GET(request, { params }) {
   try {
     // Ejecuta la consulta para obtener los pedidos del cliente
     const result = await conn.query(
-      "SELECT idPedido FROM pedidos WHERE email = ?",
+      "SELECT idPedido FROM PEDIDOS WHERE email = ?",
       [params.param],
     );
 
