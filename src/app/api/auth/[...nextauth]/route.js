@@ -11,7 +11,7 @@ import bcrypt from "bcrypt";
  * @returns {Promise<string|null>} El rol del usuario o null si no se encuentra el usuario.
  */
 async function getUserRole(email) {
-  const result = await conn.query("SELECT rol FROM usuarios WHERE email=?", [
+  const result = await conn.query("SELECT rol FROM USUARIOS WHERE email=?", [
     email,
   ]);
   return result.length > 0 ? result[0].rol : null;
