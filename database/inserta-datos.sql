@@ -1,7 +1,7 @@
 USE PROYECTO_MARIA;
 -- Insertamos en la tabla usuarios datos del administrador
 
-ALTER DATABASE PROYECTO_TEST1 CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER DATABASE PROYECTO_MARIA CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- Configuramos la codificación de caracteres para no tener problemas al insertar los datos 
 -- (necesario cuando usamos el comando source para cargar los scripts)
 
